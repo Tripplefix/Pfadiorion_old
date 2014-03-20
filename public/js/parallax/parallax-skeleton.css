@@ -1,0 +1,25 @@
+/**
+ * jQuery.parallax-skeleton - dont forget to style ;)
+ * Copyright (c) 2013 Rolf Isler & Martin Kubli
+ * Licensed under MIT.
+ * Date: 18/11/2013
+ * @author Rolf Isler & Martin Kubli
+ * @version 1.0.0
+ **/
+
+.parallax-parent, .parallax-container {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.parallax-container {
+    overflow: hidden;
+}
+
+.parallax-image{ 
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
