@@ -10,74 +10,57 @@
 <link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
 <script>
     (function() {
-        var winOffset,
-                winHeight,
-                comingBack = false,
-                body,
-                //mainContOff,        
-                scrollToCust = function(pos) {
-                    body.animate({
-                        scrollTop: pos
-                    }, {
-                        duration: 1500,
-                        queue: false,
-                        easing: 'easeInOutQuart'
-                    });
-                };
-
         $(function() {
-            winHeight = $(window).height();
-            winOffset = $(window).scrollTop();
-            body = $('body, html');
-            var mainContOff = $('#main-container').offset().top;
-
-            $('.main-header').data("container-height", winHeight);
-
-
-            $('.top-title h2').click(function() {
-                scrollToCust($('#main-container').offset().top);
+            $('.main-header').data("container-height", $(window).height());
+            $('.top-title h2').on("click", function(evt) {
+                evt.preventDefault();
+                $('body, html').animate({
+                    scrollTop: $('#main-container').offset().top
+                }, {
+                    duration: 1500,
+                    queue: false,
+                    easing: 'easeInOutQuart'
+                });
             });
-
-            $('#big-nav li').first().click(function(e) {
-                e.preventDefault();
-                scrollToCust($('#main-container').offset().top);
+            $('#full-width-slider').royalSlider({
+                arrowsNav: true,
+                loop: false,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 960,
+                autoScaleSliderHeight: 350,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: true,
+                startSlideId: 0,
+                autoPlay: false,
+                transitionType: 'move',
+                globalCaption: false,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                },
+                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                imgWidth: 1400,
+                imgHeight: 680
             });
-
-            $('#small-nav li').first().click(function(e) {
-                e.preventDefault();
-                scrollToCust($('#main-container').offset().top);
-            });
-
-            $('#goto_organigramm_button').click(function() {
-                scrollToCust($('#organigramm').offset().top - 120);
-            });
-
-            $('#goto_aboutus_button').click(function() {
-                scrollToCust($('#join_us').offset().top - 120);
-            });
-
-            //$('#orion_organigramm').attr("style", "filter:url(#dropshadow_org)");
         });
 
-        $(window).load(function() {
-            if (document.URL === '<?php echo URL; ?>index/orion') {
-                comingBack = false;
-                $.scrollTo(winHeight);
-            }
-
+        $(window).on("load", function() {
             $('.main-header').parallax({
                 parallax: 0.6
             });
             $('body').css({display: 'block'});
         });
 
-        $(window).resize(function() {
-            var winWidth = $(window).width();
-            winHeight = $(window).height();
+        $(window).on("resize", function() {
+            var winHeight = $(window).height();
             $('.main-header').height(winHeight);
             $('.main-header').data("container-height", winHeight);
             $('.parallax-container').height(winHeight);
-
         });
 
         function organigramm() {
@@ -94,22 +77,66 @@
             <img src="<?php echo URL; ?>public/images/IMG_6837.jpg" />
         </div><div id="about-us-content">
             <h2>Wer wir sind</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-            </p>
+            <p>Wir sind, Wölfli, Pfader, Pios und Rover! Wir lieben Action und Abenteuer! Wir sind die Pfadiabteilung Orion!</p>
+
+            <p>Die gesamte Abteilung besteht aus ca. 50 Kindern und Jugendlichen im Alter von 6 
+                bis 16 Jahren, sowie etwas mehr als 20 Leiter und Leiterinnen, die den Kids Samstag 
+                für Samstag Programm in der freien Natur bieten. Die Abteilung Orion ist der Region 
+                Winterthur angehörig.</p>
+
+            <p>Wir geben uns sehr Mühe, den Kindern und Jugendlichen in unserer Abteilung ein 
+                abwechslungsreiches Programm zu bieten, bei dem sie einerseits die Natur näher 
+                kennenlernen, anderseits aber auch die Gesellschaft untereinander nicht zu kurz 
+                kommt. Wer zu uns in die Pfadi kommt, dem wird bestimmt nie langweilig!</p>
         </div>
     </section>
     <!-- was ist Pfadi -->
     <section id="whats_scouts">
         <h2>Was ist Pfadi?</h2>
         <div class="g-100">
-
+            <p>Die Pfadi ist ein weltweiter religiös und politisch unabhängiger Verband mit dem Ziel, 
+                junge Menschen bei ihrer Entwicklung zu fördern, damit diese in der Gesellschaft Verantwortung übernehmen können. </p>
+            <p>Die Pfadibewegung Schweiz (PBS) ist mit über 40'000 Mitgliedern die grösste Jugendorganisation hierzulande. 
+                Diese sind in 22 kantonalen Verbänden und rund 600 lokalen Abteilungen und Gruppen organisiert.</p>
+            <p>Mehr Infos und Eindrücke zur Pfadi findest du hier: </p>
+            <a href="http://www.pfadi.ch/">Pfadi.ch</a>
         </div>
     </section>
     <!-- Eindrücke -->
     <section id="impressions">
-        <h2>Eindrücke</h2>
+        <h2>Eindrücke <p>(da stimmt öppis nonig so ganz)</p></h2>
         <div class="g-100">
+            <div class="sliderContainer fullWidth clearfix">
+                <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
+                    <div class="rsContent">
+                        <img class="rsImg" src="../img/full-width/1.jpg" alt="" />
+                        <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                            <h4>This is an animated block, add any number of them to any type of slide</h4>
+                            <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
+                        </div>
+                    </div>
+                    <div class="rsContent">
+                        <img class="rsImg" src="../img/full-width/2.jpg" alt="" />
+                        <div class="infoBlock  rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                            <h4>This is a static HTML block</h4>
+                            <p>It's always displayed and not animated by slider.</p>
+                        </div>
+                    </div>
+                    <div class="rsContent">
+                        <img class="rsImg" src="../img/full-width/3.jpg" alt="" />
+                        <div class="infoBlock rsABlock infoBlockLeftBlack" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                            <h4>You can link to this slide by adding #3 to url.</h4>
+                            <p><a href="http://dimsemenov.com/plugins/royal-slider/gallery-with-deeplinking/">Learn more</a></p>
+                        </div>
+                    </div>
+                    <div class="rsContent">
+                        <img class="rsImg" src="../img/full-width/4.jpg" alt="" />
+                        <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
             <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
                 <div class="rsContent">
                     <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/304401.jpg" alt="Beispiel Bild">
@@ -142,6 +169,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </section>
     <!-- unsere Organisation -->
@@ -157,7 +185,7 @@
     </section>
     <!-- unsere Organisation -->
     <section id="join_us">
-        <h2>Anmelden</h2>
+        <h2>Besuche uns</h2>
         <div class="g-100">
             <p>
                 Hast du Lust und Zeit regelmässig am Samstag die Natur auf eine andere Art zu erleben? 

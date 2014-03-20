@@ -10,7 +10,7 @@
  * A simple PHP Login Script embedded into a small framework.
  * Uses PHP sessions, the most modern password-hashing and salting
  * and gives all major functions a proper login system needs.
- *
+ * 
  * @package php-login
  * @author Panique
  * @link http://www.php-login.net

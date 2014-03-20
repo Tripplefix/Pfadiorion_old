@@ -23,14 +23,23 @@
         $('#main-scout-lily').on("click", function() {
             window.location.href = url;
         });
-
-        /*$('#small-scout-lily').attr('fill', colors.black);
-
-        $('#small-scout-lily').mouseenter(function() {
-            $('#small-scout-lily').attr('fill', colors.red);
-        }).mouseleave(function() {
-            $('#small-scout-lily').attr('fill', colors.black);
-        });*/
+        
+        $('#big-nav a').each(function(index){
+            switch($(this).text()){
+                case "Orion": 
+                    $(this).attr("href", url + "index/#main-container");
+                    break;
+                case "News": 
+                    $(this).attr("href", url + "news");
+                    break;
+                case "Pfadiheim": 
+                    $(this).attr("href", url + "pfadiheim");
+                    break;
+                case "Kontakt": 
+                    $(this).attr("href", url + "kontakt");
+                    break;
+            }
+        });
     });
 </script>
 
@@ -52,9 +61,9 @@
 
 <ul>
     <li>
-        <a href="http://localhost/PfadiOrion/index/#main-container">Orion</a>
+        <a>Orion</a>
     </li><li>
-        <a href="http://localhost/PfadiOrion/news">News</a>
+        <a>News</a>
     </li><li class="logo">
         <svg id="main-scout-lily" width="75px" height="95px" viewBox="0 0 346 391" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <filter id="dropshadow" height="130%">
@@ -143,8 +152,8 @@
             <path class="scout-lily" d=" M 228.43 379.06 C 231.43 377.12 234.42 375.16 237.54 373.41 C 237.98 374.11 238.86 375.51 239.30 376.20 C 236.57 378.90 233.84 381.62 231.07 384.28 C 230.18 382.55 229.29 380.81 228.43 379.06 Z" />
         </svg>
     </li><li>
-        <a href="http://localhost/PfadiOrion/pfadiheim">Pfadiheim</a>
+        <a>Pfadiheim</a>
     </li><li>
-        <a class="disabled_link" href="http://localhost/PfadiOrion/kontakt">Kontakt</a>
+        <a class="disabled_link">Kontakt</a>
     </li>
 </ul>

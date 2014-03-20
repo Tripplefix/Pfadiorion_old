@@ -77,7 +77,7 @@
                 },
                 /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
                 imgWidth: 1400,
-                imgHeight: 900
+                imgHeight: 933
             });
 
             $('.scout-lily').attr('fill', black);
@@ -161,33 +161,45 @@
     <div id="ph_top">
         <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1400px;margin: 60px auto 24px;">
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/304401.jpg" alt="Beispiel Bild">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8292.jpg" alt="by Kaa">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                    <h4>This is an animated block, add any number of them to any type of slide</h4>
+                    <h4>Unser Heim von vorne, in seiner ganzen Pracht</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Pfadiheim_1.jpg" alt="Beispiel Bild">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8294.jpg" alt="by Kaa">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                    <h4>This is a static HTML block</h4>
+                    <h4>Hinter dem Heim befindet sich eine Sitzmöglichkeit, geeignet für lange Bastelarbeiten</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/32968035.jpg" alt="Beispiel Bild">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8295.jpg" alt="by Kaa">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                    <h4>This is a static HTML block</h4>
+                    <h4>Direkt neben dem Heim ist eine kleine Spielwiese, in gebrauchtem Zustand</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Grillstelle.JPG" alt="Beispiel Bild">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8296.JPG" alt="by Kaa">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                    <h4>This is a static HTML block</h4>
+                    <h4>Eine von zwei gepflegten Feuerstellen für gemütliche Grillnachmittage</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Cute-Cats-cats-33440930-1280-800.jpg" alt="Beispiel Bild">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8297.jpg" alt="by Kaa" data-rsw="1400" data-rsh="681">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                    <h4>This is a static HTML block</h4>
+                    <h4>Nigelnagelneue WC-Anlagen, für geschäftliche Angelegenheiten</h4>
+                </div>
+            </div>
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8302.jpg" alt="by Kaa" data-rsw="1400" data-rsh="691">
+                <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
+                    <h4>Eine moderne Küche macht das Kochen für viele Personen einfacher</h4>
+                </div>
+            </div>
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8303.jpg" alt="by Kaa">
+                <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
+                    <h4>Der grosszügige Aufenthaltsraum wird von einem Schwedenofen beheizt</h4>
                 </div>
             </div>
         </div>

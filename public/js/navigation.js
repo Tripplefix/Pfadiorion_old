@@ -32,16 +32,6 @@ $(function() {
                 $('#tablet-nav').slideDown(200);
             }
         });
-
-        $('#small-scout-lily').on("click", function() {
-            $('body, html').animate({
-                scrollTop: 0
-            }, {
-                duration: 1500,
-                queue: false,
-                easing: 'easeInOutQuart'
-            });
-        });
     });
 
     _window.on("scroll", function() {

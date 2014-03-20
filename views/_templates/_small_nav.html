@@ -19,7 +19,34 @@
             });
         }
         
-        $('#small-scout-lily').attr('fill', colors.black);
+        $('#small-scout-lily').attr('fill', colors.black);        
+
+        $('#small-scout-lily').on("click", function() {
+            $('body, html').animate({
+                scrollTop: 0
+            }, {
+                duration: 1500,
+                queue: false,
+                easing: 'easeInOutQuart'
+            });
+        });
+        
+        $('#small-nav a').each(function(index){
+            switch($(this).text()){
+                case "Orion": 
+                    $(this).attr("href", url + "index/#main-container");
+                    break;
+                case "News": 
+                    $(this).attr("href", url + "news");
+                    break;
+                case "Pfadiheim": 
+                    $(this).attr("href", url + "pfadiheim");
+                    break;
+                case "Kontakt": 
+                    $(this).attr("href", url + "kontakt");
+                    break;
+            }
+        });
     });
 </script>
 
@@ -40,9 +67,9 @@
 
 <ul>
     <li>
-        <a href="http://localhost/PfadiOrion/index/#main-container">Orion</a>
+        <a>Orion</a>
     </li><li>
-        <a href="http://localhost/PfadiOrion/news">News</a>
+        <a>News</a>
     </li><li class="logo">
         <svg id="small-scout-lily" width="50px" height="55px" viewBox="0 0 600 760" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <filter id="dropshadow" height="130%">
@@ -63,8 +90,8 @@
         </svg>
 
     </li><li>
-        <a href="http://localhost/PfadiOrion/pfadiheim">Pfadiheim</a>
+        <a>Pfadiheim</a>
     </li><li>
-        <a class="disabled_link" href="http://localhost/PfadiOrion/kontakt">Kontakt</a>
+        <a class="disabled_link">Kontakt</a>
     </li>
 </ul>
