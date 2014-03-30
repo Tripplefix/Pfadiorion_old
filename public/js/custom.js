@@ -7,4 +7,8 @@
             event.preventDefault();
         });
     });
+    
+    document.loadScript = function(src){
+        
+    };
 })();

@@ -24,7 +24,11 @@
             event.preventDefault();
         });
 
-        $(".datepicker").datepicker();
+        $(".datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd.mm.yy"
+        });
         $(".timepicker").timePicker();
     });
 })();

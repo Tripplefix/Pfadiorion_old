@@ -26,13 +26,13 @@
 
             <div class="header_left_box">
                 <ul id="menu">
-                    <li <?php
+                    <!-- <li <?php
                     if ($this->checkForActiveController($filename, "index")) {
                         echo ' class="active" ';
                     }
                     ?> >
                         <a href="<?php echo URL; ?>admin/index">Übersicht</a>
-                    </li>         
+                    </li>  -->       
                     <?php if (Session::get('user_logged_in') == true): ?>
                         <li <?php
                         if ($this->checkForActiveController($filename, "dashboard")) {
@@ -60,7 +60,7 @@
                             <a href="<?php echo URL; ?>admin/news">Beiträge verwalten</a>
                         </li>                  
                     <?php endif; ?>                     
-                    <?php if (Session::get('user_logged_in') == true && Session::get('user_access_level') == 5): ?>
+                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
                         <li <?php
                         if ($this->checkForActiveController($filename, "pfadiheim")) {
                             echo ' class="active" ';
@@ -69,7 +69,7 @@
                             <a href="<?php echo URL; ?>admin/pfadiheim">Heim Verwaltung</a>
                         </li>                  
                     <?php endif; ?>             
-                    <?php if (Session::get('user_logged_in') == true && Session::get('user_access_level') == 5): ?>
+                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
                         <li <?php
                         if ($this->checkForActiveController($filename, "users")) {
                             echo ' class="active" ';
@@ -87,37 +87,21 @@
                         ?> >
                             <!--<a href="#">My Account</a>-->
                             <a href="<?php echo URL; ?>admin/login/showprofile">Mein Profil</a>
-                            <ul class="sub-menu">
-                                <!--
-                                <li <?php
+                            <ul class="sub-menu">  
+                                <!-- <li <?php
                                 if ($this->checkForActiveController($filename, "login")) {
                                     echo ' class="active" ';
                                 }
                                 ?> >
-                                    <a href="<?php echo URL; ?>login/showprofile">Show my profile</a>
-                                </li>
-                                -->
+                                    <a href="<?php echo URL; ?>admin/login/edituseremail">E-Mail Adresse &auml;ndern</a>
+                                </li>  -->
                                 <li <?php
                                 if ($this->checkForActiveController($filename, "login")) {
                                     echo ' class="active" ';
                                 }
                                 ?> >
                                     <a href="<?php echo URL; ?>admin/login/uploadavatar">Profilbild hochladen</a>
-                                </li>                          
-                                <li <?php
-                                if ($this->checkForActiveController($filename, "login")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/login/editusername">Benutzername bearbeiten</a>
-                                </li>
-                                <li <?php
-                                if ($this->checkForActiveController($filename, "login")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/login/edituseremail">Email bearbeiten</a>
-                                </li>
+                                </li>    
                                 <li <?php
                                 if ($this->checkForActiveController($filename, "login")) {
                                     echo ' class="active" ';
@@ -140,19 +124,12 @@
                             <a href="<?php echo URL; ?>admin/login/index">Login</a>
                         </li>  
                         <!-- <li <?php
-                        if ($this->checkForActiveControllerAndAction($filename, "login/register")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/login/register">Registrieren</a>
-                        </li> -->
-                        <li <?php
                         if ($this->checkForActiveControllerAndAction($filename, "login/requestpasswordreset")) {
                             echo ' class="active" ';
                         }
                         ?> >
                             <a class="disabled_link" href="<?php echo URL; ?>admin/login/requestpasswordreset">Passwort vergessen(funktion in Arbeit)</a>
-                        </li>
+                        </li> -->
 
                     <?php endif; ?>
 
@@ -167,11 +144,11 @@
                     </div>
 
                     <div class="avatar">
-                        <?php if (USE_GRAVATARS) { ?>
-                            <img src='<?php echo Session::get('user_gravatar_image_url'); ?>' />
-                        <?php } else { ?>
-                            <img src='<?php echo Session::get('user_avatar_file'); ?>' />
-                        <?php } ?>
+                        <?php if (Session::get('user_avatar_file') == ""): ?>
+                            <img width="44" height="44" src='<?php echo URL; ?>public/avatars/missing.jpg' />
+                        <?php else: ?> 
+                            <img width="44" height="44" src='<?php echo Session::get('user_avatar_file'); ?>' />
+                        <?php endif; ?>
                     </div>                
 
                 </div>

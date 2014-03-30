@@ -28,6 +28,6 @@
             <input type="submit" style="float: none; clear: both;" />            
             
     </form>    
-    <a href="<?php echo URL; ?>admin/login/requestpasswordreset">Passwort vergessen</a>
+    <!-- <a href="<?php echo URL; ?>admin/login/requestpasswordreset">Passwort vergessen</a> -->
     
 </div>

@@ -51,7 +51,7 @@ class Login extends Controller {
     function logout()
     {
         $this->model->logout();
-        header('location: ' . URL);
+        header('location: ' . URL . 'news');
         //$this->view->render('login/index', true);
     }    
 
@@ -78,7 +78,8 @@ class Login extends Controller {
     function showprofile() {
         
         // Auth::handleLogin() makes sure that only logged in users can use this action/method and see that page
-        Auth::handleLogin();        
+        Auth::handleLogin(); 
+        $this->view->profile = $this->model->getProfileInfos();
         $this->view->render('login/showprofile', true);
         
     }
@@ -112,14 +113,15 @@ class Login extends Controller {
     }
     
     function edituseremail_action() {
-        
-        $this->model->editUserEmail();
-
-        // TODO: find a better solution than always doing this by hand
-        // put the errors from the login model into the view (so we can display them in the view)
-        $this->view->errors = $this->model->errors;
-        
-        $this->view->render('login/edituseremail', true);        
+        if($this->model->editUserEmail()){
+            echo 'done';
+        }else{
+            /*$errors = "";
+            foreach ($this->model->errors as $error){
+                $errors .= $error + "<br />";
+            }*/
+            echo $this->model->errors[0];
+        }               
         
     } 
     
@@ -135,7 +137,6 @@ class Login extends Controller {
     }
     
     function uploadavatar_action() {
-
         $this->model->createAvatar();
 
         // TODO: find a better solution than always doing this by hand
@@ -269,6 +270,17 @@ class Login extends Controller {
         }
         
     }   
+    
+    function saveprofilechanges(){
+       
+        if ($this->model->saveProfileChanges($_POST['email'], $_POST['forename'], $_POST['surname'], $_POST['birthdate'], 
+                $_POST['street'], $_POST['place'], $_POST['phone'])) {     
+            echo 'success';              
+            
+        } else {
+            echo 'error';
+        } 
+    }
     
     /**
      * special helper method:

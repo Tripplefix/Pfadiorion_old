@@ -93,83 +93,44 @@
     <!-- was ist Pfadi -->
     <section id="whats_scouts">
         <h2>Was ist Pfadi?</h2>
-        <div class="g-100">
+        <div>
             <p>Die Pfadi ist ein weltweiter religiös und politisch unabhängiger Verband mit dem Ziel, 
                 junge Menschen bei ihrer Entwicklung zu fördern, damit diese in der Gesellschaft Verantwortung übernehmen können. </p>
             <p>Die Pfadibewegung Schweiz (PBS) ist mit über 40'000 Mitgliedern die grösste Jugendorganisation hierzulande. 
-                Diese sind in 22 kantonalen Verbänden und rund 600 lokalen Abteilungen und Gruppen organisiert.</p>
+                Sie ist in 22 kantonalen Verbänden und rund 600 lokalen Abteilungen und Gruppen organisiert.</p>
             <p>Mehr Infos und Eindrücke zur Pfadi findest du hier: </p>
-            <a href="http://www.pfadi.ch/">Pfadi.ch</a>
+            <a href="http://www.pfadi.ch/" target="_blank">Pfadi.ch</a>
         </div>
     </section>
     <!-- Eindrücke -->
     <section id="impressions">
-        <h2>Eindrücke <p>(da stimmt öppis nonig so ganz)</p></h2>
-        <div class="g-100">
-            <div class="sliderContainer fullWidth clearfix">
-                <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
-                    <div class="rsContent">
-                        <img class="rsImg" src="../img/full-width/1.jpg" alt="" />
-                        <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
-                            <h4>This is an animated block, add any number of them to any type of slide</h4>
-                            <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
-                        </div>
-                    </div>
-                    <div class="rsContent">
-                        <img class="rsImg" src="../img/full-width/2.jpg" alt="" />
-                        <div class="infoBlock  rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
-                            <h4>This is a static HTML block</h4>
-                            <p>It's always displayed and not animated by slider.</p>
-                        </div>
-                    </div>
-                    <div class="rsContent">
-                        <img class="rsImg" src="../img/full-width/3.jpg" alt="" />
-                        <div class="infoBlock rsABlock infoBlockLeftBlack" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
-                            <h4>You can link to this slide by adding #3 to url.</h4>
-                            <p><a href="http://dimsemenov.com/plugins/royal-slider/gallery-with-deeplinking/">Learn more</a></p>
-                        </div>
-                    </div>
-                    <div class="rsContent">
-                        <img class="rsImg" src="../img/full-width/4.jpg" alt="" />
-                        <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span>
-                    </div>
+        <h2>Eindrücke</h2><p>(da stimmt öppis nonig so ganz)</p>
+        <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1200px;margin: 60px auto 24px;">
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>view/index/images/unsplash_528ef22a4cd0b_1.jpg" alt="" />
+                <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                    <h4>This is an animated block, add any number of them to any type of slide</h4>
+                    <p>Put completely anything inside - text, images, inputs, links, buttons.</p>
                 </div>
             </div>
-
-            <!-- 
-            <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
-                <div class="rsContent">
-                    <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/304401.jpg" alt="Beispiel Bild">
-                    <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                        <h4>This is an animated block, add any number of them to any type of slide</h4>
-                    </div>
-                </div>
-                <div class="rsContent">
-                    <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Pfadiheim_1.jpg" alt="Beispiel Bild">
-                    <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                        <h4>This is a static HTML block</h4>
-                    </div>
-                </div>
-                <div class="rsContent">
-                    <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/32968035.jpg" alt="Beispiel Bild">
-                    <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                        <h4>This is a static HTML block</h4>
-                    </div>
-                </div>
-                <div class="rsContent">
-                    <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Grillstelle.JPG" alt="Beispiel Bild">
-                    <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                        <h4>This is a static HTML block</h4>
-                    </div>
-                </div>
-                <div class="rsContent">
-                    <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/Cute-Cats-cats-33440930-1280-800.jpg" alt="Beispiel Bild">
-                    <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
-                        <h4>This is a static HTML block</h4>
-                    </div>
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>view/index/images/unsplash_52c36ef60f8df_1.jpg" alt="" />
+                <div class="infoBlock  rsAbsoluteEl" style="color:#000;" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                    <h4>This is a static HTML block</h4>
+                    <p>It's always displayed and not animated by slider.</p>
                 </div>
             </div>
-            -->
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>view/index/images/unsplash_529f1e8522a2a_1.jpg" alt="" />
+                <div class="infoBlock rsABlock infoBlockLeftBlack" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                    <h4>You can link to this slide by adding #3 to url.</h4>
+                    <p><a href="http://dimsemenov.com/plugins/royal-slider/gallery-with-deeplinking/">Learn more</a></p>
+                </div>
+            </div>
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>view/index/images/unsplash_52b73e0b2dee2_1.jpg" alt="" />
+                <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span>
+            </div>
         </div>
     </section>
     <!-- unsere Organisation -->
@@ -186,7 +147,7 @@
     <!-- unsere Organisation -->
     <section id="join_us">
         <h2>Besuche uns</h2>
-        <div class="g-100">
+        <div id="join_us_text">
             <p>
                 Hast du Lust und Zeit regelmässig am Samstag die Natur auf eine andere Art zu erleben? 
 
@@ -203,6 +164,7 @@
             <p>
                 Bei Fragen stehen dir unsere Trupp- und Abteilungsleiter gerne zur Verfügung.
             </p>
+            <div id="join_us_button"><p>Anmelden</p></div>
         </div>
     </section>
 </div>

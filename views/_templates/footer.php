@@ -46,6 +46,7 @@
         </div>
         <div id="footer_bottom">
             <div class="footer_bottom_element left">
+                <a href="<?php echo URL; ?>kontakt/impressum">Impressum</a>
             </div>
             <div class="footer_bottom_element middle">
                 <p><a href="<?php echo URL; ?>">Pfadi Orion</a> &copy; <?php echo date("Y"); ?></p>

@@ -28,7 +28,8 @@ class Login_Model extends Model {
                                               user_active, 
                                               user_access_level,
                                               user_failed_logins, 
-                                              user_last_failed_login  
+                                              user_last_failed_login,  
+                                              user_is_admin
                                        FROM users
                                        WHERE user_name = :user_name ;");
             $sth->execute(array(':user_name' => $_POST['user_name']));
@@ -60,6 +61,7 @@ class Login_Model extends Model {
                         Session::set('user_email', $result->user_email);
                         Session::set('user_access_level', $result->user_access_level);
                         Session::set('user_active', $result->user_active);
+                        Session::set('user_is_admin', $result->user_is_admin);
 
                         Session::set('user_avatar_file', $this->getUserAvatarFilePath());
 
@@ -355,8 +357,6 @@ class Login_Model extends Model {
                         $this->user_email = htmlentities($_POST['user_email'], ENT_QUOTES);
                         // prevent database flooding
                         $this->user_email = substr($this->user_email, 0, 64);
-                        // not really necessary, but just in case...
-                        $this->user_id = $_SESSION['user_id']; // TODO: delete this line
 
                         $sth = $this->db->prepare("UPDATE users SET user_email = :user_email WHERE user_id = :user_id ;");
                         $sth->execute(array(':user_email' => $this->user_email, ':user_id' => $_SESSION['user_id']));
@@ -371,6 +371,7 @@ class Login_Model extends Model {
                             $this->setGravatarImageUrl($this->user_email);
 
                             $this->errors[] = FEEDBACK_EMAIL_CHANGE_SUCCESSFUL;
+                            return true;
                         } else {
 
                             $this->errors[] = FEEDBACK_UNKNOWN_ERROR;
@@ -394,6 +395,7 @@ class Login_Model extends Model {
 
             $this->errors[] = FEEDBACK_EMAIL_AND_PASSWORD_FIELDS_EMPTY;
         }
+        return false;
     }
 
     /**
@@ -656,7 +658,7 @@ class Login_Model extends Model {
 
                             // creates a 44x44px avatar jpg file in the avatar folder
                             // see the function defintion (also in this class) for more info on how to use
-                            $this->resize_image($_FILES['avatar_file']['tmp_name'], $target_file_path, 44, 44, 85, true);
+                            $this->resize_image($_FILES['avatar_file']['tmp_name'], $target_file_path, 400, 400, 85, true);
 
                             $sth = $this->db->prepare("UPDATE users SET user_has_avatar = TRUE WHERE user_id = :user_id");
                             $sth->execute(array(':user_id' => $_SESSION['user_id']));
@@ -697,7 +699,7 @@ class Login_Model extends Model {
      * @param int $quality The quality of the JPG to produce 1 - 100
      * @param bool $crop Whether to crop the image or not. It always crops from the center.
      */
-    function resize_image($source_image, $destination_filename, $width = 44, $height = 44, $quality = 85, $crop = true) {
+    function resize_image($source_image, $destination_filename, $width = 400, $height = 400, $quality = 85, $crop = true) {
 
         if (!$image_data = getimagesize($source_image)) {
             return false;
@@ -1110,6 +1112,54 @@ class Login_Model extends Model {
             $this->errors[] = FEEDBACK_EMAIL_DOES_NOT_FIT_PATTERN;
         }
         return false;
+    }
+
+    public function getProfileInfos() {
+        $sth = $this->db->prepare("SELECT user_contact_forename, 
+            user_contact_surname, 
+            user_contact_birthdate,
+            user_contact_street,
+            user_contact_place,
+            user_contact_phone, 
+            user_email, 
+            user_leadertraining,
+            user_leader_since,
+            user_responsibility FROM users WHERE user_id = :user_id");
+        $sth->execute(array(':user_id' => $_SESSION['user_id']));
+        return $sth->fetch();
+    }
+
+    public function saveProfileChanges($email, $forename, $surname, $birthdate, $street, $place, $phone) {
+        $birthdate = $birthdate == "" ? null : $birthdate;
+        $street = $street == "" ? null : $street;
+        $place = $place == "" ? null : $place;
+        $phone = $phone == "" ? null : $phone;
+
+        $sth = $this->db->prepare("UPDATE users SET 
+                    user_email = :email, 
+                    user_contact_forename = :forename, 
+                    user_contact_forename = :forename, 
+                    user_contact_surname = :surname, 
+                    user_contact_birthdate = :birthdate, 
+                    user_contact_street = :street, 
+                    user_contact_place = :place, 
+                    user_contact_phone = :phone WHERE user_id = :user_id ;");
+        $sth->execute(array(
+            ':email' => $email,
+            ':forename' => $forename,
+            ':surname' => $surname,
+            ':birthdate' => $birthdate,
+            ':street' => $street,
+            ':place' => $place,
+            ':phone' => $phone,
+            ':user_id' => $_SESSION['user_id']));
+
+        $count = $sth->rowCount();
+        if ($count == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -16,7 +16,9 @@ $(function() {
     
     
     _window.on("load", function() {
-        if (winWidth < 1000) {
+        if ((window.devicePixelRatio === 1 && winWidth < 944) 
+                || (window.devicePixelRatio === 1.5 && winWidth < 1500) 
+                || (window.devicePixelRatio === 2 && winWidth < 2000)) {
             smallNav.children().remove();
             bigNav.children().remove();
             tabletNav.load(url + 'views/_templates/_mobile_nav.html');
@@ -71,7 +73,9 @@ $(function() {
         winHeight = _window.height();
         winWidth = _window.width();
 
-        if (winWidth < 944) {
+        if ((window.devicePixelRatio === 1&& winWidth < 944) 
+                || (window.devicePixelRatio === 1.5 && winWidth < 1500) 
+                || (window.devicePixelRatio === 2 && winWidth < 2000)) {
             smallNav.children().remove();
             bigNav.children().remove();
             tabletNav.load(url + 'views/_templates/_mobile_nav.html');

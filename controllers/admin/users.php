@@ -18,27 +18,29 @@ class Users extends Controller {
         Auth::handleLogin();
     }
 
-    public function index() {        
-        // get all notices (of the logged in user)
-        $this->view->users = $this->model->getAllUser();
-        $this->view->errors = $this->model->errors;
-        $this->view->render('users/index', true);
+    public function index() {
+        if (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1) {
+            // get all notices (of the logged in user)
+            $this->view->users = $this->model->getAllUser();
+            $this->view->errors = $this->model->errors;
+            $this->view->render('users/index', true);
+        } else {
+            header('location: ' . URL . 'admin/dashboard');
+        }
     }
 
-    public function create() {     
-        if($this->model->create(
-                $_POST['user_name'], 
-                $_POST['user_password'], 
-                $_POST['user_access_level'])){
+    public function create() {
+        if ($this->model->create(
+                        $_POST['user_name'], $_POST['user_password'], $_POST['user_access_level'])) {
             header('location: ' . URL . 'admin/users');
             return true;
-        }else{
+        } else {
             header('location: ' . URL . 'admin/users');
             return false;
         }
     }
 
-    public function edit($user_id) {        
+    public function edit($user_id) {
         //TODO implement        
     }
 

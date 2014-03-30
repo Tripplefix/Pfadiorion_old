@@ -78,4 +78,15 @@ class Pfadiheim_Model extends Model {
         }
     }
 
+    public function getBelegung($date){
+        $sth = $this->db->prepare("SELECT * FROM pfadiheim_reservations WHERE date_start <= :event_date AND date_end >= :event_date;");
+        $sth->execute(array(':event_date' => $date));  
+        
+        $count = $sth->rowCount();
+        if ($count == 1) {
+            return 1;
+        } else {
+            return 0;
+        } 
+    }
 }

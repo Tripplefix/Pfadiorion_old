@@ -9,19 +9,15 @@ class Index extends Controller {
     function index() {
 
         //$this->view->users = $this->model->getAllUsersProfiles();
-        $this->view->render('index/index', true);
+        if(Session::get('user_logged_in') == true){
+            header('location: ' . URL . 'admin/notice');
+        }else{
+            $this->view->render('login/index', true);
+        }
     }
 
     function details() {
 
         $this->view->render('index/index', true);
     }
-    
-    //explemented
-    /*function showuserprofile($user_id) {
-
-        $this->view->user = $this->model->getUserProfile($user_id);
-        $this->view->render('index/showuserprofile', true);
-    }*/
-
 }

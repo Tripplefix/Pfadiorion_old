@@ -3,46 +3,41 @@
 <link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
 <link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
 <script>
-// The following example creates a marker in Stockholm, Sweden
-// using a DROP animation. Clicking on the marker will toggle
-// the animation between a BOUNCE animation and no animation.
-
-    var sulz = new google.maps.LatLng(47.521312, 8.787713);
-    var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
-    var marker;
-    var map;
-
-    function initialize() {
-        var mapOptions = {
-            scrollwheel: true,
-            zoom: 13,
-            center: sulz
-        };
-
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-
-        marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
-            animation: google.maps.Animation.DROP,
-            position: phSandacker
-        });
-        google.maps.event.addListener(marker, 'click', toggleBounce);
-    }
-
-    function toggleBounce() {
-
-        if (marker.getAnimation() != null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
     (function() {
+        /* Google Maps */
+        var sulz = new google.maps.LatLng(47.505964, 8.787713);
+        var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
+        var marker;
+        var map;
+
+        function initialize() {
+            var mapOptions = {
+                scrollwheel: true,
+                zoom: 13,
+                center: sulz
+            };
+
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                    mapOptions);
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: phSandacker
+            });
+            google.maps.event.addListener(marker, 'click', toggleBounce);
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() != null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
 
         //var red = '#CF5C3F';
         var red = '#CC3D18',
@@ -117,41 +112,51 @@
             $('#ph_details_button').click(function() {
                 $.scrollTo($('#map-canvas'), 1000, {easing: 'easeInOutQuint'});
             });
-            
-            $('#show_full_maps_button').click(function(){
+
+            $('#show_full_maps_button').click(function() {
                 var overlay = $("#google_maps_overlay");
-                if(overlay.hasClass("hidden")){
+                if (overlay.hasClass("hidden")) {
                     overlay.css({height: 750, boxShadow: 'none'});
                     overlay.removeClass("hidden");
                     $('#map-canvas').css({zIndex: 0});
                     $(this).text("Karte ausblenden");
-                }else{
-                    overlay.css({height: $(window).height() - 640, boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
+                    $(this).css({
+                        bottom: '70px',
+                        left: '50px'
+                    });
+                    map.panTo(phSandacker);
+                } else {
+                    //overlay.css({height: $(window).height() - 640, boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
+                    $('#google_maps_overlay').css({height: '250px', boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
                     overlay.addClass("hidden");
                     $('#map-canvas').css({zIndex: -2});
                     $(this).text("Ganze Karte anzeigen");
+                    $(this).css({
+                        bottom: '560px',
+                        left: 'calc(50% - 130px)'
+                    });
+                    map.panTo(sulz);
                 }
             });
         });
 
         $(window).load(function() {
-            $('.top-image').parallax({
-                parallax: 0.6
-            });
             /*console.log("page is loaded!");
              NProgress.done(true);*/
             $('body').css({display: 'block'});
-            $('#google_maps_overlay').css({height: $(window).height() - 640});
+            //$('#google_maps_overlay').css({height: $(window).height() - 640});
+            $('#google_maps_overlay').css({height: '250px'});
         });
 
         $(window).resize(function() {
             $('#ph_top').css({
                 height: ($(window).height() - 120)
             });
-            
-            $('#google_maps_overlay').css({height: $(window).height() - 640});
-            if($(window).scrollTop() > 900){
-            $("html, body").scrollTop($('#google_maps_overlay').offset().top);
+
+            //$('#google_maps_overlay').css({height: $(window).height() - 640});
+            $('#google_maps_overlay').css({height: '250px'});
+            if ($(window).scrollTop() > 900) {
+                $("html, body").scrollTop($('#google_maps_overlay').offset().top);
             }
         });
     })();
@@ -204,14 +209,14 @@
             </div>
         </div>
 
-        <div id="ph_details_button" class="ph_container grey_button">
+        <div id="ph_details_button">
             Details zum Heim
         </div>
     </div>
 
     <div id="google_maps_overlay" class="hidden">
         <div id="map-canvas"></div>
-        <div id="show_full_maps_button" class="grey_button">Ganze Karte anzeigen</div>
+        <div id="show_full_maps_button">Ganze Karte anzeigen</div>
     </div>
     <div id="ph_info_wrapper">
         <div id="ph_location" class="ph_container ph_border">
@@ -219,13 +224,13 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d673.3795679582008!2d8.787130910234787!3d47.538240951191824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2s!4v1392144415227" width="600" height="450" frameborder="0" style="border:0;float: left;"></iframe>
             -->
             <p>
-                Zu finden ist unser Zuhause unter folgender Adresse: <br />
+                Zu finden ist unser Zuhause unter folgender Adresse: <br /><br />
 
                 Pfadiheim Sandacker<br />
                 Im Sandacker<br />
-                8544 Sulz-Rickenbach<br />
+                8544 Sulz-Rickenbach<br /><br />
 
-                Für Kartenkundige: 701/500//266/150; 460 m.ü.m.<br />
+                Für Kartenkundige: 701/500//266/150; 460 m.ü.m.<br /><br />
 
                 Das Heim ist gegenüber Nachbarn auf der Südseite durch Wald getrennt, nördlich liegt ein Bord mit Gebüsch als Grenze. Das Heim ist jedoch aufgrund seiner Nähe zu einer Wohnsiedlung für lärmige Anlässe, insbesondere zur Nachtzeit, nicht geeignet.<br />
 
@@ -234,18 +239,20 @@
         </div><div class="ph_container">
             <div id="ph_administration" class="ph_border">
                 <p>
-                    Bei Fragen oder Reservationen hilft Ihnen unsere Heimverwaltung gerne weiter.<br /><br />
+                    Bei Fragen oder Reservationen hilft Ihnen unsere Heimverwaltung gerne weiter.
+                </p><br />
 
-
-                    Denise Schubnell (Kontakt)<br />
-                    Stationsstrasse 33<br />
-                    8544 Sulz-Rickenbach<br />
-                    052 337 24 27
-                </p>
+                    <p style="text-align: center; font-size: 20px; font-weight: bold;">
+                        Denise Schubnell<br />
+                        Stationsstrasse 33<br />
+                        8544 Sulz-Rickenbach<br />
+                        052 337 24 27
+                    </p>
             </div><div id="ph_vacancy" class="ph_border">
                 <p>
-                    Ob das Heim an Ihrem Wunschdatum noch frei ist, steht im Kalender
+                    Ob das Heim an Ihrem Wunschdatum noch frei ist, steht im <a href="<?php echo URL; ?>pfadiheim/belegung">Kalender</a>
                 </p>
+                
             </div>
         </div><div id="ph_furnishment" class="ph_container ph_border">
             <ul>
@@ -257,7 +264,7 @@
                 <li>Pizzaofen draussen</li>
                 <li>eine Spielwiese</li>
                 <li>eine Feuerstelle auf unserem Gelände</li>
-            </ul>
+            </ul><br />
             <p>Es kann ausserdem noch ein zusätzlicher Arbeitsraum dazugemietet werden (Rücksprache mit der Heimverwaltung).</p>
         </div>
     </div>

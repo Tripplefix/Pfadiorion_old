@@ -176,5 +176,4 @@ class News extends Controller {
                 break;
         }
     }
-
 }

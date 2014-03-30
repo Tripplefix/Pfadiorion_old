@@ -3,6 +3,7 @@
     <head>
         <title>Pfadi Orion</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="<?php echo URL; ?>public/images/favicon.gif" type="image/gif">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
