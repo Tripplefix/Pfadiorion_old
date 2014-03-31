@@ -183,10 +183,17 @@ body{
 #organigramm{
     margin: 100px 0;
     border-top: 5px solid #4C26E0;
+        height: 700px;
 }
 
 #organigramm h2{
     margin-bottom: 0;
+}
+
+#organigramm svg{
+    width: 900px;
+    height: 700px;
+    margin: 0 calc(~"50% - 450px");
 }
 
 /********************** pfadi beitritt ***********************/
@@ -226,20 +233,36 @@ body{
 @media screen and (max-width: 1280px) and (min-width: 600px){
     #main-container section{
         box-shadow: 0 5px 11px -6px #292929;
-        border-radius: 0;
     }
 }
 
 @media screen and (max-width: 1280px) and (min-width: 960px){
     #main-container section{
         width: 900px;
-        margin: 0 0 0 calc(~"50% - 450px");
+        margin: 0 0 150px calc(~"50% - 450px");
     }
     #main-container p{
         font-size: 20px;
     }
     #main-container h2{
         font-size: 40px;
+    }
+    #about-us-image img {
+        margin-left: -400px;
+    }
+    #about-us-image {
+        width: 300px;
+    }
+    #about-us-content {
+        width: 550px;
+    }
+    #organigramm svg{
+        width: 750px;
+        height: 550px;
+        margin: 0 calc(~"50% - 390px");
+    }
+    #organigramm section{
+        height: 550px !important;
     }
 }
 
@@ -249,6 +272,7 @@ body{
         height: auto;
         margin: 0;
         margin-bottom: 40px;
+        border-radius: 0;
     }
     #about-us-image{
         display: none;   
@@ -270,10 +294,10 @@ body{
     .parallax-parent{
         display: none;
     }
-    svg{
+    /*#organigramm svg{
         width: calc(80% + 100px);
         margin: 0 calc(50% - (34% + 100px));
-    }
+    }*/
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px){
@@ -302,7 +326,7 @@ body{
     #main-container *{
         font-size: 14px;
     }
-    
+
 }
 
 /********************* royal slider *******************************/

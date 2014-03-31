@@ -79,7 +79,6 @@
     #belegungsplan_calendar .month_container td.reserved{
         border: 1px solid #BD9A9A;
         background-color: #E4BDBD;
-        background-image: url('<?php echo URL; ?>public/images/hatched.png');
     }
     #belegungsplan_calendar h3{
         border: none;
@@ -90,7 +89,6 @@
         height: 25px;
         border: 1px solid #BD9A9A;
         background-color: #E4BDBD;
-        background-image: url('<?php echo URL; ?>public/images/hatched.png');
     }
     #today_legend{
         width: 25px;
@@ -103,7 +101,10 @@
         height: 25px;
         border: 1px solid #BD9A9A;
         background-color: #FFFFFF;
+    }
+    .hatched{
         background-image: url('<?php echo URL; ?>public/images/hatched.png');
+        background-size: 100%;
     }
     @media (max-width: 1480px) and (min-width: 960px) {
         #belegungsplan_calendar{
@@ -159,11 +160,11 @@
     <table>
         <tr>
             <td>Besetzt:&nbsp;&nbsp;</td>
-            <td id="reserved_legend"></td>
+            <td id="reserved_legend" class="hatched"></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;Heute:&nbsp;&nbsp;</td>
             <td id="today_legend"></td>
             <td style="padding-top: 3px;">&nbsp;&nbsp;/&nbsp;&nbsp;</td>
-            <td id="today_and_reserved_legend"></td>
+            <td id="today_and_reserved_legend" class="hatched"></td>
         </tr>
     </table>
     </div>

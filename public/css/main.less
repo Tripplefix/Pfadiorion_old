@@ -205,8 +205,21 @@ a, i, button, input[type=submit] {
     margin-left: 5%;
 }
 
-.middle.footer_top_element{
-    
+.middle.footer_top_element p{
+    width: 65%;
+    font-size: 24px;
+    margin: 0 35%;
+}
+
+.middle.footer_top_element #small-scout-lily{
+    fill: #FFF;
+    width: 114px;
+    height: 144px;
+    margin: 21px calc(~"50% - 57px") 0;
+    cursor: default;
+}
+.middle.footer_top_element #small-scout-lily:hover{
+    fill: #FFF !important;
 }
 
 .right.footer_top_element{
@@ -232,4 +245,86 @@ a, i, button, input[type=submit] {
 .right.footer_bottom_element{
     margin-right: 5%;
     text-align: right;
+}
+#footer_mobile{
+    display: none;
+    overflow: hidden;
+    width: 100%;
+}
+#footer_toggle{
+    color: #FFF;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    background-color: #821E04;
+}
+#footer_nav{
+
+}
+#footer_mobile #footer_toggle{
+    height: 70px; 
+}
+#footer_mobile #footer_toggle p{
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    display: inline-block;
+    font-size: 66px;
+    position: relative;
+    top: -10px;  
+    transition: all .5s;
+    cursor: pointer;
+}
+#footer_mobile #footer_toggle p.open{
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#footer_mobile a, #footer_mobile li{
+    height: 70px;
+    list-style: none;
+}
+#footer_nav{
+    display: none;
+}
+#footer_nav a, #footer_nav p{
+    height: 52px;
+    display: inline-block;
+    background-color: #821E04;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    padding-top: 18px;
+}
+#footer_nav a:hover{    
+    background-color: #AA381A;
+}
+#footer_nav p{
+    height: 30px;
+    padding-top: 40px;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 960px) and (min-width: 0px){
+
+    .left.footer_top_element, 
+    .right.footer_top_element,
+    .left.footer_bottom_element, 
+    .right.footer_bottom_element{
+        display: none;
+    }
+
+    .middle.footer_top_element, 
+    .middle.footer_bottom_element{
+        width: 100%;
+    }
+
+    #footer_top, .footer_top_element{
+        height: 230px;
+    }
+
+    #footer_bottom{
+        display: none;
+    }
+    #footer_mobile{
+        display: block;
+    }
 }

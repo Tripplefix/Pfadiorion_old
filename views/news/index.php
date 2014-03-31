@@ -5,12 +5,12 @@
             white = '#FFF',
             black = '#000';
     $(function() {
-        $('.scout-lily').attr('fill', black);
+        $('#tablet-nav-container .scout-lily').attr('fill', black);
 
         $('#main-scout-lily').mouseenter(function() {
-            $('.scout-lily').attr('fill', red);
+            $('#tablet-nav-container .scout-lily').attr('fill', red);
         }).mouseleave(function() {
-            $('.scout-lily').attr('fill', black);
+            $('#tablet-nav-container .scout-lily').attr('fill', black);
         });
 
         $('.notice_link').click(function(event) {

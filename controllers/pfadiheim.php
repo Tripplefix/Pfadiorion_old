@@ -82,7 +82,7 @@ class Pfadiheim extends Controller {
                  
                 /* check if its reserved that day */
                 if ($this->model->getBelegung(mktime(0, 0, 0, $running_month, ($day_counter + 1), $running_year)) > 0) {
-                    $calendar.= ' reserved';
+                    $calendar.= ' reserved hatched';
                 }
                 
                 $calendar.= '">' . $list_day . '</td>';
