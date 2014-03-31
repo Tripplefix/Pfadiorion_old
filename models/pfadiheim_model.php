@@ -13,8 +13,7 @@ class Pfadiheim_Model extends Model {
 
     public function getAllReservations() {
 
-        $sth = $this->db->prepare("SELECT * FROM pfadiheim_reservations
-                                           WHERE date_end > :date_end");
+        $sth = $this->db->prepare("SELECT * FROM pfadiheim_reservations");
         $sth->execute(array(':date_end' => strtotime(date('Y-m-d'))));
         return $sth->fetchAll();
     }
@@ -73,8 +72,7 @@ class Pfadiheim_Model extends Model {
         if ($count == 1) {
             return true;
         } else {
-            $this->errors[] = FEEDBACK_NOTE_DELETION_FAILED;
-            return false;
+            return FEEDBACK_NOTE_DELETION_FAILED;
         }
     }
 

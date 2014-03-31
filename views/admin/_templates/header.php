@@ -62,6 +62,15 @@
                     <?php endif; ?>                     
                     <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
                         <li <?php
+                        if ($this->checkForActiveController($filename, "kalender")) {
+                            echo ' class="active" ';
+                        }
+                        ?> >
+                            <a href="<?php echo URL; ?>admin/kalender">Events verwalten</a>
+                        </li>                  
+                    <?php endif; ?>                 
+                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
+                        <li <?php
                         if ($this->checkForActiveController($filename, "pfadiheim")) {
                             echo ' class="active" ';
                         }

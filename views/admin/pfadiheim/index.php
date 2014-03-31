@@ -1,10 +1,11 @@
 <script>
     $(function() {
         $(".datepicker").datepicker().datepicker("option", "dateFormat", "dd.mm.yy");
-        $('#reservation_content').ckeditor();
+        $('#reservation_content').ckeditor({maxlength: '200'});
 
         $('.edit_button').click(function(event) {
             event.preventDefault();
+            $.notify("Diese Funktion wird noch nicht unterstützt!", "info");
         });
 
         $('.delete_button').click(function(event) {
@@ -13,8 +14,13 @@
 
             $.post(elem.attr('href'))
                     .done(function(data) {
-                        $.notify("Reservation wurde erfolgreich gelöscht!", "success");
-                        elem.parent().parent().hide(500);
+                        console.log(data);
+                        if (data === "1") {
+                            $.notify("Reservation wurde erfolgreich gelöscht!", "success");
+                            elem.parent().parent().hide(500);
+                        } else {
+                            $.notify(data, "error");
+                        }
                     });
         });
     });
@@ -64,8 +70,8 @@
             <input style="margin-top: 31px;" required type="text" name="tenant" />
         </div>
         <div class="clearAll" style="width: 800px; padding-top: 20px;">
-            <h3>Details</h3>
-            <textarea id="reservation_content" name="details" ></textarea>
+            <h3>Details (max. 200 Zeichen)</h3>
+            <textarea id="reservation_content" name="details" maxlength="200" ></textarea>
         </div>
         <input style="margin-top: 20px;"  style="float:left;" type="submit" value='Eintragen' autocomplete="off" />
     </form>

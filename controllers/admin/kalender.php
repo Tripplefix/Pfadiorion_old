@@ -1,6 +1,6 @@
 <?php
 
-class Pfadiheim extends Controller {
+class Kalender extends Controller {
 
     public function __construct() {
 
@@ -22,24 +22,22 @@ class Pfadiheim extends Controller {
 
         if (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1) {
             // get all notices (of the logged in user)
-            $this->view->reservation_list = $this->model->getAllReservations();
+            $this->view->event_list = $this->model->getAllEvents();
             $this->view->errors = $this->model->errors;
-            $this->view->render('pfadiheim/index', true);
+            $this->view->render('kalender/index', true);
         } else {
             header('location: ' . URL . 'admin/dashboard');
         }
     }
 
     public function create() {
-
-        if ($this->model->create(
-                        $_POST['date_start'], $_POST['time_start'], $_POST['date_end'], $_POST['time_end'], $_POST['tenant'], $_POST['details'])) {
-            header('location: ' . URL . 'admin/pfadiheim');
-            return true;
-        } else {
-            header('location: ' . URL . 'admin/pfadiheim');
-            return false;
-        }
+        $this->model->createEvent(
+                $_POST['event_date'], 
+                $_POST['event_time'], 
+                $_POST['event_name'], 
+                $_POST['event_details'], 
+                $_POST['all_day_event']);
+        header('location: ' . URL . 'admin/kalender');
     }
 
     public function edit($reservation_id) {
@@ -51,7 +49,7 @@ class Pfadiheim extends Controller {
     }
 
     public function delete($reservation_id) {
-        echo $this->model->deleteReservation($reservation_id);
+        //TODO implement
     }
 
 }

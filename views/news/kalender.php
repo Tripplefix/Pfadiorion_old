@@ -38,17 +38,6 @@
         }
     });
 </script>
-
-<div id="calendar_container" class="no_select">
-
-    <?php
-    //load calendar
-    if ($this->calendar) {
-        echo $this->calendar;
-    } else {
-        echo 'Fehler beim laden';
-    }
-    ?>
     <style>
         #all_day_event_legend{
             width: 100px;
@@ -96,14 +85,15 @@
             display: block;
         }
     </style>
-    <table style="margin: 40px 0 0 20px;">
-        <tr>
-            <td>Ganztägige Events:&nbsp;&nbsp;</td>
-            <td id="all_day_event_legend">1<span id="all_day_event_cont">Pfadi</span></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;Events mit Zeitangabe:&nbsp;&nbsp;</td>
-            <td id="simple_event_legend">1<span id="timed_event_cont"><b>14:00</b> Pfadi</span></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;Heute:&nbsp;&nbsp;</td>
-            <td id="today_legend">1</td>
-        </tr>
-    </table>
+
+<div id="calendar_container" class="no_select">
+
+    <?php
+    //load calendar
+    if ($this->calendar) {
+        echo $this->calendar;
+    } else {
+        echo 'Fehler beim laden';
+    }
+    ?>
 </div>

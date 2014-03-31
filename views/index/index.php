@@ -103,7 +103,7 @@
         </div>
     </section>
     <!-- Eindrücke -->
-    <section id="impressions">
+    <!-- <section id="impressions">
         <h2>Eindrücke</h2><p>(da stimmt öppis nonig so ganz)</p>
         <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1200px;margin: 60px auto 24px;">
             <div class="rsContent">
@@ -132,7 +132,7 @@
                 <span class="photosBy rsAbsoluteEl" data-fade-effect="fa;se" data-move-offset="40" data-move-effect="bottom" data-speed="200">Photos by <a href="http://www.flickr.com/photos/gilderic/">Gilderic</a></span>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- unsere Organisation -->
     <section id="organigramm">
         <h2>Unsere Organisation</h2>
@@ -164,7 +164,7 @@
             <p>
                 Bei Fragen stehen dir unsere Trupp- und Abteilungsleiter gerne zur Verfügung.
             </p>
-            <div id="join_us_button"><p>Anmelden</p></div>
+            <div id="join_us_button" onclick="(function(){ window.location.href = '<?php echo URL; ?>kontakt'; })();">Kontakt</div>
         </div>
     </section>
 </div>

@@ -118,7 +118,7 @@
 //load notices      
                 if ($this->events) {
                     foreach ($this->events as $value) {
-                        echo "<li><a class='event_link' href='" . URL . "news/show_event/" . $value->event_id . "'>" . $value->event_details . "</a></li>";
+                        echo "<li><a class='event_link' href='" . URL . "news/show_event/" . $value->event_id . "'>" . $value->event_name . "</a></li>";
                     }
                 } else {
                     echo 'Keine anstehende Events';
@@ -127,6 +127,21 @@
             </ul>
             <a href="<?php echo URL; ?>news/kalender"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Kalender" /></a>
         </section>
+        <!-- <section class="sidebarelement">
+            <h3>Downloads</h3>
+            <?php
+            //load infos
+            if ($this->downloads) {
+                foreach ($this->downloads as $key => $value) {
+                    echo "<p>Das Pfadiheim ist noch bis am " . date("d.m.Y", $value->date_end) . " vermietet</p>"; //<a class='more' href='#'>Mehr</a>";
+                }
+            } else {
+                echo "<p>Keine aktuelle Downloads</p>";
+            }
+            ?>
+            <a href="<?php echo URL; ?>news/downloads"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Alle Downloads" /></a>
+
+        </section> -->
         <section class="sidebarelement">
             <h3>Informationen</h3>
             <?php
@@ -136,7 +151,7 @@
                     echo "<p>Das Pfadiheim ist noch bis am " . date("d.m.Y", $value->date_end) . " vermietet</p>"; //<a class='more' href='#'>Mehr</a>";
                 }
             } else {
-                echo 'Das Pfadiheim ist momentan nicht vermietet!';
+                echo "<p>Das Pfadiheim ist momentan nicht vermietet!</p>";
             }
             ?>
             <a href="<?php echo URL; ?>pfadiheim/belegung"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Belegungsplan" /></a>

@@ -83,9 +83,9 @@ class News extends Controller {
             /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! * */
             foreach($this->model->getEvents(mktime(0, 0, 0, $month, ($day_counter + 1), $year)) as $event){
                 if($event->all_day_event == 1){
-                    $calendar.= '<span class="all_day_event">'.$event->event_details.'</span>';
+                    $calendar.= '<span class="all_day_event">'.$event->event_name.'</span>';
                 }else{
-                    $calendar.= '<span class="timed_event"><b>'.date("G:i", $event->event_date).'</b> '.$event->event_details.'</span>';
+                    $calendar.= '<span class="timed_event"><b>'.date("G:i", $event->event_date).'</b> '.$event->event_name.'</span>';
                 }
             }
 
@@ -112,7 +112,17 @@ class News extends Controller {
         }
 
         /* final row */
-        $calendar.= '</tr></tbody></table>';
+        $calendar.= '</tr></tbody></table>
+    <table style="margin: 40px 0 0 20px;">
+        <tr>
+            <td>Ganztägige Events:&nbsp;&nbsp;</td>
+            <td id="all_day_event_legend">1<span id="all_day_event_cont">Pfadi</span></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;Events mit Zeitangabe:&nbsp;&nbsp;</td>
+            <td id="simple_event_legend">1<span id="timed_event_cont"><b>14:00</b> Pfadi</span></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;Heute:&nbsp;&nbsp;</td>
+            <td id="today_legend">1</td>
+        </tr>
+    </table>';
 
         /* all done, return result */
         return $calendar;
@@ -137,7 +147,8 @@ class News extends Controller {
         echo "<div class='overlay'>" .
         "<section class='modal rounded'>" .
         "<a class='closeModal' href='close_notice'></a>" .
-        "<h2>" . $event->event_details . "</h2>" .                
+        "<h2>" . $event->event_name . "</h2>" .              
+        "<p>" . $event->event_details . "</p>" .
         "</section>" .
         "</div>";
     }
