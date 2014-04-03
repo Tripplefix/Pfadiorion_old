@@ -1,13 +1,7 @@
 /* 
-    Created on : 11.12.2013, 11:14:20
-    Author     : isler
+    Created on : 03.04.2014, 22:06:12
+    Author     : Rolf
 */
-
-@hover-color: #CC3D18;
-//@hover-color: #4710B5;
-
-@blue: #1000A1; 
-@yellow: #FFF700; 
 
 .main-header nav a:link, .main-header nav a:visited{
 
@@ -40,7 +34,7 @@
 #show_full_maps_button{
     width: 230px;
     position: relative;
-    left: calc(~"50% - 130px");
+    left: calc(50% - 130px);
     bottom: 560px;
     color: #FFF;
     text-align: center;

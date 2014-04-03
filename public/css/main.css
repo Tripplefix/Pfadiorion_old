@@ -1,14 +1,11 @@
 /* 
-    Created on : 02.01.2014, 16:11:36
+    Created on : 03.04.2014, 22:04:53
     Author     : Rolf
 */
 
-@hover-color: #CC3D18;
-@main-text-color: #303030;
-//@hover-color: #4710B5;
-
-@blue: #1000A1; 
-@yellow: #FFF700; 
+header, nav, section, article, aside, footer {
+   display:block;
+}
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
@@ -16,15 +13,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-family: Calibri, Ariial, serif;
     font-size: 100%;
     vertical-align: baseline;
-    color: @main-text-color;
+    color: #303030;
 }
 
 ::selection {
-    background: @hover-color; /* Safari */
+    background: #CC3D18; /* Safari */
     color: #FFF;
 }
 ::-moz-selection {
-    background: @hover-color; /* Firefox */
+    background: #CC3D18; /* Firefox */
     color: #FFF;
 }
 
@@ -50,7 +47,7 @@ h3{
 
 a{
     text-decoration: none;
-    color: @hover-color;
+    color: #CC3D18;
 }
 
 a:hover, a:active{
@@ -148,7 +145,7 @@ a, i, button, input[type=submit] {
 
 #big-nav a:hover, #big-nav a:active,
 #big-nav .active a:link, #big-nav .active:visited{
-    color: @hover-color;
+    color: #CC3D18;
     text-shadow: none;
     text-decoration: none;
 }
@@ -215,7 +212,7 @@ a, i, button, input[type=submit] {
     fill: #FFF;
     width: 114px;
     height: 144px;
-    margin: 21px calc(~"50% - 57px") 0;
+    margin: 21px calc(50% - 57px) 0;
     cursor: default;
 }
 .middle.footer_top_element #small-scout-lily:hover{

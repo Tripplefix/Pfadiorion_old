@@ -1,4 +1,4 @@
- <script>
+<script>
     //var red = '#CF5C3F';
     var red = '#CC3D18',
             violet = '#4710B5',
@@ -64,6 +64,17 @@
 
                     });
         });
+
+        if ($('html').hasClass('ie8')) {
+            $('.top-image').removeClass("parallax");
+            $('.top-image').height(350);
+            $('.top-image').css({
+                backgroundImage: 'url("<?php echo URL; ?>public/images/orion-skitag.jpg")',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '100%',
+                backgroundPositionY: '-200px'
+            });
+        }
     });
 
     $(window).load(function() {
@@ -129,16 +140,16 @@
         </section>
         <!-- <section class="sidebarelement">
             <h3>Downloads</h3>
-            <?php
-            //load infos
-            if ($this->downloads) {
-                foreach ($this->downloads as $key => $value) {
-                    echo "<p>Das Pfadiheim ist noch bis am " . date("d.m.Y", $value->date_end) . " vermietet</p>"; //<a class='more' href='#'>Mehr</a>";
-                }
-            } else {
-                echo "<p>Keine aktuelle Downloads</p>";
+        <?php
+        //load infos
+        if ($this->downloads) {
+            foreach ($this->downloads as $key => $value) {
+                echo "<p>Das Pfadiheim ist noch bis am " . date("d.m.Y", $value->date_end) . " vermietet</p>"; //<a class='more' href='#'>Mehr</a>";
             }
-            ?>
+        } else {
+            echo "<p>Keine aktuelle Downloads</p>";
+        }
+        ?>
             <a href="<?php echo URL; ?>news/downloads"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Alle Downloads" /></a>
 
         </section> -->

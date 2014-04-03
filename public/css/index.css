@@ -1,14 +1,7 @@
 /* 
-    Created on : 11.12.2013, 11:14:20
-    Author     : isler
+    Created on : 03.04.2014, 22:03:50
+    Author     : Rolf
 */
-
-@hover-color: #CC3D18;
-//@hover-color: #4710B5;
-
-@blue: #1000A1; 
-@yellow: #FFF700; 
-
 
 body{
     display: none;
@@ -90,7 +83,7 @@ body{
 
 #small-nav a:hover, #small-nav a:active,
 #small-nav .active a:link, #small-nav .active:visited{
-    color: @hover-color !important;
+    color: #CC3D18 !important;
     text-shadow: none;
     text-decoration: none;
 }
@@ -117,7 +110,7 @@ body{
     box-shadow: 5px 5px 7px -5px #292929, -5px 0px 10px -7px #292929;
     border-radius: 4px;
     overflow: hidden;
-    margin: 0 0 0 calc(~"50% - 600px");
+    margin: 0 auto;
     height: 700px;
     width: 1200px;
     margin-bottom: 14%;
@@ -193,7 +186,7 @@ body{
 #organigramm svg{
     width: 900px;
     height: 700px;
-    margin: 0 calc(~"50% - 450px");
+    margin: 0 150px;
 }
 
 /********************** pfadi beitritt ***********************/
@@ -255,7 +248,6 @@ body{
 @media screen and (max-width: 1280px) and (min-width: 960px){
     #main-container section{
         width: 900px;
-        margin: 0 0 150px calc(~"50% - 450px");
     }
     #main-container p{
         font-size: 20px;
@@ -275,7 +267,7 @@ body{
     #organigramm svg{
         width: 750px;
         height: 550px;
-        margin: 0 calc(~"50% - 390px");
+        margin: 0 60px;
     }
     #organigramm section{
         height: 550px !important;
@@ -310,19 +302,15 @@ body{
     .parallax-parent{
         display: none;
     }
-    /*#organigramm svg{
-        width: calc(80% + 100px);
-        margin: 0 calc(50% - (34% + 100px));
-    }*/
     #whats_scouts a{
         font-size: 60px;
         text-align: center;
         display: inherit;
     }
     #organigramm svg{
-        width: 350px;
-        height: 350px;
-        margin: 20px calc(~"50% - 175px");
+        width: 85%;
+        height: 80%;
+        margin: 20px 7.5%;
     }
     #join_us #join_us_text{
         width: 80%;

@@ -108,34 +108,3 @@ $(function() {
      lilyB.attr("style", "filter:url(#dropshadow)");
      }*/
 });
-
-
-/*
- function loadCSS(e){
- var f=document.createElement("link");
- f.setAttribute("rel", "stylesheet");
- f.setAttribute("type", "text/css");
- f.setAttribute("href", e);
- document.getElementsByTagName("head")[0].appendChild(f);
- }
- function LoadScriptsSync(e,t){var n=0;var r=function(e,t){loadScript(e[n],t[n],function(){n++;if(n<e.length){r(e,t)}})};r(e,t)}function loadScript(e,t,n){t=document.createElement("script");t.onload=function(){n()};t.src=e;document.getElementsByTagName("head")[0].appendChild(t)}function downloadJSAtOnload(){var e=[];var t=[];
- loadCSS("http://www.hotel-du-theatre.ch/css/shrink.css");
- t.push("http://www.hotel-du-theatre.ch/webautor/script/webautor_scripts_20120817.js");
- t.push("http://www.hotel-du-theatre.ch/webautor/functions/mediaplayer/jwplayer.js");
- t.push("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/jquery.flexslider-min.js");
- t.push("http://www.hotel-du-theatre.ch/js/jquery.cycle.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/jquery.easytabs.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/jquery.touchwipe.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/jquery.hashchange.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/ajaxsbmt.js");
- t.push("http://www.hotel-du-theatre.ch/js/datepicker/picker.js");
- t.push("http://www.hotel-du-theatre.ch/js/datepicker/picker.date.js");
- t.push("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js");
- t.push("http://www.hotel-du-theatre.ch/js/scripts.min.js");
- LoadScriptsSync(t,e);
- }
- if(window.addEventListener)
- window.addEventListener("load",downloadJSAtOnload,false);else if(window.attachEvent)window.attachEvent("onload",downloadJSAtOnload);
- else window.onload=downloadJSAtOnload
- */

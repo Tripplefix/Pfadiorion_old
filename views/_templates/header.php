@@ -1,24 +1,57 @@
 <!doctype html>
-<html class="no-js">
+
+<!--[if lt IE 9]>
+    <html class="ie8">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+    <!--<![endif]-->
     <head>
-        <!--[if lt IE 9]>
-        <script type="text/javascript">
-        window.location = "http://old.pfadiorion.ch/";
-        </script>
-        <![endif]-->
         <title>Pfadi Orion</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="<?php echo URL; ?>public/images/favicon.gif" type="image/gif">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/modernizr.custom.37523.js"></script>
         <script src="<?php echo URL; ?>public/js/custom.js"></script>
         <script src="<?php echo URL; ?>public/js/navigation.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.slides.min.js"></script>
         <script src="<?php echo URL; ?>public/js/jquery.scrollTo.min.js" type="text/javascript"></script>
         <script src="<?php echo URL; ?>public/js/jquery.easing.1.3.js" type="text/javascript"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+        <?php
+        $url = isset($_GET['url']) ? $_GET['url'] : null;
+        $url = rtrim($url, '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+        $url = explode('/', $url);
+
+        $url[0] = !empty($url[0]) ? $url[0] : "index";
+        if (file_exists('public/css/' . $url[0] . '.css')) {
+            echo '<link rel="stylesheet" type="text/css" href="' . URL . 'public/css/' . $url[0] . '.css" />';
+        }
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/main.css" />
+        <!-- <script src="<?php echo URL; ?>public/js/less-1.5.0.min.js" type="text/javascript"></script> -->
+
+        <!-- webfonts -->
+        <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+        <!-- parallax plugin -->
+        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.css" />
+        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
+        <!--[if lt IE 9]>
+            <script>
+               document.createElement('header');
+               document.createElement('nav');
+               document.createElement('section');
+               document.createElement('article');
+               document.createElement('aside');
+               document.createElement('footer');
+            </script>
+         <![endif]-->
         <script>
             (function(i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -35,47 +68,24 @@
             ga('create', 'UA-49674561-1', 'pfadiorion.ch');
             ga('send', 'pageview');
 
-        </script>
-        <!-- Less compiler -->
-        <?php
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
-        $url = rtrim($url, '/');
-        $url = filter_var($url, FILTER_SANITIZE_URL);
-        $url = explode('/', $url);
+            (function() {
+                document.getServerUrl = function() {
+                    return "<?php echo URL; ?>";
+                };
 
-        $url[0] = !empty($url[0]) ? $url[0] : "index";
-        if (file_exists('public/css/' . $url[0] . '.less')) {
-            echo '<link rel="stylesheet/less" type="text/css" href="' . URL . 'public/css/' . $url[0] . '.less" />';
-        }
-        ?>
-        <link rel="stylesheet/less" type="text/css" href="<?php echo URL; ?>public/css/main.less" />
-        <script src="<?php echo URL; ?>public/js/less-1.5.0.min.js" type="text/javascript"></script>
+                colors = {
+                    red: '#CC3D18',
+                    violet: '#4710B5',
+                    white: '#FFF',
+                    black: '#000'
+                }
+                $(function() {
 
-        <!-- webfonts -->
-        <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+                });
+            }());
 
-        <!-- parallax plugin -->
-        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.css" />
-        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
-        <script>
-    (function() {
-        document.getServerUrl = function() {
-            return "<?php echo URL; ?>";
-        };
-
-        colors = {
-            red: '#CC3D18',
-            violet: '#4710B5',
-            white: '#FFF',
-            black: '#000'
-        }
-    }());
-
-    $(window).load(function() {
-        //$('body, html').css({scrollTop: 0});
-    });
+            $(window).load(function() {
+            });
         </script>
         <style>
             #logged_in_panel{
