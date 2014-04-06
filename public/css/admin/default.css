@@ -92,6 +92,12 @@ p {
     color: #2C2F3B;
 }
 
+.content a.disabled{
+    text-decoration: underline;
+    color: #8D8D8D;
+    cursor: default;
+}
+
 .footer {
     background-color: #42444f;
     color: #acadb1;
@@ -117,6 +123,7 @@ table.list td {
     padding: 20px 15px;
     border-top: 1px solid #FFF;
     border-left: 1px solid #FFF;
+    white-space: nowrap;
 }
 
 table.list th {

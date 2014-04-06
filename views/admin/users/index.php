@@ -2,18 +2,120 @@
 <script>
     $(function() {
 
-        $('.delete_button').click(function(event) {
+        $('.delete_button').on("click", function(event) {
             event.preventDefault();
             var elem = $(this);
-
-            $.post(elem.attr('href'))
-                    .done(function(data) {
-                        $.notify("User wurde erfolgreich gelöscht!", "success");
-                        elem.parent().parent().hide(500);
-                    });
+            if (confirm("Den Benutzer '" + elem.parent().parent().find('.user_name').text() + "' wirklich löschen?")) {
+                $.post(elem.attr('href'))
+                        .done(function(data) {
+                            $.notify("User wurde erfolgreich gelöscht!", "success");
+                            elem.parent().parent().hide(500);
+                        });
+            }
         });
+        $('.edit_button').on("click", editUser);
+
+        function editUser(data) {
+            console.log("edit");
+            event.preventDefault();
+            var elem = $(this).parent().parent();
+
+            elem.children().each(function(i) {
+                if ($(this).hasClass("edittext")) {
+                    $(this).addClass('editing');
+                    $(this).html('<input type="text" name="' + $(this).attr('class').split(' ')[1] + '" value="' + $(this).text() + '" />');
+
+                } else if ($(this).hasClass("editdropdown")) {
+                    var obj = $(this);
+                    obj.addClass('editing');
+                    $.post("<?php echo URL; ?>admin/users/getUserTypes", {selected: $(this).text()})
+                            .done(function(data) {
+                                obj.html(data);
+                            }).aft;
+                } else {
+
+                }
+            });
+
+            elem.on('change', 'input, select', function() {
+                $(this).addClass('valueChanged');
+            });
+
+            $(this).text('Save');
+            $(this).off("click");
+            $(this).on("click", saveChanges);
+        }
+
+        function saveChanges(event) {
+            event.preventDefault();
+            var elem = $(this).parent().parent();
+
+            var user_data = {
+                forename: elem.find('.user_contact_forename input').val(),
+                surname: elem.find('.user_contact_surname input').val(),
+                email: elem.find('.user_email input').val(),
+                birthdate: elem.find('.user_contact_birthdate input').val(),
+                street: elem.find('.user_contact_street input').val(),
+                place: elem.find('.user_contact_place input').val(),
+                phone: elem.find('.user_contact_phone input').val(),
+                type: elem.find('.user_type :selected').val(),
+                leadertraining: elem.find('.user_leadertraining input').val(),
+                leader_since: elem.find('.user_leader_since input').val(),
+                responsibility: elem.find('.user_responsibility input').val()
+            };
+
+            console.log(user_data);
+
+            $.post($(this).attr('href'), user_data).done(function(data) {
+                console.log(data);
+                if (data === "done") {
+                    $.notify("Gespeichert", "success");
+                } else {
+                    $.notify(data, "error");
+                }
+            });
+
+            elem.children().each(function(i) {
+                if ($(this).hasClass("edittext") && $(this).hasClass("editing")) {
+                    $(this).removeClass('editing');
+                    $(this).html($(this).children().first().val());
+                } else if ($(this).hasClass("editdropdown") && $(this).hasClass("editing")) {
+                    $(this).removeClass('editing');
+                    $(this).html($(this).find(':selected').text());
+                } else {
+
+                }
+            });
+
+            $(this).text('Edit');
+            $(this).off("click");
+            $(this).on("click", editUser);
+        }
     });
 </script>
+<style>
+    .form_gourp{
+        display:inline-block;
+    }
+    input{
+        min-width: 0;
+        width: 100%;
+        margin:0;
+        height: 55px;
+    }
+    select{   
+        width: 100%;     
+        margin: 0;
+        padding: 5px;
+        height: 55px
+    }
+    td.editing{
+        padding: 0 !important;
+    }
+    td.editing input{
+        margin-bottom: -23px;
+    }
+</style>
 
 <div class="content">
 
@@ -25,6 +127,58 @@
         }
     }
     ?>
+
+    <h1 style="clear: both;padding-top: 50px;">Alle Backend User</h1>
+    <table class="list">
+        <?php if ($this->users) { ?>
+            <thead>
+            <th>Benutzername</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>E-Mail</th>
+            <th>Geb. Datum</th>
+            <th>Strasse</th>
+            <th>Wohnort</th>
+            <th>Telefon</th>
+            <th>Typ</th>
+            <th>Ausbildung</th>
+            <th>Leiter seit</th>
+            <th>Zuständikeit</th>
+            <th>Aktiviert</th>
+            <th colspan="2">Funktionen</th>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($this->users as $key => $value) {
+                    echo '<tr id="user_' . $value->user_id . '">
+                            <td class="noedit user_name">' . $value->user_name . '</td>
+                            <td class="edittext user_contact_forename">' . $value->user_contact_forename . '</td>
+                            <td class="edittext user_contact_surname">' . $value->user_contact_surname . '</td>
+                            <td class="edittext user_email">' . $value->user_email . '</td>
+                            <td class="edittext user_contact_birthdate">' . $value->user_contact_birthdate . '</td>
+                            <td class="edittext user_contact_street">' . $value->user_contact_street . '</td>
+                            <td class="edittext user_contact_place">' . $value->user_contact_place . '</td>
+                            <td class="edittext user_contact_phone">' . $value->user_contact_phone . '</td>
+                            <td class="editdropdown user_type">' . $value->user_type . '</td>
+                            <td class="edittext user_leadertraining">' . $value->user_leadertraining . '</td>
+                            <td class="edittext user_leader_since">' . $value->user_leader_since . '</td>
+                            <td class="edittext user_responsibility">' . $value->user_responsibility . '</td>';
+                    if ($value->user_active == 1) {
+                        echo '<td class="noedit">Ja</td>';
+                    } else {
+                        echo '<td>Nein</td>';
+                    }
+                    echo '<td><a class="edit_button" href="' . URL . 'admin/users/edit/' . $value->user_id . '">Edit</a></td>
+                    <td><a class="delete_button" href="' . URL . 'admin/users/delete/' . $value->user_id . '">Delete</a></td>
+                    </tr>';
+                }
+            } else {
+
+                echo 'Fehler!';
+            }
+            ?>
+        </tbody>
+    </table>
 
     <h1 style="clear: both;padding-top: 50px;">Backend User hinzufügen</h1>
 
@@ -63,36 +217,5 @@
         </table>
         <input type="submit" value='Eintragen' style="margin-top: 20px;" />
     </form>
-
-    <h1 style="clear: both;padding-top: 50px;">Alle Backend User</h1>
-    <table class="list">
-<?php if ($this->users) { ?>
-            <thead>
-            <th>Benutzername</th>
-            <th>Typ</th>
-            <th>Aktiviert</th>
-            <th>Funktionen</th>
-            </thead>
-            <tbody>
-    <?php
-    foreach ($this->users as $key => $value) {
-        echo '<tr>';
-        echo '<td>' . $value->user_name . '</td>';
-        echo '<td>' . $value->user_type . '</td>';
-        if ($value->user_active == 1) {
-            echo '<td>Ja</td>';
-        } else {
-            echo '<td>Nein</td>';
-        }
-        echo '<td><a class="delete_button" href="' . URL . 'admin/users/delete/' . $value->user_id . '">Delete</a></td>';
-        echo '</tr>';
-    }
-} else {
-
-    echo 'Fehler!';
-}
-?>
-        </tbody>
-    </table>
 
 </div>

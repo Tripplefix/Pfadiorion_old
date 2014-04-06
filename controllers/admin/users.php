@@ -29,6 +29,18 @@ class Users extends Controller {
         }
     }
 
+    public function getUserTypes() {
+        $selected = $_POST['selected'];
+        $select = '<select>';
+        foreach ($this->model->getUserTypes() as $value) {
+            $select .= ($selected == $value->description) 
+                    ? '<option selected value="' . $value->access_level . '">' . $value->description . '</option>' 
+                    : '<option value="' . $value->access_level . '">' . $value->description . '</option>';
+        }
+        $select .= '</select>';
+        echo $select;
+    }
+
     public function create() {
         if ($this->model->create(
                         $_POST['user_name'], $_POST['user_password'], $_POST['user_access_level'])) {
@@ -41,7 +53,22 @@ class Users extends Controller {
     }
 
     public function edit($user_id) {
-        //TODO implement        
+        if($this->model->editUser($user_id, 
+                $_POST['forename'], 
+                $_POST['surname'], 
+                $_POST['email'], 
+                $_POST['birthdate'], 
+                $_POST['street'], 
+                $_POST['place'], 
+                $_POST['phone'], 
+                $_POST['type'], 
+                $_POST['leadertraining'], 
+                $_POST['leader_since'],
+                $_POST['responsibility'])){
+            echo "done";
+        }else{
+            echo var_dump($this->model->errors);
+        }
     }
 
     public function editSave($user_id) {

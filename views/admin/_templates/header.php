@@ -78,14 +78,23 @@
                             <a href="<?php echo URL; ?>admin/pfadiheim">Heim Verwaltung</a>
                         </li>                  
                     <?php endif; ?>             
-                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
-                        <li <?php
-                        if ($this->checkForActiveController($filename, "users")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/users">User Verwaltung</a>
-                        </li>                  
+
+                    <?php if (Session::get('user_logged_in') == true && Session::get('user_is_admin') == 1): ?>
+                        <li>
+                            <a href="#">Admin Tools</a>
+                            <ul class="sub-menu">  
+                                <li <?php
+                                if ($this->checkForActiveController($filename, "users")) {
+                                    echo ' class="active" ';
+                                }
+                                ?> >
+                                    <a href="<?php echo URL; ?>admin/users">User Verwaltung</a>
+                                </li>     
+                                <li>
+                                    <a href="#">more incoming...</a>
+                                </li>    
+                            </ul>
+                        </li>
                     <?php endif; ?>    
 
                     <?php if (Session::get('user_logged_in') == true): ?>

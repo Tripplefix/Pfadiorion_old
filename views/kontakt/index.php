@@ -26,10 +26,13 @@
 
 
     #contact_container{
-        margin-left: calc(50% - 700px);
+        margin: 0 calc(50% - 770px);
         display: inline-block;
-        width: 75%;
-        max-width: 1280px;
+        width: 1240px;
+        /*        margin-left: calc(50% - 700px);
+                display: inline-block;
+                width: 75%;
+                max-width: 1280px;*/
     }
     .profileinfo{
         display: inline-block;
@@ -106,14 +109,18 @@
     }
     wbr:after { content: "\00200B" }
 
-    @media (max-width: 1480px) and (min-width: 1280px) {
+    @media (max-width: 1500px) and (min-width: 1210px) {
         #contact_container{
-            margin-left: calc(50% - 600px);
+            margin-left: calc(50% - 575px);
             display: inline-block;
-            width: 930px;
+            width: 75%;
+            max-width: 620px;
+            //margin-left: calc(50% - 600px);
+            //display: inline-block;
+            //width: 930px;
         }
     }
-    @media (max-width: 1280px) and (min-width: 960px) {
+    @media (max-width: 1210px) and (min-width: 960px) {
         #contact_container{
             width: 620px;
             margin-left: 20px;
@@ -137,6 +144,7 @@
         }
 
         #contact_container{
+            display: block;
             width: 620px;
             margin-left: calc(50% - 300px);
         }
@@ -158,7 +166,8 @@
         }
         #contact_container{
             width: 290px;
-            margin-left: calc(50% - 145px);
+            margin: 0 auto;
+            display: block;
         }
     }
     @media (max-width: 550px) and (min-width: 0px) {
