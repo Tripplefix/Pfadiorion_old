@@ -78,7 +78,7 @@
     }
     #belegungsplan_calendar .month_container td.reserved{
         border: 1px solid #BD9A9A;
-        background-color: #E4BDBD;
+        background-color: #FDA4A4;
     }
     #belegungsplan_calendar h3{
         border: none;
@@ -88,7 +88,7 @@
         width: 25px;
         height: 25px;
         border: 1px solid #BD9A9A;
-        background-color: #E4BDBD;
+        background-color: #FDA4A4;
     }
     #today_legend{
         width: 25px;

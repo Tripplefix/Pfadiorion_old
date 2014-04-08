@@ -72,19 +72,19 @@
                 document.getServerUrl = function() {
                     return "<?php echo URL; ?>";
                 };
-
+                
                 colors = {
                     red: '#CC3D18',
                     violet: '#4710B5',
                     white: '#FFF',
                     black: '#000'
                 }
-                $(function() {
-
-                });
             }());
 
             $(window).load(function() {
+                $('#this_is_the_beta_site').on('click', function(){
+                    $(this).fadeOut(500);
+                });
             });
         </script>
         <style>
@@ -100,6 +100,24 @@
             #logged_in_panel form{
                 color: #FFF;
             }    
+            #this_is_the_beta_site{
+                /*remove*/
+                display: none;
+                
+                height: 30px;
+                width: 100%;
+                background-color: #ff0000;
+                color: #FFF;
+                position: fixed;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px 20px;
+                z-index: 1000;
+                cursor: pointer;
+            }
+            #this_is_the_beta_site a{
+                color: #FFF;
+            }
         </style>
     </head>
     <body>
@@ -111,18 +129,19 @@
                 </form>
             </div>
         <?php endif; ?>   
-        <div id="tablet-nav-container">
+        <div id="tablet_nav_container">
         </div> 
+        <div id="this_is_the_beta_site">Du befindest dich auf der Testversion unserer Homepage. Informationen auf dieser Seite sind möglicherweise falsch oder veraltet. Bitte wechle zu unserer richtigen Homepage: <a href="http://pfadiorion.ch">http://pfadiorion.ch</a></div>
 
-        <header class="main-header no_select <?php if ($url[0] == "index" || empty($url[0])): ?> parallax<?php endif; ?>" data-container-height="500" data-image="<?php echo URL; ?>public/images/DSCF1444.jpg" data-with="1600" data-height="1200" data-posy="0">
+        <header id="main_header" class="no_select <?php if ($url[0] == "index" || empty($url[0])): ?> parallax<?php endif; ?>" data-container-height="500" data-image="<?php echo URL; ?>public/images/DSCF1444.jpg" data-with="1600" data-height="1200" data-posy="0">
 
-            <nav id="big-nav" <?php if ($url[0] == "index" || empty($url[0])): ?> style="position: fixed"<?php endif; ?>></nav> 
-            <nav id="small-nav"></nav> 
+            <nav id="big_nav" <?php if ($url[0] == "index" || empty($url[0])): ?> style="position: fixed"<?php endif; ?>></nav> 
+            <nav id="small_nav"></nav> 
 
             <?php if ($url[0] == "index" || empty($url[0])): ?>
 
 
-                <div class="top-title">
+                <div id="top_title">
                     <h1>Pfadi Orion</h1>
                     <h2 style="cursor: pointer;">Erfahre mehr über uns</h2>     
                     <h2 style="margin-top: -50px;font-size: 130px; text-align: center; cursor: pointer;">v</h2>

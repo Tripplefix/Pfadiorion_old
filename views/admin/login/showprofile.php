@@ -97,6 +97,7 @@
     .form_group{
         display: inline-block;
         margin: 10px 20px 0 0;
+        vertical-align: top;
     }
     #contact_info{
         text-align: left;
@@ -219,7 +220,8 @@
             <input id="phone" name="phone" type="text" value="<?php echo $this->profile->user_contact_phone ?>" />
         </div>
         <div class="form_group">
-            <label for="email">E-Mail Adresse</label>
+            <label for="email">E-Mail Adresse 
+                <span style="font-size: 12px;">(wenn möglich <span style="font-style: italic;">pfadiname</span>@pfadiorion.ch verwenden)</span></label>
             <input id="email" name="email" type="text" value="<?php echo $this->profile->user_email ?>" />
         </div>
         <input type="submit" value="Speichern" />

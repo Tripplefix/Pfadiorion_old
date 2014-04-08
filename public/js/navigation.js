@@ -10,9 +10,9 @@ $(function() {
         console.log(txt);
     }
 
-    var bigNav = $('#big-nav'),
-            smallNav = $('#small-nav'),
-            tabletNav = $('#tablet-nav-container');
+    var bigNav = $('#big_nav'),
+            smallNav = $('#small_nav'),
+            tabletNav = $('#tablet_nav_container');
     
     
     _window.on("load", function() {
@@ -28,10 +28,10 @@ $(function() {
             tabletNav.children().remove();
         }
         tabletNav.on("click", function() {
-            if ($('#tablet-nav').is(":visible")) {
-                $('#tablet-nav').slideUp(200);
+            if ($('#tablet_nav').is(":visible")) {
+                $('#tablet_nav').slideUp(200);
             } else {
-                $('#tablet-nav').slideDown(200);
+                $('#tablet_nav').slideDown(200);
             }
         });
     });
@@ -39,7 +39,7 @@ $(function() {
     _window.on("scroll", function() {
         winOffset = _window.scrollTop();
 
-        $('#small-scout-lily').on("click", function() {
+        $('#small_scout_lily').on("click", function() {
             $('body, html').animate({
                 scrollTop: 0
             }, {

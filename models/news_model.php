@@ -11,7 +11,7 @@ class News_Model extends Model {
         parent::__construct();
     }
 
-    //for frontend
+    //region frontend
     public function showAllNews() {
 
         /* $sth = $this->db->prepare("SELECT user_id, news_id, news_title
@@ -36,7 +36,6 @@ class News_Model extends Model {
         return $fetched_item;
     }
 
-    //for frontend
     public function showRecentNotices() {
 
         $sth = $this->db->prepare("SELECT * FROM notice
@@ -64,7 +63,6 @@ class News_Model extends Model {
         return $sth->fetchAll();
     }
     
-    //for frontend
     public function showRecentReservations() {
 
         $sth = $this->db->prepare("SELECT * FROM pfadiheim_reservations
@@ -88,8 +86,20 @@ class News_Model extends Model {
         $sth->execute(array(':event_id' => $event_id));
         return $sth->fetchAll();
     }
+    
+    public function getRecentDownloads(){
+        $sth = $this->db->prepare("SELECT * FROM downloads WHERE download_is_recent = 1");
+        $sth->execute();
+        return $sth->fetchAll();
+    }
+    public function getArchivedDownloads(){
+        $sth = $this->db->prepare("SELECT * FROM downloads WHERE download_is_recent <> 1");
+        $sth->execute();
+        return $sth->fetchAll();
+    }
+    //endregion
 
-    //for backend
+    //region backend
     public function getAllNews() {
         $sth = $this->db->prepare("SELECT user_id, news_id, news_title
                                            FROM news
@@ -202,4 +212,5 @@ class News_Model extends Model {
         $sth->execute(array(':event_date_min' => $date, ':event_date_max' => $date + 86399));        
         return $sth->fetchAll();
     }
+    //endregion
 }

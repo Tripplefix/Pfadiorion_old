@@ -3,7 +3,7 @@
     Author     : Rolf
 */
 
-.main-header nav a:link, .main-header nav a:visited{
+#main_header nav a:link, #main_header nav a:visited{
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;

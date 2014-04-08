@@ -7,18 +7,18 @@
  * @version 1.0.0
  **/
 
-.parallax-parent, .parallax-container {
+.parallax_parent, .parallax_container {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
 }
 
-.parallax-container {
+.parallax_container {
     overflow: hidden;
 }
 
-.parallax-image{ 
+.parallax_image{ 
     width: 100%;
     background-repeat: no-repeat;
     background-size: 100%;

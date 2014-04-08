@@ -11,6 +11,7 @@ class News extends Controller {
         $this->view->news_list = $this->model->showAllNews();
         $this->view->notices = $this->model->showRecentNotices();
         $this->view->events = $this->model->showRecentEvents();
+        $this->view->recent_downloads = $this->model->getRecentDownloads(); 
         $this->view->reservation = $this->model->showRecentReservations();
         $this->view->render('news/index');
     }
@@ -18,6 +19,12 @@ class News extends Controller {
     function kalender() {
         $this->view->calendar = $this->draw_calendar(date('n'), date('o'));
         $this->view->render('news/kalender');
+    }
+    
+    function downloads(){
+        $this->view->recent_downloads = $this->model->getRecentDownloads(); 
+        $this->view->archived_downloads = $this->model->getArchivedDownloads(); 
+        $this->view->render('news/downloads');
     }
     
     public function get_calendar(){
@@ -85,7 +92,7 @@ class News extends Controller {
                 if($event->all_day_event == 1){
                     $calendar.= '<span class="all_day_event">'.$event->event_name.'</span>';
                 }else{
-                    $calendar.= '<span class="timed_event"><b>'.date("G:i", $event->event_date).'</b> '.$event->event_name.'</span>';
+                    $calendar.= '<span class="timed_event"><b>'.date("G:i", $event->event_date).'</b><span class="timed_event_name"> '.$event->event_name.'</span></span>';
                 }
             }
 
@@ -117,9 +124,9 @@ class News extends Controller {
         <tr>
             <td>Ganztägige Events:&nbsp;&nbsp;</td>
             <td id="all_day_event_legend">1<span id="all_day_event_cont">Pfadi</span></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;Events mit Zeitangabe:&nbsp;&nbsp;</td>
+            <td style="padding-left: 30px;">Events mit Zeitangabe:&nbsp;&nbsp;</td>
             <td id="simple_event_legend">1<span id="timed_event_cont"><b>14:00</b> Pfadi</span></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;Heute:&nbsp;&nbsp;</td>
+            <td style="padding-left: 30px;">Heute:&nbsp;&nbsp;</td>
             <td id="today_legend">1</td>
         </tr>
     </table>';

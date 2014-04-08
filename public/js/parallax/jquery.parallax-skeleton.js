@@ -28,9 +28,9 @@
         _body = $('body'),
         _winWith = parseInt(_window.width()),
         _winHeight = parseInt(_window.height()),
-        //create parent element for the parallax-container
+        //create parent element for the parallax_container
         parallaxParent = $(_doc.createElement("div"));
-        parallaxParent.addClass("parallax-parent");
+        parallaxParent.addClass("parallax_parent");
         _body.prepend(parallaxParent);
 
         _parallax.each(function(index, obj) {            
@@ -60,9 +60,9 @@
                 _imgTransX[index] = (_winWith - elemWith) / 2;
             }
 
-            //create a parallax-container for each parallax object in the document
+            //create a parallax_container for each parallax object in the document
             var parallaxContainer = $(_doc.createElement("div"));
-            parallaxContainer.addClass("parallax-container");
+            parallaxContainer.addClass("parallax_container");
             parallaxContainer.css({
                 visibility: 'visible',
                 height: containerHeight,
@@ -70,9 +70,9 @@
                 '-webkit-transform': 'translate3d(0px, ' + elemOffset + 'px, 0px)'
             });
 
-            //create a image-container for each parallax-container
+            //create a image-container for each parallax_container
             var parallaxImage = $(_doc.createElement("div"));
-            parallaxImage.addClass("parallax-image");
+            parallaxImage.addClass("parallax_image");
             parallaxImage.css({
                 backgroundImage: "url('" + elemImage + "')",
                 width: elemWith,
@@ -87,8 +87,8 @@
             parallaxParent.append(parallaxContainer);
         });
 
-        var _parallaxContainer = $(".parallax-container"),
-        _parallaxImage = $(".parallax-image");
+        var _parallaxContainer = $(".parallax_container"),
+        _parallaxImage = $(".parallax_image");
 
         //set image position on resize
         _window.resize(function() {
@@ -176,13 +176,5 @@
         });
         return this;
     };
-
-    /*function translateImage(obj, x, y){
-     obj.css({                 
-     'transform': 'translate3d(' + x + 'px, ' + y + 'px, 0px)',
-     '-webkit-transform': 'translate3d(' + x + 'px, ' + y + 'px, 0px)'
-     });
-     }*/
-
 }(jQuery));
 

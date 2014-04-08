@@ -4,13 +4,17 @@
             violet = '#4710B5',
             white = '#FFF',
             black = '#000';
-    $(function() {
-        $('#tablet-nav-container .scout-lily').attr('fill', black);
 
-        $('#main-scout-lily').mouseenter(function() {
-            $('#tablet-nav-container .scout-lily').attr('fill', red);
+    var sidebar;
+    $(function() {
+        sidebar = $('aside.main_sidebar').html();
+        setSidebar();
+        $('#tablet_nav_container .scout_lily').attr('fill', black);
+
+        $('#main_scout_lily').mouseenter(function() {
+            $('#tablet_nav_container .scout_lily').attr('fill', red);
         }).mouseleave(function() {
-            $('#tablet-nav-container .scout-lily').attr('fill', black);
+            $('#tablet_nav_container .scout_lily').attr('fill', black);
         });
 
         $('.notice_link').click(function(event) {
@@ -63,34 +67,56 @@
                         });
 
                     });
+
         });
 
-        if ($('html').hasClass('ie8')) {
-            $('.top-image').removeClass("parallax");
-            $('.top-image').height(350);
-            $('.top-image').css({
+        //if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+        if ($('html').hasClass('ie8') || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $('#top_image').removeClass("parallax");
+            $('#top_image').height(350);
+            $('#top_image').css({
                 backgroundImage: 'url("<?php echo URL; ?>public/images/orion-skitag.jpg")',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '100%',
-                backgroundPositionY: '-200px'
+                backgroundPositionY: '-100px',
+            });
+        }
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $('#top_image').css({
+                height: '250px'
+            });
+            $('#top_image_description').css({
+                top: '214px',
+                opacity: 1
             });
         }
     });
 
-    $(window).load(function() {
-        $('.top-image').parallax({
+    $(window).on('load', function() {
+        $('#top_image').parallax({
             parallax: 0.6
         });
-        /*console.log("page is loaded!");
-         NProgress.done(true);*/
         $('body').css({display: 'block'});
+        console.log(sidebar);
     });
+
+    $(window).on('resize', setSidebar);
+
+    function setSidebar() {
+        if ($(window).width() < 744) {
+            $('aside.main_sidebar').remove();
+            $('#main_container').prepend('<aside class="main_sidebar">' + sidebar + '</aside>');
+        } else {
+            $('aside.main_sidebar').remove();
+            $('#main_container').append('<aside class="main_sidebar">' + sidebar + '</aside>');
+        }
+    }
 </script>
 
-<div class="top-image parallax" data-image="<?php echo URL; ?>public/images/orion-skitag.jpg" data-with="1600" data-height="1200" data-container-height="350" data-posy="140">
+<div id="top_image" class="parallax" data-image="<?php echo URL; ?>public/images/orion-skitag.jpg" data-with="1600" data-height="1200" data-container-height="350" data-posy="140">
     <div id="top_image_description">Orion Skitag 2014</div>
 </div>
-<div id="main-container">
+<div id="main_container">
     <div id="newsfeed">
         <h1>Neuigkeiten aus der Abteilung</h1>
         <?php
@@ -106,7 +132,7 @@
         }
         ?>
     </div>
-    <aside class="main-sidebar">
+    <aside class="main_sidebar">
         <section id="onlineanschlag" class="sidebarelement">
             <h3>N&auml;chste Pfadi&uuml;bung</h3>
             <ul> 
@@ -121,8 +147,7 @@
                 }
                 ?>
             </ul>
-        </section>
-        <section class="sidebarelement">
+        </section><section class="sidebarelement">
             <h3>Anstehende Events</h3>
             <ul>
                 <?php
@@ -137,23 +162,21 @@
                 ?>
             </ul>
             <a href="<?php echo URL; ?>news/kalender"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Kalender" /></a>
-        </section>
-        <!-- <section class="sidebarelement">
+        </section><section class="sidebarelement">
             <h3>Downloads</h3>
-        <?php
-        //load infos
-        if ($this->downloads) {
-            foreach ($this->downloads as $key => $value) {
-                echo "<p>Das Pfadiheim ist noch bis am " . date("d.m.Y", $value->date_end) . " vermietet</p>"; //<a class='more' href='#'>Mehr</a>";
+            <?php
+//load downloads
+            if ($this->recent_downloads) {
+                foreach ($this->recent_downloads as $key => $value) {
+                    echo '<a class="no_select" href="' . URL . 'public/download/' . $value->download_file_name . '">' . $value->download_file_name . ' (' . $value->download_size . ')</a>';
+                }
+            } else {
+                echo 'Momentan gibt es keine aktuellen Downloads';
             }
-        } else {
-            echo "<p>Keine aktuelle Downloads</p>";
-        }
-        ?>
-            <a href="<?php echo URL; ?>news/downloads"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Alle Downloads" /></a>
+            ?>
+            <br /><a href="<?php echo URL; ?>news/downloads"><input class="button" type="button" style="cursor: pointer; margin-top: 10px" value="Alle Downloads" /></a>
 
-        </section> -->
-        <section class="sidebarelement">
+        </section><section class="sidebarelement">
             <h3>Informationen</h3>
             <?php
             //load infos

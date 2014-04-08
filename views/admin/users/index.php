@@ -8,8 +8,12 @@
             if (confirm("Den Benutzer '" + elem.parent().parent().find('.user_name').text() + "' wirklich löschen?")) {
                 $.post(elem.attr('href'))
                         .done(function(data) {
-                            $.notify("User wurde erfolgreich gelöscht!", "success");
-                            elem.parent().parent().hide(500);
+                            if (data === "done") {
+                                $.notify("User wurde erfolgreich gelöscht!", "success");
+                                elem.parent().parent().hide(500);
+                            } else {
+                                $.notify(data, "error");
+                            }
                         });
             }
         });
@@ -38,6 +42,7 @@
             });
 
             elem.on('change', 'input, select', function() {
+                console.log("test");
                 $(this).addClass('valueChanged');
             });
 
@@ -66,14 +71,20 @@
 
             console.log(user_data);
 
-            $.post($(this).attr('href'), user_data).done(function(data) {
-                console.log(data);
-                if (data === "done") {
-                    $.notify("Gespeichert", "success");
-                } else {
-                    $.notify(data, "error");
-                }
-            });
+            if (elem.find('.valueChanged').length > 0) {
+                console.log('valueChanged');
+                $.post($(this).attr('href'), user_data).done(function(data) {
+                    console.log(data);
+                    if (data === "done") {
+                        $.notify("Gespeichert", "success");
+                    } else {
+                        $.notify(data, "error");
+                    }
+                });
+            } else {
+                $.notify("Es wurden keine Daten geändert", "info");
+                console.log('just nothin\'');
+            }
 
             elem.children().each(function(i) {
                 if ($(this).hasClass("edittext") && $(this).hasClass("editing")) {
@@ -94,25 +105,25 @@
     });
 </script>
 <style>
-    .form_gourp{
+    #user_list .form_gourp{
         display:inline-block;
     }
-    input{
+    #user_list input{
         min-width: 0;
         width: 100%;
         margin:0;
         height: 55px;
     }
-    select{   
+    #user_list select{   
         width: 100%;     
         margin: 0;
         padding: 5px;
         height: 55px
     }
-    td.editing{
+    #user_list td.editing{
         padding: 0 !important;
     }
-    td.editing input{
+    #user_list td.editing input{
         margin-bottom: -23px;
     }
 </style>
@@ -129,7 +140,7 @@
     ?>
 
     <h1 style="clear: both;padding-top: 50px;">Alle Backend User</h1>
-    <table class="list">
+    <table id="user_list" class="list">
         <?php if ($this->users) { ?>
             <thead>
             <th>Benutzername</th>

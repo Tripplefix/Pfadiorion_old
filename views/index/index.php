@@ -1,65 +1,49 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <script src="<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js"></script>
 <link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
 <link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
 <script>
     (function() {
         $(function() {
-            $('.main-header').data("container-height", $(window).height());
-            $('.top-title h2').on("click", function(evt) {
+            $('#main_header').data("container-height", $(window).height());
+            $('#top_title h2').on("click", function(evt) {
                 evt.preventDefault();
                 $('body, html').animate({
-                    scrollTop: $('#main-container').offset().top
+                    scrollTop: $('#main_container').offset().top
                 }, {
                     duration: 1500,
                     queue: false,
                     easing: 'easeInOutQuart'
                 });
             });
-            $('#full-width-slider').royalSlider({
-                arrowsNav: true,
-                loop: false,
-                keyboardNavEnabled: true,
-                controlsInside: false,
-                imageScaleMode: 'fill',
-                arrowsNavAutoHide: false,
-                autoScaleSlider: true,
-                autoScaleSliderWidth: 960,
-                autoScaleSliderHeight: 350,
-                controlNavigation: 'bullets',
-                thumbsFitInViewport: false,
-                navigateByClick: true,
-                startSlideId: 0,
-                autoPlay: false,
-                transitionType: 'move',
-                globalCaption: false,
-                deeplinking: {
+            $("#impressions_slider").royalSlider({
+                fullscreen: {
                     enabled: true,
-                    change: false
+                    nativeFS: true
                 },
-                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                controlNavigation: 'bullets',
+                arrowsNav: true,
+                keyboardNavEnabled: true,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 1400,
+                autoScaleSliderHeight: 600,
+                imageScaleMode: "fill",
                 imgWidth: 1400,
-                imgHeight: 680
+                imgHeight: 933
             });
-            if ($('html').hasClass('ie8')) {
-                $('.main-header').removeClass("parallax");
-                $('.main-header').height($(window).height());
-                $('.main-header').css({
+            if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+                $('#main_header').removeClass("parallax");
+                $('#main_header').height($(window).height());
+                $('#main_header').css({
                     backgroundImage: 'url("<?php echo URL; ?>public/images/DSCF1444.jpg")',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '100%'
+                    backgroundSize: '115%'
                 });
+                $('#big_nav').css({transition: 'none', position: 'absolute'});
             }
         });
 
         $(window).on("load", function() {
-            $('.main-header').parallax({
+            $('#main_header').parallax({
                 parallax: 0.6
             });
             $('body').css({display: 'block'});
@@ -67,9 +51,9 @@
 
         $(window).on("resize", function() {
             var winHeight = $(window).height();
-            $('.main-header').height(winHeight);
-            $('.main-header').data("container-height", winHeight);
-            $('.parallax-container').height(winHeight);
+            $('#main_header').height(winHeight);
+            $('#main_header').data("container-height", winHeight);
+            $('.parallax_container').height(winHeight);
         });
 
         function organigramm() {
@@ -79,12 +63,12 @@
         }
     })();
 </script>
-<div id="main-container">   
+<div id="main_container">   
     <!-- unsere Abteilung -->
-    <section id="about-us">
-        <div id="about-us-image">
+    <section id="about_us">
+        <div id="about_us_image">
             <img src="<?php echo URL; ?>public/images/IMG_6837.jpg" />
-        </div><div id="about-us-content">
+        </div><div id="about_us_content">
             <h2>Wer wir sind</h2>
             <p>Wir sind, Wölfli, Pfader, Pios und Rover! Wir lieben Action und Abenteuer! Wir sind die Pfadiabteilung Orion!</p>
 
@@ -97,6 +81,14 @@
                 abwechslungsreiches Programm zu bieten, bei dem sie einerseits die Natur näher 
                 kennenlernen, anderseits aber auch die Gesellschaft untereinander nicht zu kurz 
                 kommt. Wer zu uns in die Pfadi kommt, dem wird bestimmt nie langweilig!</p>
+        </div>
+    </section><!-- Eindrücke -->
+    <section id="impressions">
+        <h2>Eindrücke</h2>
+        <div id="impressions_slider" class="royalSlider rsDefault" style="width: 1000px; margin: 0 auto;">
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_5243e9ef164a5_1.JPG"></a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_528ef22a4cd0b_1.JPG"></a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_529f1e8522a2a_1.JPG"></a>
         </div>
     </section>
     <!-- was ist Pfadi -->
@@ -115,11 +107,9 @@
     <section id="organigramm">
         <h2>Unsere Organisation</h2>
         <div class="g-100">
-            <div id="organigramm-image">
-                <?php
-                include("orion_organigramm.html");
-                ?>
-            </div>
+            <?php
+            include("orion_organigramm.html");
+            ?>
         </div>
     </section>
     <!-- unsere Organisation -->
@@ -142,7 +132,8 @@
             <p>
                 Bei Fragen stehen dir unsere Trupp- und Abteilungsleiter gerne zur Verfügung.
             </p>
-            <div id="join_us_button" onclick="(function() {
+            <a id="join_us_button" class="no_select" href="<?php echo URL; ?>public/download/Anmeldeformular Pfadi Orion.pdf">Anmelden</a>
+            <div id="contact_us_button" class="no_select" onclick="(function() {
                         window.location.href = '<?php echo URL; ?>kontakt';
                     })();">Kontakt</div>
         </div>

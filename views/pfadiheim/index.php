@@ -75,12 +75,12 @@
                 imgHeight: 933
             });
 
-            $('.scout-lily').attr('fill', black);
+            $('.scout_lily').attr('fill', black);
 
-            $('#main-scout-lily').mouseenter(function() {
-                $('.scout-lily').attr('fill', red);
+            $('#main_scout_lily').mouseenter(function() {
+                $('.scout_lily').attr('fill', red);
             }).mouseleave(function() {
-                $('.scout-lily').attr('fill', black);
+                $('.scout_lily').attr('fill', black);
             });
 
             $('.notice_link').click(function(event) {
@@ -162,7 +162,7 @@
     })();
 </script>
 
-<div id="main-container">
+<div id="main_container">
     <div id="ph_top">
         <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1400px;margin: 60px auto 24px;">
             <div class="rsContent">

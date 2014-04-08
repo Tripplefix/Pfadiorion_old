@@ -67,7 +67,7 @@ class Users extends Controller {
                 $_POST['responsibility'])){
             echo "done";
         }else{
-            echo var_dump($this->model->errors);
+            echo $this->model->errors[0];
         }
     }
 
@@ -76,8 +76,11 @@ class Users extends Controller {
     }
 
     public function delete($user_id) {
-        $this->model->delete($user_id);
-        header('location: ' . URL . 'admin/users');
+        if($this->model->delete($user_id)){
+            echo 'done';
+        }else{
+            echo $this->model->errors[0];
+        }
     }
 
 }

@@ -12,7 +12,7 @@ class Users_Model extends Model {
     }
 
     public function getAllUser() {
-        $sth = $this->db->prepare("SELECT * FROM users WHERE user_id <> :user_id ORDER BY user_name");
+        $sth = $this->db->prepare("SELECT * FROM users ORDER BY user_name");
         $sth->execute(array(':user_id' => $_SESSION['user_id']));
         //return $sth->fetchAll();
 
@@ -243,16 +243,21 @@ class Users_Model extends Model {
     }
 
     public function delete($user_id) {
-        $sth = $this->db->prepare("DELETE FROM users WHERE user_id = :user_id");
-        $sth->execute(array(
-            ':user_id' => $user_id));
+        if ($user_id != $_SESSION['user_id']) {
+            $sth = $this->db->prepare("DELETE FROM users WHERE user_id = :user_id");
+            $sth->execute(array(
+                ':user_id' => $user_id));
 
-        $count = $sth->rowCount();
+            $count = $sth->rowCount();
 
-        if ($count == 1) {
-            return true;
-        } else {
-            $this->errors[] = FEEDBACK_NOTE_DELETION_FAILED;
+            if ($count == 1) {
+                return true;
+            } else {
+                $this->errors[] = FEEDBACK_NOTE_DELETION_FAILED;
+                return false;
+            }
+        }else{
+            $this->errors[] = "Du kannst dich nicht selbst löschen!";
             return false;
         }
     }

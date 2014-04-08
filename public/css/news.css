@@ -3,17 +3,17 @@
     Author     : Rolf
 */
 
-.top-image{
+#top_image{
     height: 350px;
 }
 
-.main-header nav a:link, .main-header nav a:visited{
+#main_header nav a:link, #main_header nav a:visited{
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;
 }
 
-.main-container{
+#main_container{
     width: 90%;
     margin-left: 5%;
     height: 1000px;
@@ -63,10 +63,9 @@
 
 .separator{
     width: 90%;
-    /*border-bottom: 1px solid #969696;*/
 }
 
-.main-sidebar {   
+.main_sidebar {   
     width: 29%;
     height: 1000px;
     float: left;
@@ -127,11 +126,11 @@
 #top_image_description:hover{
     opacity: 1;
 }
-//-------------- Kalender ------------------//
+/*-------------- Kalender ------------------*/
 
 #calendar_container{
     width: 1240px;
-height: 1100px;
+    height: 1100px;
     margin: 0 auto;
 }
 #calendar_container h1{
@@ -268,4 +267,167 @@ table#event_table tbody{
     text-align: center;
     padding-top: 5px;
     float: right;
+}
+#all_day_event_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+}
+#all_day_event_legend #all_day_event_cont{
+    border: 1px solid #D69407;
+    background-color: #FCC360;
+    display: block;
+    color: #000;
+    cursor: pointer;
+    overflow: hidden;
+}
+#simple_event_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+}
+#simple_event_legend #timed_event_cont{
+    font-weight: normal;
+    color: #A00000;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+}
+#simple_event_legend #timed_event_cont b{
+    color: #A00000;        
+}
+#today_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+    font-weight: bold;
+    border-top: 4px solid black !important;
+    display: block;
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1150px) {
+    #calendar_container {
+        width: 1028px;
+        height: 900px;
+    }
+    table#event_table thead td{
+        width: 130px;
+    }
+    table#event_table tbody td{
+        width: 130px;
+        max-width: 130px;
+        height: 90px;
+    }    
+    table#event_table {
+        width: 988px;
+    }
+}
+@media screen and (max-width: 1150px) and (min-width: 900px) {
+    #calendar_container {
+        width: 818px;
+        height: 800px;
+    }
+    table#event_table thead td{
+        width: 100px;
+    }
+    table#event_table tbody td{
+        width: 100px;
+        max-width: 100px;
+        height: 75px;
+    }    
+    table#event_table {
+        width: 778px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) and (min-width: 0px) {
+    #calendar_container {
+        width: 708px;
+        height: 800px;
+    }
+    table#event_table thead td{
+        width: 90px;
+    }
+    table#event_table tbody td{
+        width: 90px;
+        max-width: 90px;
+        height: 80px;
+    }    
+    table#event_table {
+        width: 708px;
+        margin: 5px 0px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+    #main_container{
+        padding-top: 100px;
+    }
+    #top_image {
+        display: none;
+    }
+    #main_header{
+        display: none;
+    }
+    .parallax_parent{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 760px) and (min-width: 0px) {
+    #calendar_container {
+        width: 568px;
+        height: 800px;
+    }
+    table#event_table thead td{
+        width: 70px;
+    }
+    table#event_table tbody td{
+        width: 70px;
+        max-width: 70px;
+        height: 75px;
+    }    
+    table#event_table {
+        width: 568px;
+        margin: 5px 0px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+    /* mobile sidebar */
+    .main_sidebar {   
+        width: 100%;
+        height: auto;
+    }
+    .main_sidebar section{   
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #newsfeed {
+        width: 90%;
+        margin: 50px auto;
+    }
+    #newsfeed h1 {
+        font-size: 240%;
+        margin: 15px 0 40px;
+    }
+    .article_container {
+        margin-left: 0; 
+    }
+    #newsfeed h2 {
+        font-size: 140%;
+    }
 }
