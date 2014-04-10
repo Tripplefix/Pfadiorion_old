@@ -85,7 +85,7 @@
     </section><!-- Eindrücke -->
     <section id="impressions">
         <h2>Eindrücke</h2>
-        <div id="impressions_slider" class="royalSlider rsDefault" style="width: 1000px; margin: 0 auto;">
+        <div id="impressions_slider" class="royalSlider rsDefault">
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_5243e9ef164a5_1.JPG"></a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_528ef22a4cd0b_1.JPG"></a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_529f1e8522a2a_1.JPG"></a>
