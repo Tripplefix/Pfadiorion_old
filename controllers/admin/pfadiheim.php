@@ -20,7 +20,7 @@ class Pfadiheim extends Controller {
 
     public function index() {
 
-        if (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1) {
+        if (Session::get('user_access_level') == 5 || Session::get('user_access_level') == 6 ||Session::get('user_is_admin') == 1) {
             // get all notices (of the logged in user)
             $this->view->reservation_list = $this->model->getAllReservations();
             $this->view->errors = $this->model->errors;

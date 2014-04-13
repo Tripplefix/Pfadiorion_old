@@ -36,7 +36,7 @@ class Kontakt extends Controller {
     }
 
     function elternrat() {
-        echo ""; //$this->model->getContactsByType(5);
+        echo $this->loadContactCards($this->model->getContactsByType(7));
     }
 
     private function loadContactCards($info) {
@@ -49,10 +49,14 @@ class Kontakt extends Controller {
             } else {
                 $result .= '<img class="profilepicture" src="' . URL . 'public/avatars/' . $value->user_id . '.jpg" />';
             }
+            
+            
+            $full_name = $value->user_name != '' 
+                    ? '<div class="full_name">' . $value->user_contact_forename . ' ' . $value->user_contact_surname . ' v/o&nbsp;' . $value->user_name . '</div>'
+                    : '<div class="full_name">' . $value->user_contact_forename . ' ' . $value->user_contact_surname . '</div>'; 
 
-            $result .= '<div class="full_name">' . $value->user_contact_forename . ' ' . $value->user_contact_surname . ' 
-                    v/o&nbsp;' . $value->user_name . '</div>
-                    <div class="leader_type">' . $value->user_responsibility . '</div>
+
+            $result .= $full_name . '<div class="leader_type">' . $value->user_responsibility . '</div>
                     <div class="show_more_details">Kontaktdaten</div>
                     <div class="contact_info">
                         <h3>Kontaktdaten</h3>

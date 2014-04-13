@@ -92,6 +92,7 @@ class News_Model extends Model {
         $sth->execute();
         return $sth->fetchAll();
     }
+    
     public function getArchivedDownloads(){
         $sth = $this->db->prepare("SELECT * FROM downloads WHERE download_is_recent <> 1");
         $sth->execute();
@@ -120,6 +121,7 @@ class News_Model extends Model {
 
         return $fetched_item;
     }
+    
     public function getNewsOfUser() {
         $sth = $this->db->prepare("SELECT user_id, news_id, news_title
                                            FROM news
@@ -212,5 +214,68 @@ class News_Model extends Model {
         $sth->execute(array(':event_date_min' => $date, ':event_date_max' => $date + 86399));        
         return $sth->fetchAll();
     }
+    
+    //downloads
+    public function insertDownload($info, $title, $file_name, $extension, $thumb, $file_size){
+        $sth = $this->db->prepare("INSERT INTO downloads (download_info, 
+                                                        download_title, 
+                                                        download_file_name, 
+                                                        download_file_type, 
+                                                        download_thumb, 
+                                                        download_size, 
+                                                        download_is_recent) 
+                                                    VALUES (:download_info, 
+                                                        :download_title, 
+                                                        :download_file_name, 
+                                                        :download_file_type, 
+                                                        :download_thumb, 
+                                                        :download_size, 1);");
+        $sth->execute(array(
+            ':download_info' => $info,
+            ':download_title' => $title,
+            ':download_file_name' => $file_name,
+            ':download_file_type' => $extension,
+            ':download_thumb' => $thumb,
+            ':download_size' => $file_size));
+
+        $count = $sth->rowCount();
+        if ($count == 1) {
+            return true;
+        } else {
+            $this->errors[] = $sth->errorInfo();
+            return false;
+        }
+    }
+    
+    public function deleteDownload($dl_id){
+        $sth = $this->db->prepare("DELETE FROM downloads 
+                                   WHERE download_id = :dl_id;");
+        $sth->execute(array(':dl_id' => $dl_id));
+
+        $count = $sth->rowCount();
+
+        if ($count == 1) {
+            return true;
+        } else {
+            $this->errors[] = 'hätt nöd gfunzt!: ' . $dl_name;
+            return false;
+        }
+    }
+    
+    public function archiveDownload($dl_id){
+        $sth = $this->db->prepare("UPDATE downloads SET download_is_recent = 0
+                                   WHERE download_id = :dl_id;");
+        $sth->execute(array(':dl_id' => $dl_id));
+
+        $count = $sth->rowCount();
+
+        if ($count == 1) {
+            return true;
+        } else {
+            $this->errors[] = 'hätt nöd gfunzt!: ' . $dl_name;
+            return false;
+        }
+    }
+    
     //endregion
 }

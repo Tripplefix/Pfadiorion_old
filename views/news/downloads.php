@@ -39,7 +39,7 @@
     .download_element label{
         font-weight: bold;
     }
-
+        
     .download_preview, .download_details{
         display: inline-block;
         vertical-align: top;
@@ -50,6 +50,12 @@
         box-shadow: 0px 0px 8px -1px #292929;
         background-repeat: no-repeat;
         background-size: 100%;
+    }
+    .download_preview.pdf{
+        background-image: url('<?php echo URL; ?>public/download/thumbs/pdf.jpg');
+    }
+    .download_preview.doc, .download_preview.docx{
+        background-image: url('<?php echo URL; ?>public/download/thumbs/word.jpg');
     }
     .download_details{
         padding: 5px 20px;
@@ -100,7 +106,6 @@
             margin: 50px 0 0 0;
         }
     }
-
     @media screen and (max-width: 1130px) and (min-width: 960px){
         #download_container{
             width: 940px;
@@ -177,23 +182,21 @@
     <?php
 //load downloads
     if ($this->recent_downloads) {
-        for ($i = 0; $i <= 10; $i++) {
             foreach ($this->recent_downloads as $key => $value) {
-                echo '<div class="download_element pdf">
-                    <h2>' . $value->download_title . ' (' . strtoupper($value->download_file_type) . ')</h2>
-                    <div class="download_preview" style="background-image: url(\'' . URL . 'public/download/thumbs/' . $value->download_file_name . '_thumb.png\'); ">
-                    </div><div class="download_details">
-                        <label>Info</label>
-                        <p>' . $value->download_info . '</p>
-                        <label>Dateiname</label>
-                        <p>' . $value->download_file_name . '</p>
-                        <label>Dateigrösse</label>
-                        <p>' . $value->download_size . '</p>
-                        <a class="download_button no_select" href="' . URL . 'public/download/' . $value->download_file_name . '">Download</a>
-                    </div>
+                echo '<div class="download_element">
+                        <h2>' . $value->download_title . ' (' . strtoupper($value->download_file_type) . ')</h2>
+                        <div class="download_preview ' . $value->download_file_type . '" ">
+                        </div><div class="download_details">
+                            <label>Info</label>
+                            <p>' . $value->download_info . '</p>
+                            <label>Dateiname</label>
+                            <p>' . $value->download_file_name . '</p>
+                            <label>Dateigrösse</label>
+                            <p>' . $value->download_size . '</p>
+                            <a class="download_button no_select" href="' . URL . 'public/download/' . $value->download_file_name . '">Download</a>
+                        </div>
                 </div>';
             }
-        }
     } else {
         echo 'Momentan gibt es keine aktuellen Downloads';
     }

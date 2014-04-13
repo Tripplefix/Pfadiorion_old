@@ -26,129 +26,154 @@
 
             <div class="header_left_box">
                 <ul id="menu">
-                    <!-- <li <?php
-                    if ($this->checkForActiveController($filename, "index")) {
-                        echo ' class="active" ';
-                    }
-                    ?> >
-                        <a href="<?php echo URL; ?>admin/index">Übersicht</a>
-                    </li>  -->       
-                    <?php if (Session::get('user_logged_in') == true): ?>
-                        <li <?php
-                        if ($this->checkForActiveController($filename, "dashboard")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/dashboard">Dashboard</a>	
-                        </li>   
-                    <?php endif; ?> 
-                    <?php if (Session::get('user_logged_in') == true): ?>
-                        <li <?php
-                        if ($this->checkForActiveController($filename, "notice")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/notice">Onlineanschlag</a>
-                        </li>   
-                    <?php endif; ?>                           
-                    <?php if (Session::get('user_logged_in') == true): ?>
-                        <li <?php
-                        if ($this->checkForActiveController($filename, "news")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/news">Beiträge verwalten</a>
-                        </li>                  
-                    <?php endif; ?>                     
-                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
-                        <li <?php
-                        if ($this->checkForActiveController($filename, "kalender")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/kalender">Events verwalten</a>
-                        </li>                  
-                    <?php endif; ?>                 
-                    <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
+                    <?php if (Session::get('user_logged_in') == true && Session::get('user_access_level') == 6): ?>
                         <li <?php
                         if ($this->checkForActiveController($filename, "pfadiheim")) {
                             echo ' class="active" ';
                         }
                         ?> >
                             <a href="<?php echo URL; ?>admin/pfadiheim">Heim Verwaltung</a>
-                        </li>                  
-                    <?php endif; ?>             
-
-                    <?php if (Session::get('user_logged_in') == true && Session::get('user_is_admin') == 1): ?>
-                        <li>
-                            <a href="#">Admin Tools</a>
-                            <ul class="sub-menu">  
-                                <li <?php
-                                if ($this->checkForActiveController($filename, "users")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/users">User Verwaltung</a>
-                                </li>     
-                                <li>
-                                    <a href="#">more incoming...</a>
-                                </li>    
-                            </ul>
-                        </li>
-                    <?php endif; ?>    
-
-                    <?php if (Session::get('user_logged_in') == true): ?>
+                        </li>  
                         <li <?php
                         if ($this->checkForActiveController($filename, "login")) {
                             echo ' class="active" ';
                         }
                         ?> >
-                            <!--<a href="#">My Account</a>-->
-                            <a href="<?php echo URL; ?>admin/login/showprofile">Mein Profil</a>
-                            <ul class="sub-menu">  
-                                <!-- <li <?php
-                                if ($this->checkForActiveController($filename, "login")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/login/edituseremail">E-Mail Adresse &auml;ndern</a>
-                                </li>  -->
-                                <li <?php
-                                if ($this->checkForActiveController($filename, "login")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/login/uploadavatar">Profilbild hochladen</a>
-                                </li>    
-                                <li <?php
-                                if ($this->checkForActiveController($filename, "login")) {
-                                    echo ' class="active" ';
-                                }
-                                ?> >
-                                    <a href="<?php echo URL; ?>admin/login/logout">Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>          
+                            <a href="<?php echo URL; ?>admin/login/logout">Logout</a>
+                        </li>                
+                    <?php else: ?>   
 
-                    <!-- for not logged in users -->
-                    <?php if (Session::get('user_logged_in') == false): ?>
-
-                        <li <?php
-                        if ($this->checkForActiveControllerAndAction($filename, "login/index")) {
-                            echo ' class="active" ';
-                        }
-                        ?> >
-                            <a href="<?php echo URL; ?>admin/login/index">Login</a>
-                        </li>  
                         <!-- <li <?php
-                        if ($this->checkForActiveControllerAndAction($filename, "login/requestpasswordreset")) {
+                        if ($this->checkForActiveController($filename, "index")) {
                             echo ' class="active" ';
                         }
                         ?> >
-                            <a class="disabled_link" href="<?php echo URL; ?>admin/login/requestpasswordreset">Passwort vergessen(funktion in Arbeit)</a>
-                        </li> -->
+                            <a href="<?php echo URL; ?>admin/index">Übersicht</a>
+                        </li>  -->       
+                        <?php if (Session::get('user_logged_in') == true): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "dashboard")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/dashboard">Dashboard</a>	
+                            </li>   
+                        <?php endif; ?> 
+                        <?php if (Session::get('user_logged_in') == true): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "notice")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/notice">Onlineanschlag</a>
+                            </li>   
+                        <?php endif; ?>                           
+                        <?php if (Session::get('user_logged_in') == true): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "news")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/news">Beiträge verwalten</a>
+                            </li>                  
+                        <?php endif; ?>                     
+                        <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "kalender")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/kalender">Events verwalten</a>
+                            </li>                  
+                        <?php endif; ?>                 
+                        <?php if (Session::get('user_logged_in') == true && (Session::get('user_access_level') == 5 || Session::get('user_is_admin') == 1)): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "pfadiheim")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/pfadiheim">Heim Verwaltung</a>
+                            </li>                  
+                        <?php endif; ?>             
 
+                        <?php if (Session::get('user_logged_in') == true && Session::get('user_is_admin') == 1): ?>
+                            <li>
+                                <a href="#">Admin Tools</a>
+                                <ul class="sub-menu">  
+                                    <li <?php
+                                    if ($this->checkForActiveController($filename, "users")) {
+                                        echo ' class="active" ';
+                                    }
+                                    ?> >
+                                        <a href="<?php echo URL; ?>admin/users">User Verwaltung</a>
+                                    </li>    
+                                    <li <?php
+                                    if ($this->checkForActiveController($filename, "news/downloads")) {
+                                        echo ' class="active" ';
+                                    }
+                                    ?> >
+                                        <a href="<?php echo URL; ?>admin/news/downloads">Downloads Verwaltung</a>
+                                    </li>    
+                                    <li>
+                                        <a href="#">more incoming...</a>
+                                    </li>    
+                                </ul>
+                            </li>
+                        <?php endif; ?>    
+
+                        <?php if (Session::get('user_logged_in') == true): ?>
+                            <li <?php
+                            if ($this->checkForActiveController($filename, "login")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <!--<a href="#">My Account</a>-->
+                                <a href="<?php echo URL; ?>admin/login/showprofile">Mein Profil</a>
+                                <ul class="sub-menu">  
+                                    <!-- <li <?php
+                                    if ($this->checkForActiveController($filename, "login")) {
+                                        echo ' class="active" ';
+                                    }
+                                    ?> >
+                                        <a href="<?php echo URL; ?>admin/login/edituseremail">E-Mail Adresse &auml;ndern</a>
+                                    </li>  -->
+                                    <li <?php
+                                    if ($this->checkForActiveController($filename, "login")) {
+                                        echo ' class="active" ';
+                                    }
+                                    ?> >
+                                        <a href="<?php echo URL; ?>admin/login/uploadavatar">Profilbild hochladen</a>
+                                    </li>    
+                                    <li <?php
+                                    if ($this->checkForActiveController($filename, "login")) {
+                                        echo ' class="active" ';
+                                    }
+                                    ?> >
+                                        <a href="<?php echo URL; ?>admin/login/logout">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif; ?>          
+
+                        <!-- for not logged in users -->
+                        <?php if (Session::get('user_logged_in') == false): ?>
+
+                            <li <?php
+                            if ($this->checkForActiveControllerAndAction($filename, "login/index")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a href="<?php echo URL; ?>admin/login/index">Login</a>
+                            </li>  
+                            <!-- <li <?php
+                            if ($this->checkForActiveControllerAndAction($filename, "login/requestpasswordreset")) {
+                                echo ' class="active" ';
+                            }
+                            ?> >
+                                <a class="disabled_link" href="<?php echo URL; ?>admin/login/requestpasswordreset">Passwort vergessen(funktion in Arbeit)</a>
+                            </li> -->
+
+                        <?php endif; ?>
                     <?php endif; ?>
 
                 </ul>   

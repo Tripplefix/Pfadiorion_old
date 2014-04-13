@@ -140,7 +140,7 @@ class News extends Controller {
         echo '<div class="overlay">
         <section class="modal rounded">
         <a class="closeModal" href="close_notice"></a>
-        <h2>' . $this->replaceWeekday(date("N", $notice->datetime_antreten)) . ' den ' . date("d.m.Y", $notice->datetime_antreten) . '</h2>
+        <h2>' . $this->replaceWeekday(date("N", $notice->datetime_antreten)) . ', ' . date("d.m.Y", $notice->datetime_antreten) . '</h2>
         <h4 style="font-size: 22px;display: inline-block; width: 50%">Antreten</h4><h4 style="font-size: 22px;display: inline-block; width: 50%">Abtreten</h4><br />
         <span style="display: inline-block; width: 49%">' . date("H:i", $notice->datetime_antreten) . ' Uhr, ' . $notice->place_antreten . '</span>
         <span style="display: inline-block; width: 49%">' . date("H:i", $notice->datetime_abtreten) . ' Uhr, ' . $notice->place_abtreten . '</span><br />

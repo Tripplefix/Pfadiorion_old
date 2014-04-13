@@ -164,6 +164,13 @@ body{
     width: 1000px; 
     margin: 0 auto;
 }
+.rsMinW,
+.rsMinW .rsOverflow,
+.rsMinW .rsSlide,
+.rsMinW .rsVideoFrameHolder,
+.rsMinW .rsThumbs {
+	background: #FFF !important;
+}
 
 /********************** organisation ***********************/
 #organigramm{

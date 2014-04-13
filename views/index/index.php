@@ -18,7 +18,7 @@
             $("#impressions_slider").royalSlider({
                 fullscreen: {
                     enabled: true,
-                    nativeFS: true
+                    nativeFS: false
                 },
                 controlNavigation: 'bullets',
                 arrowsNav: true,
@@ -26,7 +26,9 @@
                 autoScaleSlider: true,
                 autoScaleSliderWidth: 1400,
                 autoScaleSliderHeight: 600,
-                imageScaleMode: "fill",
+                imageScaleMode: 'fill',
+                globalCaption: true,
+                arrowsNavAutoHide: false,
                 imgWidth: 1400,
                 imgHeight: 933
             });
@@ -69,7 +71,7 @@
         <div id="about_us_image">
             <img src="<?php echo URL; ?>public/images/IMG_6837.jpg" />
         </div><div id="about_us_content">
-            <h2>Wer wir sind</h2>
+            <h2>Das sind wir</h2>
             <p>Wir sind, Wölfli, Pfader, Pios und Rover! Wir lieben Action und Abenteuer! Wir sind die Pfadiabteilung Orion!</p>
 
             <p>Die gesamte Abteilung besteht aus ca. 50 Kindern und Jugendlichen im Alter von 6 
@@ -85,10 +87,12 @@
     </section><!-- Eindrücke -->
     <section id="impressions">
         <h2>Eindrücke</h2>
-        <div id="impressions_slider" class="royalSlider rsDefault">
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_5243e9ef164a5_1.JPG"></a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_528ef22a4cd0b_1.JPG"></a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/unsplash_529f1e8522a2a_1.JPG"></a>
+        <div id="impressions_slider" class="royalSlider heroSlider rsMinW">
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/5.jpg">SoLa 2012</a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/2.jpg">HeLa 2013</a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/3.jpg">PfiLa 2012</a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/4.jpg">Schauenbergtippel 2013</a>
+            <a class="rsImg" href="<?php echo URL; ?>views/index/images/1.jpg">HeLa 2013</a>
         </div>
     </section>
     <!-- was ist Pfadi -->

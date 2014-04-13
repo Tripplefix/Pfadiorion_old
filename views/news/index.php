@@ -168,7 +168,7 @@
 //load downloads
             if ($this->recent_downloads) {
                 foreach ($this->recent_downloads as $key => $value) {
-                    echo '<a class="no_select" href="' . URL . 'public/download/' . $value->download_file_name . '">' . $value->download_file_name . ' (' . $value->download_size . ')</a>';
+                    echo '<a class="no_select" href="' . URL . 'public/download/' . $value->download_file_name . '">' . $value->download_file_name . ' (' . $value->download_size . ')</a><br />';
                 }
             } else {
                 echo 'Momentan gibt es keine aktuellen Downloads';

@@ -246,8 +246,9 @@
                         Denise Schubnell<br />
                         Stationsstrasse 33<br />
                         8544 Sulz-Rickenbach<br />
-                        052 337 24 27
-                    </p>
+                        052 337 24 27<br />
+                    </p><br />
+                    Oder E-Mail an <a href="mailto:heimverwaltung@pfadiorion.ch?Subject=Heimreservation">heimverwaltung@pfadiorion.ch</a>
             </div><div id="ph_vacancy" class="ph_border">
                 <p>
                     Ob das Heim an Ihrem Wunschdatum noch frei ist, steht im <a href="<?php echo URL; ?>pfadiheim/belegung">Kalender</a>

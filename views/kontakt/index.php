@@ -33,6 +33,10 @@
                 case 'Heimverwaltung': window.location.href = '<?php echo URL; ?>pfadiheim#google_maps_overlay';
                     break;
                 case 'Elternrat':
+                    $.post("<?php echo URL; ?>kontakt/elternrat").done(function(data) {
+                        $('#contact_container').html("<h2>Elternrat</h2>" + data);
+                        addEvents();
+                    });
                     break;
             }
         });

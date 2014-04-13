@@ -68,6 +68,8 @@
 
 .full_name{
     font-size: 28px;
+    width: 240px;
+    margin-left: -5px;
 }
 .leader_type{
     margin-top: 20px; 

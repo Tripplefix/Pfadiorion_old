@@ -39,7 +39,11 @@ class Login extends Controller {
             if(Session::get('user_active') == 0){
                 header('location: ' . URL . 'admin/login/firstlogin');
             }else{
-                header('location: ' . URL . 'admin/dashboard');
+                if(Session::get('user_access_level') == 6){
+                    header('location: ' . URL . 'admin/pfadiheim');
+                }else{
+                    header('location: ' . URL . 'admin/dashboard');
+                }
             }
         } else {
             
