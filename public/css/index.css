@@ -169,7 +169,7 @@ body{
 .rsMinW .rsSlide,
 .rsMinW .rsVideoFrameHolder,
 .rsMinW .rsThumbs {
-	background: #FFF !important;
+    background: #FFF !important;
 }
 
 /********************** organisation ***********************/
@@ -304,7 +304,13 @@ body{
         padding: 0 50px;
     }
     #join_us_button, #contact_us_button{
-        margin: 50px 35%;
+        width: 60%;
+        padding: 15px 5%;
+        margin: 50px 10%;
+        font-size: 26px !important;
+    }
+    #join_us_button:hover, #contact_us_button:hover{
+    padding-bottom: 11px;
     }
     #impressions_slider{
         width: 95%; 

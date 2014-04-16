@@ -67,7 +67,6 @@
                         });
 
                     });
-
         });
 
         //if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {

@@ -9,6 +9,10 @@
     color: #000;
 }
 
+#ph_top{
+    min-height: 730px;
+}
+
 .ph_container{
     display: inline-block;
 
@@ -31,6 +35,16 @@
     transition: all .2s;
 }
 
+#google_maps_overlay.mobile_fullsize{
+    width: 100%;
+    height: 100% !important;
+    min-height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 951;
+}
+
 #show_full_maps_button{
     width: 230px;
     position: relative;
@@ -40,7 +54,7 @@
     text-align: center;
     padding: 6px 15px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     background-color: #CC3D18;
     border-radius: 5px;
     cursor: pointer;
@@ -52,6 +66,13 @@
     background-color: #DA512D;
     border-bottom: 4px solid #CC3D18;
     padding-bottom: 2px;
+}
+
+#show_full_maps_button.mobile_fullsize{
+    transition: none;
+    position: absolute;
+    bottom: 20px;
+    z-index: 952;
 }
 
 .ph_border{
@@ -76,7 +97,7 @@
     text-align: center;
     color: #FFF;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 20px;
     background-color: #CC3D18;
     border-radius: 5px;
     cursor: pointer;
@@ -124,7 +145,7 @@
     width: 500px;
 }
 
-@media screen and (max-width:1560px) and (min-width:660px) {
+@media screen and (max-width:1560px) and (min-width:960px) {
 
     #ph_info_wrapper{
         width: 1000px;
@@ -149,6 +170,51 @@
         width: 300px;
     }
 }
+@media screen and (max-width: 960px), screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px), screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px){
+
+    #ph_top{
+        height: auto;
+        min-height: 0;
+    }
+    #ph_info_wrapper {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    #ph_location {
+        border-top: 5px solid #FFE000;
+        padding: 25px;
+        margin: 50px auto;
+        width: 280px;
+        display: block;
+    }
+    .ph_container {
+        display: block;
+        vertical-align: top;
+        width: 320px;
+        margin: 50px auto;
+        padding-bottom: 0;
+    }
+    #ph_administration {
+        border-top: 5px solid #4C26E0;
+        padding: 25px;
+        width: auto;
+        height: auto;
+    }
+    #ph_vacancy {
+        border-top: 5px solid #3FA750;
+        padding: 25px;
+        margin-top: 50px;
+        width: auto;
+    }
+    #ph_furnishment {
+        border-top: 5px solid #DD4722;
+        width: 280px;
+        margin: 50px auto;
+        padding: 25px;
+        height: auto;
+    }
+}
 
 
 /** ph-slider **/
@@ -156,10 +222,6 @@
 #full-width-slider {
     width: 100%;
     color: #000;
-}
-
-#ph_top{
-    min-height: 730px;
 }
 
 .coloredBlock {

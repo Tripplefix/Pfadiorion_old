@@ -109,7 +109,7 @@
                 background-color: #ff0000;
                 color: #FFF;
                 position: fixed;
-                font-size: 20px;
+                font-size: 90%;
                 font-weight: bold;
                 padding: 10px 20px;
                 z-index: 1000;

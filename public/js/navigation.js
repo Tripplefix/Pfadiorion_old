@@ -13,28 +13,17 @@ $(function() {
     var bigNav = $('#big_nav'),
             smallNav = $('#small_nav'),
             tabletNav = $('#tablet_nav_container');
-    
-    
-    _window.on("load", function() {
-        if ((window.devicePixelRatio === 1 && winWidth < 944) 
-                || (window.devicePixelRatio === 1.5 && winWidth < 1500) 
-                || (window.devicePixelRatio === 2 && winWidth < 2000)) {
-            smallNav.children().remove();
-            bigNav.children().remove();
-            tabletNav.load(url + 'views/_templates/_mobile_nav.html');
+
+
+    $('body').on("click", '#tablet_nav_container', function() {
+        if ($('#tablet_nav').is(":visible")) {
+            $('#tablet_nav').slideUp(200);
         } else {
-            smallNav.load(url + 'views/_templates/_small_nav.html');
-            bigNav.load(url + 'views/_templates/_big_nav.html');
-            tabletNav.children().remove();
+            $('#tablet_nav').slideDown(200);
         }
-        tabletNav.on("click", function() {
-            if ($('#tablet_nav').is(":visible")) {
-                $('#tablet_nav').slideUp(200);
-            } else {
-                $('#tablet_nav').slideDown(200);
-            }
-        });
     });
+
+    _window.on("load", setNavigation());
 
     _window.on("scroll", function() {
         winOffset = _window.scrollTop();
@@ -72,20 +61,24 @@ $(function() {
     _window.on("resize", function() {
         winHeight = _window.height();
         winWidth = _window.width();
+        setNavigation();
+    });
 
-        if ((window.devicePixelRatio === 1&& winWidth < 944) 
-                || (window.devicePixelRatio === 1.5 && winWidth < 1500) 
-                || (window.devicePixelRatio === 2 && winWidth < 2000)) {
+    function setNavigation() {
+        if ((window.devicePixelRatio === 1 && winWidth < 944)
+                || (window.devicePixelRatio === 1.5 && winWidth < 1500)
+                || (window.devicePixelRatio >= 2 && winWidth < 2000)) {
             smallNav.children().remove();
             bigNav.children().remove();
             tabletNav.load(url + 'views/_templates/_mobile_nav.html');
+            $('body').addClass('mobile');
         } else {
             smallNav.load(url + 'views/_templates/_small_nav.html');
             bigNav.load(url + 'views/_templates/_big_nav.html');
             tabletNav.children().remove();
+            $('body').removeClass('mobile');
         }
-    });
-
+    }
 
     /*function initScoutLily() {
      var lilyB = $('#main-scout-lily');

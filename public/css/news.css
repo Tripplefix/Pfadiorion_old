@@ -109,7 +109,13 @@
 
     background-image: url('../images/close.png');
 }
-
+#top_image{
+    opacity: 0.4;
+    transition: opacity .4s;
+}
+#top_image:hover{
+    opacity: 1;
+}
 #top_image_description{
     position: relative;
     float: right;
@@ -119,12 +125,7 @@
     color: #FFF;
     padding: 2px 8px;
     border-radius: 4px;
-    opacity: 0.4;
-    transition: opacity .4s;
     cursor: default;
-}
-#top_image_description:hover{
-    opacity: 1;
 }
 /*-------------- Kalender ------------------*/
 
@@ -355,6 +356,7 @@ table#event_table tbody{
     #calendar_container {
         width: 708px;
         height: 800px;
+        padding-top: 100px;
     }
     table#event_table thead td{
         width: 90px;
