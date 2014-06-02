@@ -265,7 +265,7 @@
             <div id="ph_administration" class="ph_border">
                 <p>
                     Bei Fragen oder Reservationen hilft Ihnen unsere Heimverwaltung gerne weiter.
-                </p><br />
+                </p>
 
                 <p style="text-align: center; font-size: 20px; font-weight: bold;">
                     Denise Schubnell<br />

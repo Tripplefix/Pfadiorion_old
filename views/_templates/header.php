@@ -66,6 +66,7 @@
             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
             ga('create', 'UA-49674561-1', 'pfadiorion.ch');
+            ga('require', 'displayfeatures');
             ga('send', 'pageview');
 
             (function() {
@@ -118,6 +119,22 @@
             #this_is_the_beta_site a{
                 color: #FFF;
             }
+            #orion_location{
+                background-image: url('<?php echo URL; ?>public/images/4i97rLRiE.png');
+                background-repeat: no-repeat;
+                background-size: 26px;
+                width: 450px;
+                margin-left: calc(50% - 290px);
+                cursor: pointer;
+            }
+            #orion_location p{
+                color: #fff;
+                text-align: center;
+                margin-left: -14%;
+                font-size: 28px;
+                margin-bottom: 30px;
+                margin-left: 10px;
+            }
         </style>
     </head>
     <body>
@@ -139,11 +156,15 @@
             <nav id="small_nav"></nav> 
 
             <?php if ($url[0] == "index" || empty($url[0])): ?>
-
-
+                
                 <div id="top_title">
                     <h1>Pfadi Orion</h1>
-                    <h2 style="cursor: pointer;">Erfahre mehr über uns</h2>     
+                    <a id="orion_location" href="https://www.google.com/maps/place/Rickenbach+sulz" target="blank">
+                        <div id="orion_location">
+                            <p>Rickenbach Sulz / Wiesendangen</p>
+                        </div> 
+                    </a>                     
+                    <h2 style="cursor: pointer;">Erfahre mehr über uns</h2>   
                     <h2 style="margin-top: -50px;font-size: 130px; text-align: center; cursor: pointer;">v</h2>
                 </div>
             <?php endif; ?>                  
