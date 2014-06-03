@@ -137,6 +137,15 @@ class News extends Controller {
 
     public function show_notice($notice_id) {
         $notice = $this->model->showNotice($notice_id)[0];
+        $notice->day_antreten = $this->replaceWeekday(date("N", $notice->datetime_antreten));
+        $notice->date_antreten = date("d.m.Y", $notice->datetime_antreten);
+        
+        $notice->datetime_antreten = date("H:i", $notice->datetime_antreten);
+        $notice->datetime_abtreten = date("H:i", $notice->datetime_abtreten);
+        
+        echo json_encode($notice);
+        
+        /*$notice = $this->model->showNotice($notice_id)[0];
         echo '<div class="overlay">
         <section class="modal rounded">
         <a class="closeModal" href="close_notice"></a>
@@ -146,7 +155,7 @@ class News extends Controller {
         <span style="display: inline-block; width: 49%">' . date("H:i", $notice->datetime_abtreten) . ' Uhr, ' . $notice->place_abtreten . '</span><br />
         <h4 style="font-size: 22px;margin-top: 20px;">Details</h4>' . $notice->notice_content . '
         </section>
-        </div>';
+        </div>';*/
     }
     
     public function show_event($event_id) {

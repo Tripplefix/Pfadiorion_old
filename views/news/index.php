@@ -23,12 +23,18 @@
 
             $.post(elem.attr('href'))
                     .done(function(data) {
-                        $('body').append(data);
+                        var data = JSON.parse(data);
+                        
+                        $('.notice_title').text(data.day_antreten + ', ' + data.date_antreten);
+                        $('.notice_start').text(data.datetime_antreten);
+                        $('.notice_end').text(data.datetime_abtreten);
+                        $('.notice_content').html(data.notice_content);
+                
+                        /*$('body').append(data);*/
                         $('.overlay').css('display', 'block');
                         $('.overlay').animate({
                             opacity: 1
                         }, 200);
-                        console.log(data);
 
                         //add event handlers
                         $('.closeModal').click(function(event) {
@@ -112,6 +118,11 @@
     }
 </script>
 
+<style>
+
+
+</style>
+
 <div id="top_image" class="parallax" data-image="<?php echo URL; ?>public/images/orion-skitag.jpg" data-with="1600" data-height="1200" data-container-height="350" data-posy="140">
     <div id="top_image_description">Orion Skitag 2014</div>
 </div>
@@ -191,5 +202,15 @@
 
         </section>
     </aside>
+    <div class="overlay">
+        <section class="modal rounded">
+            <a class="closeModal" href="close_notice"></a>
+            <h2 class="notice_title"></h2>
+            <h4 style="font-size: 22px;display: inline-block; width: 50%">Antreten</h4><h4 style="font-size: 22px;display: inline-block; width: 50%">Abtreten</h4><br />
+            <span class="notice_start" style="display: inline-block; width: 49%"></span>
+            <span class="notice_end" style="display: inline-block; width: 49%"></span><br />
+            <h4 style="font-size: 22px;margin-top: 20px;">Details</h4><p class="notice_content"></p>
+        </section>
+    </div>
 </div>
 

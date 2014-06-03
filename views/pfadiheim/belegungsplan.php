@@ -147,7 +147,11 @@
         Stationsstrasse 33<br />
         8544 Sulz-Rickenbach<br /><br />
         Telefon: 052 337 24 27<br />
-        E-Mail: <a href="mailto:heimverwaltung@pfadiorion.ch?Subject=Heimreservation">heimverwaltung@pfadiorion.ch</a></p><br />
+        E-Mail: <script>
+                    document.write(
+                        '<a href="mailto:heimverwaltung@pfadiorion.ch?Subject=Heimreservation">heimverwaltung@pfadiorion.ch</a>'
+                    );
+                </script></p><br />
         <?php
         //load calendar
         if ($this->calendar) {
