@@ -143,6 +143,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: none;
+    
+    display: none;
 }
 
 #notice_back_button:hover{
