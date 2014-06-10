@@ -175,6 +175,7 @@
     #ph_top{
         height: auto;
         min-height: 0;
+        margin-top: -40px;
     }
     #ph_info_wrapper {
         width: 100%;
@@ -303,7 +304,7 @@
 @media screen and (min-width: 0px) and (max-width: 800px) {
     .royalSlider.heroSlider,
     .royalSlider.heroSlider .rsOverflow {
-        height: 300px !important;
+        height: 220px !important;
     }
     .infoBlock {
         padding: 10px;

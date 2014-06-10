@@ -73,7 +73,7 @@
                 document.getServerUrl = function() {
                     return "<?php echo URL; ?>";
                 };
-                
+
                 colors = {
                     red: '#CC3D18',
                     violet: '#4710B5',
@@ -83,9 +83,12 @@
             }());
 
             $(window).load(function() {
-                $('#this_is_the_beta_site').on('click', function(){
+                $('#this_is_the_beta_site').on('click', function() {
                     $(this).fadeOut(500);
                 });
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    $('html').addClass('mobile');
+                }
             });
         </script>
         <style>
@@ -104,7 +107,7 @@
             #this_is_the_beta_site{
                 /*remove*/
                 display: none;
-                
+
                 height: 30px;
                 width: 100%;
                 background-color: #ff0000;
@@ -124,8 +127,10 @@
                 background-repeat: no-repeat;
                 background-size: 26px;
                 width: 450px;
+                margin-top: -20px;
                 margin-left: calc(50% - 290px);
                 cursor: pointer;
+                text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
             }
             #orion_location p{
                 color: #fff;
@@ -156,7 +161,7 @@
             <nav id="small_nav"></nav> 
 
             <?php if ($url[0] == "index" || empty($url[0])): ?>
-                
+
                 <div id="top_title">
                     <h1>Pfadi Orion</h1>
                     <a id="orion_location" href="https://www.google.com/maps/place/Rickenbach+sulz" target="blank">
@@ -165,7 +170,7 @@
                         </div> 
                     </a>                     
                     <h2 style="cursor: pointer;">Erfahre mehr über uns</h2>   
-                    <h2 style="margin-top: -50px;font-size: 130px; text-align: center; cursor: pointer;">v</h2>
+                    <h2 style="margin-top: -30px;font-size: 70px; text-align: center; cursor: pointer;">v</h2>
                 </div>
             <?php endif; ?>                  
         </header>

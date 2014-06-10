@@ -24,17 +24,20 @@
             $.post(elem.attr('href'))
                     .done(function(data) {
                         var data = JSON.parse(data);
-                        
-                        $('.notice_title').text(data.day_antreten + ', ' + data.date_antreten);
-                        $('.notice_start').text(data.datetime_antreten);
-                        $('.notice_end').text(data.datetime_abtreten);
-                        $('.notice_content').html(data.notice_content);
-                
-                        /*$('body').append(data);*/
+                        console.log(data);
+
+                        $('#notice_title').text(data.day_antreten + ', ' + data.date_antreten);
+                        $('#notice_start').text(data.datetime_antreten + ' Uhr, ' + data.place_antreten);
+                        $('#notice_end').text(data.datetime_abtreten + ' Uhr, ' + data.place_abtreten);
+                        $('#notice_content').html(data.notice_content);
+
                         $('.overlay').css('display', 'block');
                         $('.overlay').animate({
                             opacity: 1
                         }, 200);
+                        if ($(window).width() < 760) {
+                            $('#main_container').hide();
+                        }
 
                         //add event handlers
                         $('.closeModal').click(function(event) {
@@ -42,7 +45,7 @@
                             $('.overlay').animate({
                                 opacity: 0
                             }, 200, function() {
-                                $('.overlay').remove();
+                                $('.overlay').hide();
                             });
                         });
 
@@ -95,6 +98,11 @@
                 opacity: 1
             });
         }
+
+        $('#notice_back_button').on('click', function() {
+            $('.overlay').css('display', 'none');
+            $('#main_container').show();
+        });
     });
 
     $(window).on('load', function() {
@@ -115,13 +123,14 @@
             $('aside.main_sidebar').remove();
             $('#main_container').append('<aside class="main_sidebar">' + sidebar + '</aside>');
         }
+
+        if ($('.overlay').is(':visible') && $(window).width() < 760) {
+            $('#main_container').hide();
+        } else {
+            $('#main_container').show();
+        }
     }
 </script>
-
-<style>
-
-
-</style>
 
 <div id="top_image" class="parallax" data-image="<?php echo URL; ?>public/images/orion-skitag.jpg" data-with="1600" data-height="1200" data-container-height="350" data-posy="140">
     <div id="top_image_description">Orion Skitag 2014</div>
@@ -202,15 +211,20 @@
 
         </section>
     </aside>
-    <div class="overlay">
-        <section class="modal rounded">
-            <a class="closeModal" href="close_notice"></a>
-            <h2 class="notice_title"></h2>
-            <h4 style="font-size: 22px;display: inline-block; width: 50%">Antreten</h4><h4 style="font-size: 22px;display: inline-block; width: 50%">Abtreten</h4><br />
-            <span class="notice_start" style="display: inline-block; width: 49%"></span>
-            <span class="notice_end" style="display: inline-block; width: 49%"></span><br />
-            <h4 style="font-size: 22px;margin-top: 20px;">Details</h4><p class="notice_content"></p>
-        </section>
-    </div>
 </div>
 
+<div class="overlay">
+    <div id="notice_overlay">
+        <a class="closeModal" href="close_notice"></a>
+        <h2 id="notice_title"></h2>
+        <div class="notice_time">
+            <h4>Antreten</h4>
+            <div id="notice_start"></div>
+        </div><div class="notice_time">                
+            <h4>Abtreten</h4>
+            <div id="notice_end"></div>
+        </div><br />
+        <h4 id="notice_content_title">Details</h4><p id="notice_content"></p>
+        <div id="notice_back_button">Zurück</div>
+    </div>
+</div>

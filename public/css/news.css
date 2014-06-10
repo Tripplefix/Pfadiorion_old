@@ -86,11 +86,77 @@
     opacity: 0;
 }
 
-.modal{
+/* notice_overlay */
+#notice_overlay{
     width: 600px;
     height: auto;
 
     position: relative;
+    top: 20%;
+    left: 50%;
+    margin-left: -330px;
+
+    padding: 10px 10px 30px 30px;
+
+    background-color: #FFF;
+}
+
+.notice_time{
+    display: inline-block; 
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+#notice_overlay h4{
+    font-size: 22px;
+}
+
+#notice_content_title{
+    margin-top: 20px;
+    display: initial; 
+    width: 100%;
+}
+/*#notice_back_button{
+    width: 200px;
+    height: 60px;
+    font-size: 30px;
+
+    display: inline-block;
+    vertical-align: top;
+    background-color: #F0F0F0;
+    border: 1px solid #CCCBCB;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity .2s;
+    margin-top: 10px;
+    display:none;
+}*/
+#notice_back_button{
+    width: 200px;
+    padding: 8px 5%;
+    margin: 50px auto;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #CC3D18;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: none;
+}
+
+#notice_back_button:hover{
+    background-color: #DA512D;
+    border-bottom: 4px solid #CC3D18;
+    padding-bottom: 4px;
+    text-decoration:none;
+}
+
+.modal{
+    width: 600px;
+    height: auto;
+
+    position: absolute;
     top: 20%;
     left: 50%;
     margin-left: -330px;
@@ -432,4 +498,37 @@ table#event_table tbody{
     #newsfeed h2 {
         font-size: 140%;
     }
+    .overlay{
+        height: initial;
+        position: absolute;
+    }
+    #notice_overlay {
+        width: 100%;
+        top: 75px;
+        left: 0;
+        margin: 0;
+        height: 100%;
+        padding: 30px 20px;
+        font-size: 18px;
+    }    
+    #notice_overlay h2{
+        font-size: 30px;
+        margin: 10px 0 35px 0;
+    }
+    #notice_overlay h4{
+        font-size: 22px;
+    }
+    .notice_time{
+        display: inline-block; 
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+    .closeModal{
+        display: none;
+    }
+    #notice_back_button{
+        display: block;
+        
+    }
+    
 }

@@ -110,8 +110,14 @@
             });
 
             $('#ph_details_button').click(function() {
+                var offset;
+                if($('html').hasClass('mobile')){
+                    offset = $('#map-canvas').offset().top - 75
+                }else{                        
+                    offset = $('#map-canvas').offset().top
+                }
                 $('body, html').animate({
-                    scrollTop: $('#map-canvas').offset().top - 75
+                    scrollTop: offset
                 }, {
                     duration: 1000,
                     queue: false,
@@ -187,6 +193,7 @@
     })();
 </script>
 
+<h1 style="display: none;">Pfadiheim Im Sandacker</h1>
 <div id="main_container">
     <div id="ph_top">
         <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1400px;margin: 60px auto 24px;">

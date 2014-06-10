@@ -32,6 +32,7 @@
                 imgWidth: 1400,
                 imgHeight: 933
             });
+            
             if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
                 $('#main_header').removeClass("parallax");
                 $('#main_header').height($(window).height());
@@ -42,6 +43,10 @@
                 });
                 $('#big_nav').css({transition: 'none', position: 'absolute'});
             }
+            
+            $('#impressions_slider_fullscreen').on('click', function(){
+                $("#impressions_slider").royalSlider('enterFullscreen');
+            });
         });
 
         $(window).on("load", function() {
@@ -87,12 +92,15 @@
     </section><!-- Eindrücke -->
     <section id="impressions">
         <h2>Eindrücke</h2>
-        <div id="impressions_slider" class="royalSlider heroSlider rsMinW">
+        <div id="impressions_slider" class="royalSlider rsMinW">
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/5.jpg">SoLa 2012</a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/2.jpg">HeLa 2013</a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/3.jpg">PfiLa 2012</a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/4.jpg">Schauenbergtippel 2013</a>
             <a class="rsImg" href="<?php echo URL; ?>views/index/images/1.jpg">HeLa 2013</a>
+        </div>
+        <div id="impressions_slider_fullscreen" class="no_select">
+            Vollbild
         </div>
     </section>
     <!-- was ist Pfadi -->
