@@ -58,7 +58,7 @@ class News_Model extends Model {
     }
     
     public function showRecentEvents(){
-        $sth = $this->db->prepare("SELECT * FROM events WHERE event_date > :now ORDER BY event_date DESC LIMIT 3");
+        $sth = $this->db->prepare("SELECT * FROM events WHERE event_date > :now ORDER BY event_date LIMIT 3");
         $sth->execute(array(':now' => strtotime(date('Y-m-d'))));
         return $sth->fetchAll();
     }
