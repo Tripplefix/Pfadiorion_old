@@ -128,7 +128,7 @@
                 background-size: 26px;
                 width: 450px;
                 margin-top: -20px;
-                margin-left: calc(50% - 290px);
+                margin-left: calc(50% - 420px);
                 cursor: pointer;
                 text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
             }
