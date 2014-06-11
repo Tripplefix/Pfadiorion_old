@@ -1,6 +1,6 @@
 <script>
     $(function() {
-        var url = document.getServerUrl();
+        var url = Orion.url();
         var fullUrl = document.URL;
         var site = fullUrl.replace(url, '').replace('/', '');
 
@@ -19,7 +19,7 @@
             });
         }
         
-        $('#small_scout_lily').attr('fill', colors.black);        
+        $('#small_scout_lily').attr('fill', Orion.colors.black);        
 
         $('#small_scout_lily').on("click", function() {
             $('body, html').animate({

@@ -12,14 +12,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="<?php echo URL; ?>public/images/favicon.gif" type="image/gif">
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/custom.js"></script>
-        <script src="<?php echo URL; ?>public/js/navigation.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.slides.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.scrollTo.min.js" type="text/javascript"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.easing.1.3.js" type="text/javascript"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
         <?php
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
@@ -32,7 +24,6 @@
         }
         ?>
         <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/main.css" />
-        <!-- <script src="<?php echo URL; ?>public/js/less-1.5.0.min.js" type="text/javascript"></script> -->
 
         <!-- webfonts -->
         <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
@@ -41,6 +32,9 @@
 
         <!-- parallax plugin -->
         <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.css" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="<?php echo URL; ?>public/js/Orion.js"></script>
         <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
         <!--[if lt IE 9]>
             <script>
@@ -53,6 +47,7 @@
             </script>
          <![endif]-->
         <script>
+            //Google Analytics
             (function(i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function() {
@@ -69,26 +64,27 @@
             ga('require', 'displayfeatures');
             ga('send', 'pageview');
 
-            (function() {
-                document.getServerUrl = function() {
-                    return "<?php echo URL; ?>";
-                };
+            $(function() {
+                Orion.init({
+                    serverUrl: '<?php echo URL; ?>'
+                });
+                var scripts = [
+                    "<?php echo URL; ?>public/js/jquery.slides.min.js",
+                    "<?php echo URL; ?>public/js/jquery.scrollTo.min.js",
+                    "<?php echo URL; ?>public/js/jquery.easing.1.3.js",
+                    "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+                ];
+                Orion.loadScripts(scripts);
 
-                colors = {
-                    red: '#CC3D18',
-                    violet: '#4710B5',
-                    white: '#FFF',
-                    black: '#000'
-                }
-            }());
+                /*scripts.forEach(function loadScripts(item, i) {
+                    Orion.loadScript(item);
+                });*/
 
-            $(window).load(function() {
-                $('#this_is_the_beta_site').on('click', function() {
+
+                // only for beta DO NOT INCLUDE IN RELEASE
+                $('body').on('click', '#this_is_the_beta_site', function() {
                     $(this).fadeOut(500);
                 });
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    $('html').addClass('mobile');
-                }
             });
         </script>
         <style>

@@ -1,20 +1,15 @@
 <script>
-    //var red = '#CF5C3F';
-    var red = '#CC3D18',
-            violet = '#4710B5',
-            white = '#FFF',
-            black = '#000';
 
     var sidebar;
     $(function() {
         sidebar = $('aside.main_sidebar').html();
         setSidebar();
-        $('#tablet_nav_container .scout_lily').attr('fill', black);
+        $('#tablet_nav_container .scout_lily').attr('fill', Orion.colors.black);
 
         $('#main_scout_lily').mouseenter(function() {
-            $('#tablet_nav_container .scout_lily').attr('fill', red);
+            $('#tablet_nav_container .scout_lily').attr('fill', Orion.colors.red);
         }).mouseleave(function() {
-            $('#tablet_nav_container .scout_lily').attr('fill', black);
+            $('#tablet_nav_container .scout_lily').attr('fill', Orion.colors.black);
         });
 
         $('.notice_link').click(function(event) {
@@ -24,7 +19,6 @@
             $.post(elem.attr('href'))
                     .done(function(data) {
                         var data = JSON.parse(data);
-                        console.log(data);
 
                         $('#notice_title').text(data.day_antreten + ', ' + data.date_antreten);
                         $('#notice_start').text(data.datetime_antreten + ' Uhr, ' + data.place_antreten);
@@ -63,7 +57,6 @@
                         $('.overlay').animate({
                             opacity: 1
                         }, 200);
-                        console.log(data);
 
                         //add event handlers
                         $('.closeModal').click(function(event) {
@@ -79,7 +72,7 @@
         });
 
         //if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
-        if ($('html').hasClass('ie8') || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if ($('html').hasClass('ie8') || Orion.isMobile()) {
             $('#top_image').removeClass("parallax");
             $('#top_image').height(350);
             $('#top_image').css({
@@ -89,7 +82,7 @@
                 backgroundPositionY: '-100px',
             });
         }
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (Orion.isMobile()) {
             $('#top_image').css({
                 height: '250px'
             });
@@ -110,7 +103,6 @@
             parallax: 0.6
         });
         $('body').css({display: 'block'});
-        console.log(sidebar);
     });
 
     $(window).on('resize', setSidebar);

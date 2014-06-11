@@ -2,73 +2,71 @@
 <link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
 <link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
 <script>
-    (function() {
-        $(function() {
-            $('#main_header').data("container-height", $(window).height());
-            $('#top_title h2').on("click", function(evt) {
-                evt.preventDefault();
-                $('body, html').animate({
-                    scrollTop: $('#main_container').offset().top
-                }, {
-                    duration: 1500,
-                    queue: false,
-                    easing: 'easeInOutQuart'
-                });
-            });
-            $("#impressions_slider").royalSlider({
-                fullscreen: {
-                    enabled: true,
-                    nativeFS: false
-                },
-                controlNavigation: 'bullets',
-                arrowsNav: true,
-                keyboardNavEnabled: true,
-                autoScaleSlider: true,
-                autoScaleSliderWidth: 1400,
-                autoScaleSliderHeight: 600,
-                imageScaleMode: 'fill',
-                globalCaption: true,
-                arrowsNavAutoHide: false,
-                imgWidth: 1400,
-                imgHeight: 933
-            });
-            
-            if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
-                $('#main_header').removeClass("parallax");
-                $('#main_header').height($(window).height());
-                $('#main_header').css({
-                    backgroundImage: 'url("<?php echo URL; ?>public/images/DSCF1444.jpg")',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '115%'
-                });
-                $('#big_nav').css({transition: 'none', position: 'absolute'});
-            }
-            
-            $('#impressions_slider_fullscreen').on('click', function(){
-                $("#impressions_slider").royalSlider('enterFullscreen');
+    $(function() {
+        $('#main_header').data("container-height", $(window).height());
+        $('#top_title h2').on("click", function(evt) {
+            evt.preventDefault();
+            $('body, html').animate({
+                scrollTop: $('#main_container').offset().top
+            }, {
+                duration: 1500,
+                queue: false,
+                easing: 'easeInOutQuart'
             });
         });
-
-        $(window).on("load", function() {
-            $('#main_header').parallax({
-                parallax: 0.6
-            });
-            $('body').css({display: 'block'});
+        $("#impressions_slider").royalSlider({
+            fullscreen: {
+                enabled: true,
+                nativeFS: false
+            },
+            controlNavigation: 'bullets',
+            arrowsNav: true,
+            keyboardNavEnabled: true,
+            autoScaleSlider: true,
+            autoScaleSliderWidth: 1400,
+            autoScaleSliderHeight: 600,
+            imageScaleMode: 'fill',
+            globalCaption: true,
+            arrowsNavAutoHide: false,
+            imgWidth: 1400,
+            imgHeight: 933
         });
 
-        $(window).on("resize", function() {
-            var winHeight = $(window).height();
-            $('#main_header').height(winHeight);
-            $('#main_header').data("container-height", winHeight);
-            $('.parallax_container').height(winHeight);
-        });
-
-        function organigramm() {
-            $('#org_elem').hover(function() {
-                $(this).attr("style", "filter:url(#dropshadow_org)");
+        if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+            $('#main_header').removeClass("parallax");
+            $('#main_header').height($(window).height());
+            $('#main_header').css({
+                backgroundImage: 'url("<?php echo URL; ?>public/images/DSCF1444.jpg")',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '115%'
             });
+            $('#big_nav').css({transition: 'none', position: 'absolute'});
         }
-    })();
+
+        $('#impressions_slider_fullscreen').on('click', function() {
+            $("#impressions_slider").royalSlider('enterFullscreen');
+        });
+    });
+
+    $(window).on("load", function() {
+        $('#main_header').parallax({
+            parallax: 0.6
+        });
+        $('body').css({display: 'block'});
+    });
+
+    $(window).on("resize", function() {
+        var winHeight = $(window).height();
+        $('#main_header').height(winHeight);
+        $('#main_header').data("container-height", winHeight);
+        $('.parallax_container').height(winHeight);
+    });
+
+    function organigramm() {
+        $('#org_elem').hover(function() {
+            $(this).attr("style", "filter:url(#dropshadow_org)");
+        });
+    }
 </script>
 <div id="main_container">   
     <!-- unsere Abteilung -->
