@@ -21,19 +21,19 @@
         });
 
         $('#create_notice_form').submit(function(event) {
-            
-            $('td[data-group-id]').each(function(){
-                if($(this).attr("data-group-id") === $('#selected_notice_group').val()){
+
+            $('td[data-group-id]').each(function() {
+                if ($(this).attr("data-group-id") === $('#selected_notice_group').val()) {
                     event.preventDefault();
                     $.notify("Ein aktueller Eintrag für diese Gruppe ist bereits vorhanden!", "warn");
                 }
             });
         });
-         // Stop form from submitting normally
-         //event.preventDefault();
-         //console.log($(this).serialize());
-         
-         /*$.post($(this).attr('action'), $(this).serialize())
+        // Stop form from submitting normally
+        //event.preventDefault();
+        //console.log($(this).serialize());
+
+        /*$.post($(this).attr('action'), $(this).serialize())
          .done(function(data) {
          $.notify("Onlineanschlag wurde erfolgreich erfasst!", "success");
          $('#create_notice_form').delay(1000).hide(1500);
@@ -108,6 +108,73 @@
     .clearAll{
         clear: both;
     }
+
+
+    #notice_preview{
+        width: 600px;
+        height: auto;
+        margin-bottom: 60px;
+
+        padding: 10px 10px 30px 30px;
+
+        background-color: #FFF;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6);        
+    }
+
+    .notice_preview_time{
+        display: inline-block; 
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    #notice_preview h2{
+        font-size: 32px;
+        margin: 10px 0 10px 0;
+        font-weight: bold;
+    }
+
+    #notice_preview h4{
+        font-size: 22px;
+    }
+
+    #notice_preview_content_title{
+        margin-top: 20px;
+        display: initial; 
+        width: 100%;
+    }
+
+    #notice_preview_back_button{
+        width: 200px;
+        padding: 8px 5%;
+        margin: 50px auto;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 26px;
+        background-color: #CC3D18;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: none;
+
+        display: none;
+    }
+
+    #notice_preview_back_button:hover{
+        background-color: #DA512D;
+        border-bottom: 4px solid #CC3D18;
+        padding-bottom: 4px;
+        text-decoration:none;
+    }
+
+    #close_preview{
+        width: 32px;
+        height: 32px;
+        float: right;
+
+        cursor: pointer;
+
+        background-image: url('../images/close.png');
+    }
 </style>
 
 <div class="content">
@@ -121,6 +188,22 @@
     ?>
 
     <h1 id="create_notice" style="cursor: pointer;">Erstelle einen neuen Anschlag</h1>
+
+
+    <div id="notice_preview">
+        <a id="close_preview" href="close_notice"></a>
+        <h2 id="notice_preview_title">Wochentag, Datum</h2>
+        <div class="notice_preview_time">
+            <h4>Antreten</h4>
+            <div id="notice_preview_start">Zeit, Ort</div>
+        </div><div class="notice_preview_time">                
+            <h4>Abtreten</h4>
+            <div id="notice_preview_end">Zeit, Ort</div>
+        </div><br />
+        <h4 id="notice_preview_content_title">Details</h4><p id="notice_preview_content">Details</p>
+        <div id="notice_preview_back_button">Zurück</div>
+    </div>
+
 
     <form id="create_notice_form" method="post" action="<?php echo URL; ?>admin/notice/create">
 
