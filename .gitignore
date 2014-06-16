@@ -216,3 +216,5 @@ pip-log.txt
 nbproject/private/private.properties
 nbproject/private/private.xml
 nbproject/private/private.properties
+/public/css/dev/
+/public/js/dev/

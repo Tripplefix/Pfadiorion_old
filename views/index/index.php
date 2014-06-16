@@ -1,38 +1,49 @@
-<script src="<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js"></script>
+<!-- <script src="<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js"></script>
 <link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
-<link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
+<link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet"> -->
 <script>
     $(function() {
-        $('#main_header').data("container-height", $(window).height());
-        $('#top_title h2').on("click", function(evt) {
-            evt.preventDefault();
-            $('body, html').animate({
-                scrollTop: $('#main_container').offset().top
-            }, {
-                duration: 1500,
-                queue: false,
-                easing: 'easeInOutQuart'
-            });
-        });
-        $("#impressions_slider").royalSlider({
-            fullscreen: {
-                enabled: true,
-                nativeFS: false
-            },
-            controlNavigation: 'bullets',
-            arrowsNav: true,
-            keyboardNavEnabled: true,
-            autoScaleSlider: true,
-            autoScaleSliderWidth: 1400,
-            autoScaleSliderHeight: 600,
-            imageScaleMode: 'fill',
-            globalCaption: true,
-            arrowsNavAutoHide: false,
-            imgWidth: 1400,
-            imgHeight: 933
-        });
+        var scripts = [
+            '<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js'
+        ];
+        var styles = [
+            '<?php echo URL; ?>tools/royalslider/royalslider.css',
+            '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
+        ];
+        //Orion.loadScripts(scripts);
+        Orion.loadStyleSheets(styles);
 
-        if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+        $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
+                .done(function(script, textStatus) {
+                    $('#impressions_slider').royalSlider({
+                        fullscreen: {
+                            enabled: true,
+                            nativeFS: false
+                        },
+                        controlNavigation: 'bullets',
+                        arrowsNav: true,
+                        keyboardNavEnabled: true,
+                        autoScaleSlider: true,
+                        autoScaleSliderWidth: 1400,
+                        autoScaleSliderHeight: 600,
+                        imageScaleMode: 'fill',
+                        globalCaption: true,
+                        arrowsNavAutoHide: false,
+                        imgWidth: 1400,
+                        imgHeight: 933
+                    });
+
+                    $('#impressions_slider_fullscreen').on('click', function() {
+                        $('#impressions_slider').royalSlider('enterFullscreen');
+                    });
+                })
+                .fail(function(jqxhr, settings, exception) {
+                    $("div.log").text("Triggered ajaxError handler.");
+                });
+
+        $('#main_header').data('container-height', $(window).height());
+
+        if ($('html').hasClass('ie8') || navigator.platform.indexOf('iPad') != -1) {
             $('#main_header').removeClass("parallax");
             $('#main_header').height($(window).height());
             $('#main_header').css({
@@ -42,29 +53,35 @@
             });
             $('#big_nav').css({transition: 'none', position: 'absolute'});
         }
-
-        $('#impressions_slider_fullscreen').on('click', function() {
-            $("#impressions_slider").royalSlider('enterFullscreen');
-        });
     });
 
-    $(window).on("load", function() {
+    $(window).on('load', function() {
         $('#main_header').parallax({
             parallax: 0.6
+        });
+        $('body').on('click', '#top_title h2', function(evt) {
+            evt.preventDefault();
+            $('body, html').animate({
+                scrollTop: $('#main_container').offset().top
+            }, {
+                duration: 1500,
+                queue: false,
+                easing: 'easeInOutQuart'
+            });
         });
         $('body').css({display: 'block'});
     });
 
-    $(window).on("resize", function() {
+    $(window).on('resize', function() {
         var winHeight = $(window).height();
         $('#main_header').height(winHeight);
-        $('#main_header').data("container-height", winHeight);
+        $('#main_header').data('container-height', winHeight);
         $('.parallax_container').height(winHeight);
     });
 
     function organigramm() {
         $('#org_elem').hover(function() {
-            $(this).attr("style", "filter:url(#dropshadow_org)");
+            $(this).attr('style', 'filter:url(#dropshadow_org)');
         });
     }
 </script>
@@ -91,11 +108,11 @@
     <section id="impressions">
         <h2>Eindrücke</h2>
         <div id="impressions_slider" class="royalSlider rsMinW">
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/5.jpg">SoLa 2012</a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/2.jpg">HeLa 2013</a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/3.jpg">PfiLa 2012</a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/4.jpg">Schauenbergtippel 2013</a>
-            <a class="rsImg" href="<?php echo URL; ?>views/index/images/1.jpg">HeLa 2013</a>
+            <a class="rsImg" data-rsBigImg="<?php echo URL; ?>views/index/images/5_big.jpg" href="<?php echo URL; ?>views/index/images/5.jpg">SoLa 2012</a>
+            <a class="rsImg" data-rsBigImg="<?php echo URL; ?>views/index/images/2_big.jpg" href="<?php echo URL; ?>views/index/images/2.jpg">HeLa 2013</a>
+            <a class="rsImg" data-rsBigImg="<?php echo URL; ?>views/index/images/3_big.jpg" href="<?php echo URL; ?>views/index/images/3.jpg">PfiLa 2012</a>
+            <a class="rsImg" data-rsBigImg="<?php echo URL; ?>views/index/images/4_big.jpg" href="<?php echo URL; ?>views/index/images/4.jpg">Schauenbergtippel 2013</a>
+            <a class="rsImg" data-rsBigImg="<?php echo URL; ?>views/index/images/1_big.jpg" href="<?php echo URL; ?>views/index/images/1.jpg">HeLa 2013</a>
         </div>
         <div id="impressions_slider_fullscreen" class="no_select">
             Vollbild

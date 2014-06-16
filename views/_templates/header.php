@@ -19,23 +19,21 @@
         $url = explode('/', $url);
 
         $url[0] = !empty($url[0]) ? $url[0] : "index";
-        if (file_exists('public/css/' . $url[0] . '.css')) {
-            echo '<link rel="stylesheet" type="text/css" href="' . URL . 'public/css/' . $url[0] . '.css" />';
+        if (file_exists('public/css/' . $url[0] . '.min.css')) {
+            echo '<link rel="stylesheet" type="text/css" href="' . URL . 'public/css/' . $url[0] . '.min.css" />';
         }
         ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/main.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.min.css" />
 
         <!-- webfonts -->
         <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
         <!-- parallax plugin -->
-        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.css" />
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/Orion.js"></script>
-        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
+        <script src="<?php echo URL; ?>public/js/Orion.min.js"></script>
+        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.min.js"></script>
         <!--[if lt IE 9]>
             <script>
                document.createElement('header');
@@ -69,17 +67,12 @@
                     serverUrl: '<?php echo URL; ?>'
                 });
                 var scripts = [
-                    "<?php echo URL; ?>public/js/jquery.slides.min.js",
-                    "<?php echo URL; ?>public/js/jquery.scrollTo.min.js",
-                    "<?php echo URL; ?>public/js/jquery.easing.1.3.js",
-                    "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+                    '<?php echo URL; ?>public/js/jquery.slides.min.js',
+                    '<?php echo URL; ?>public/js/jquery.scrollTo.min.js',
+                    '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js',
+                    'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'
                 ];
                 Orion.loadScripts(scripts);
-
-                /*scripts.forEach(function loadScripts(item, i) {
-                    Orion.loadScript(item);
-                });*/
-
 
                 // only for beta DO NOT INCLUDE IN RELEASE
                 $('body').on('click', '#this_is_the_beta_site', function() {
@@ -87,19 +80,8 @@
                 });
             });
         </script>
-        <style>
-            #logged_in_panel{
-                position: fixed;
-                top: 0;
-                left: 100px;
-                padding: 10px 10px 5px 10px;
-                height: 30px;
-                background-color: #1e2029;
-                z-index: 901;
-            }
-            #logged_in_panel form{
-                color: #FFF;
-            }    
+        <style>    
+            /* only for beta DO NOT INCLUDE IN RELEASE */
             #this_is_the_beta_site{
                 /*remove*/
                 display: none;
@@ -117,24 +99,6 @@
             }
             #this_is_the_beta_site a{
                 color: #FFF;
-            }
-            #orion_location{
-                background-image: url('<?php echo URL; ?>public/images/4i97rLRiE.png');
-                background-repeat: no-repeat;
-                background-size: 26px;
-                width: 450px;
-                margin-top: -20px;
-                margin-left: calc(50% - 420px);
-                cursor: pointer;
-                text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
-            }
-            #orion_location p{
-                color: #fff;
-                text-align: center;
-                margin-left: -14%;
-                font-size: 28px;
-                margin-bottom: 30px;
-                margin-left: 10px;
             }
         </style>
     </head>
