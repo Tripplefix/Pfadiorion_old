@@ -1,202 +1,205 @@
-<?php ?>
-<script src="<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js"></script>
-<link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
-<link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
+
 <script>
-    (function() {
-        /* Google Maps */
-        var sulz = new google.maps.LatLng(47.505964, 8.787713);
-        var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
-        var marker;
-        var map;
 
-        function initialize() {
-            var mapOptions = {
-                scrollwheel: true,
-                zoom: 13,
-                center: sulz
-            };
+    $(function() {
+        var styles = [
+            '<?php echo URL; ?>tools/royalslider/royalslider.css',
+            '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
+        ];
+        Orion.loadStyleSheets(styles);
 
-            map = new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
-
-            marker = new google.maps.Marker({
-                map: map,
-                draggable: true,
-                animation: google.maps.Animation.DROP,
-                position: phSandacker
-            });
-            google.maps.event.addListener(marker, 'click', toggleBounce);
-        }
-
-        function toggleBounce() {
-            if (marker.getAnimation() != null) {
-                marker.setAnimation(null);
-            } else {
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-
-        //var red = '#CF5C3F';
-        var red = '#CC3D18',
-                violet = '#4710B5',
-                white = '#FFF',
-                black = '#000';
-
-        $(function() {
-            $('#ph_top').css({
-                height: ($(window).height() - 120)
-            });
-            $("#full-width-slider").royalSlider({
-                arrowsNav: true,
-                loop: false,
-                keyboardNavEnabled: true,
-                controlsInside: false,
-                imageScaleMode: 'fill',
-                arrowsNavAutoHide: false,
-                autoScaleSlider: true,
-                autoScaleSliderWidth: 960,
-                autoScaleSliderHeight: 350,
-                controlNavigation: 'bullets',
-                thumbsFitInViewport: false,
-                navigateByClick: true,
-                startSlideId: 0,
-                autoPlay: false,
-                transitionType: 'move',
-                globalCaption: true,
-                deeplinking: {
-                    enabled: true,
-                    change: false
-                },
-                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                imgWidth: 1400,
-                imgHeight: 933
-            });
-
-            $('.scout_lily').attr('fill', black);
-
-            $('#main_scout_lily').mouseenter(function() {
-                $('.scout_lily').attr('fill', red);
-            }).mouseleave(function() {
-                $('.scout_lily').attr('fill', black);
-            });
-
-            $('.notice_link').click(function(event) {
-                event.preventDefault();
-                var elem = $(this);
-
-                $.post(elem.attr('href'))
-                        .done(function(data) {
-                            $('body').append(data);
-                            $('.overlay').css('display', 'block');
-                            $('.overlay').animate({
-                                opacity: 1
-                            }, 200);
-                            console.log(data);
-
-                            //add event handlers
-                            $('.closeModal').click(function(event) {
-                                event.preventDefault();
-                                $('.overlay').animate({
-                                    opacity: 0
-                                }, 200, function() {
-                                    $('.overlay').remove();
-                                });
-                            });
-
-                        });
-            });
-
-            $('#ph_details_button').click(function() {
-                var offset;
-                if($('html').hasClass('mobile')){
-                    offset = $('#map-canvas').offset().top - 75
-                }else{                        
-                    offset = $('#map-canvas').offset().top
-                }
-                $('body, html').animate({
-                    scrollTop: offset
-                }, {
-                    duration: 1000,
-                    queue: false,
-                    easing: 'easeInOutQuint'
+        $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
+                .done(function(script, textStatus) {
+                    $("#full-width-slider").royalSlider({
+                        arrowsNav: true,
+                        loop: false,
+                        keyboardNavEnabled: true,
+                        controlsInside: false,
+                        imageScaleMode: 'fill',
+                        arrowsNavAutoHide: false,
+                        autoScaleSlider: true,
+                        autoScaleSliderWidth: 960,
+                        autoScaleSliderHeight: 350,
+                        controlNavigation: 'bullets',
+                        thumbsFitInViewport: false,
+                        navigateByClick: true,
+                        startSlideId: 0,
+                        autoPlay: false,
+                        transitionType: 'move',
+                        globalCaption: true,
+                        deeplinking: {
+                            enabled: true,
+                            change: false
+                        },
+                        /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                        imgWidth: 1400,
+                        imgHeight: 933
+                    });
+                    $("#full-width-slider").css({opacity: 1});
                 });
-            });
 
-            $('#show_full_maps_button').click(function() {
-                var overlay = $("#google_maps_overlay");
+        $.getScript('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
+                .done(function(script, textStatus) {
 
-                if ($('body').hasClass('mobile')) {
-                    if (overlay.hasClass("hidden")) {
-                        $(this).text("Karte ausblenden");
-                        overlay.removeClass("hidden");
-                        overlay.addClass('mobile_fullsize');
-                        overlay.find('#show_full_maps_button').addClass('mobile_fullsize');
-                        $('#map-canvas').css({zIndex: 952});
-                        map.panTo(phSandacker);
-                    } else {
-                        $(this).text("Ganze Karte anzeigen");
-                        overlay.addClass("hidden");
-                        overlay.removeClass('mobile_fullsize');
-                        overlay.find('#show_full_maps_button').removeClass('mobile_fullsize');
-                        $('#map-canvas').css({zIndex: -2});
-                        map.panTo(sulz);
+                    /* Google Maps */
+                    var sulz = new google.maps.LatLng(47.505964, 8.787713);
+                    var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
+                    var marker;
+                    var map;
+
+                    function initialize() {
+                        var mapOptions = {
+                            scrollwheel: true,
+                            zoom: 13,
+                            center: sulz
+                        };
+
+                        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                mapOptions);
+
+                        marker = new google.maps.Marker({
+                            map: map,
+                            draggable: true,
+                            animation: google.maps.Animation.DROP,
+                            position: phSandacker
+                        });
+                        google.maps.event.addListener(marker, 'click', toggleBounce);
                     }
+
+                    function toggleBounce() {
+                        if (marker.getAnimation() != null) {
+                            marker.setAnimation(null);
+                        } else {
+                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                        }
+                    }
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                });
+        $('#ph_top').css({
+            height: ($(window).height() - 120)
+        });
+
+        $('.scout_lily').attr('fill', Orion.colors.black);
+
+        $('#main_scout_lily').mouseenter(function() {
+            $('.scout_lily').attr('fill', Orion.colors.red);
+        }).mouseleave(function() {
+            $('.scout_lily').attr('fill', Orion.colors.black);
+        });
+
+        $('.notice_link').click(function(event) {
+            event.preventDefault();
+            var elem = $(this);
+
+            $.post(elem.attr('href'))
+                    .done(function(data) {
+                        $('body').append(data);
+                        $('.overlay').css('display', 'block');
+                        $('.overlay').animate({
+                            opacity: 1
+                        }, 200);
+                        console.log(data);
+
+                        //add event handlers
+                        $('.closeModal').click(function(event) {
+                            event.preventDefault();
+                            $('.overlay').animate({
+                                opacity: 0
+                            }, 200, function() {
+                                $('.overlay').remove();
+                            });
+                        });
+
+                    });
+        });
+
+        $('#ph_details_button').click(function() {
+            var offset;
+            if ($('html').hasClass('mobile')) {
+                offset = $('#map-canvas').offset().top - 75
+            } else {
+                offset = $('#map-canvas').offset().top
+            }
+            $('body, html').animate({
+                scrollTop: offset
+            }, {
+                duration: 1000,
+                queue: false,
+                easing: 'easeInOutQuint'
+            });
+        });
+
+        $('#show_full_maps_button').click(function() {
+            var overlay = $("#google_maps_overlay");
+
+            if ($('body').hasClass('mobile')) {
+                if (overlay.hasClass("hidden")) {
+                    $(this).text("Karte ausblenden");
+                    overlay.removeClass("hidden");
+                    overlay.addClass('mobile_fullsize');
+                    overlay.find('#show_full_maps_button').addClass('mobile_fullsize');
+                    $('#map-canvas').css({zIndex: 952});
+                    map.panTo(phSandacker);
                 } else {
-                    if (overlay.hasClass("hidden")) {
-                        overlay.css({height: 750, boxShadow: 'none'});
-                        overlay.removeClass("hidden");
-                        $('#map-canvas').css({zIndex: 0});
-                        $(this).text("Karte ausblenden");
-                        $(this).css({
-                            bottom: '70px',
-                            left: '50px'
-                        });
-                        map.panTo(phSandacker);
-                    } else {
-                        //overlay.css({height: $(window).height() - 640, boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
-                        $('#google_maps_overlay').css({height: '250px', boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
-                        overlay.addClass("hidden");
-                        $('#map-canvas').css({zIndex: -2});
-                        $(this).text("Ganze Karte anzeigen");
-                        $(this).css({
-                            bottom: '560px',
-                            left: 'calc(50% - 130px)'
-                        });
-                        map.panTo(sulz);
-                    }
+                    $(this).text("Ganze Karte anzeigen");
+                    overlay.addClass("hidden");
+                    overlay.removeClass('mobile_fullsize');
+                    overlay.find('#show_full_maps_button').removeClass('mobile_fullsize');
+                    $('#map-canvas').css({zIndex: -2});
+                    map.panTo(sulz);
                 }
-            });
-        });
-
-        $(window).load(function() {
-            /*console.log("page is loaded!");
-             NProgress.done(true);*/
-            $('body').css({display: 'block'});
-            //$('#google_maps_overlay').css({height: $(window).height() - 640});
-            $('#google_maps_overlay').css({height: '250px'});
-        });
-
-        $(window).resize(function() {
-            $('#ph_top').css({
-                height: ($(window).height() - 120)
-            });
-
-            //$('#google_maps_overlay').css({height: $(window).height() - 640});
-            $('#google_maps_overlay').css({height: '250px'});
-            if ($(window).scrollTop() > 900) {
-                $("html, body").scrollTop($('#google_maps_overlay').offset().top);
+            } else {
+                if (overlay.hasClass("hidden")) {
+                    overlay.css({height: 750, boxShadow: 'none'});
+                    overlay.removeClass("hidden");
+                    $('#map-canvas').css({zIndex: 0});
+                    $(this).text("Karte ausblenden");
+                    $(this).css({
+                        bottom: '70px',
+                        left: '50px'
+                    });
+                    map.panTo(phSandacker);
+                } else {
+                    //overlay.css({height: $(window).height() - 640, boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
+                    $('#google_maps_overlay').css({height: '250px', boxShadow: 'rgb(0, 0, 0) 0px -10px 23px -12px inset'});
+                    overlay.addClass("hidden");
+                    $('#map-canvas').css({zIndex: -2});
+                    $(this).text("Ganze Karte anzeigen");
+                    $(this).css({
+                        bottom: '560px',
+                        left: 'calc(50% - 130px)'
+                    });
+                    map.panTo(sulz);
+                }
             }
         });
-    })();
+    });
+
+    $(window).load(function() {
+        /*console.log("page is loaded!");
+         NProgress.done(true);*/
+        $('body').css({display: 'block'});
+        //$('#google_maps_overlay').css({height: $(window).height() - 640});
+        $('#google_maps_overlay').css({height: '250px'});
+    });
+
+    $(window).resize(function() {
+        $('#ph_top').css({
+            height: ($(window).height() - 120)
+        });
+
+        //$('#google_maps_overlay').css({height: $(window).height() - 640});
+        $('#google_maps_overlay').css({height: '250px'});
+        if ($(window).scrollTop() > 900) {
+            $("html, body").scrollTop($('#google_maps_overlay').offset().top);
+        }
+    });
 </script>
 
 <h1 style="display: none;">Pfadiheim Im Sandacker</h1>
 <div id="main_container">
     <div id="ph_top">
-        <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="max-width: 1400px;margin: 60px auto 24px;">
+        <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="opacity: 0; max-width: 1400px;margin: 60px auto 24px;">
             <div class="rsContent">
                 <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8292.jpg" alt="by Kaa">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
@@ -283,8 +286,8 @@
                 Oder E-Mail an
                 <script>
                     document.write(
-                        '<a href="mailto:heimverwaltung@pfadiorion.ch?Subject=Heimreservation">heimverwaltung@pfadiorion.ch</a>'
-                    );
+                            '<a href="mailto:heimverwaltung@pfadiorion.ch?Subject=Heimreservation">heimverwaltung@pfadiorion.ch</a>'
+                            );
                 </script>
             </div><div id="ph_vacancy" class="ph_border">
                 <p>

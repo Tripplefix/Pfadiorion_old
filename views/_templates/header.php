@@ -69,8 +69,7 @@
                 var scripts = [
                     '<?php echo URL; ?>public/js/jquery.slides.min.js',
                     '<?php echo URL; ?>public/js/jquery.scrollTo.min.js',
-                    '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js',
-                    'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'
+                    '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js'
                 ];
                 Orion.loadScripts(scripts);
 
