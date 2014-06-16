@@ -3,14 +3,10 @@
 <link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet"> -->
 <script>
     $(function() {
-        var scripts = [
-            '<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js'
-        ];
         var styles = [
             '<?php echo URL; ?>tools/royalslider/royalslider.css',
             '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
         ];
-        //Orion.loadScripts(scripts);
         Orion.loadStyleSheets(styles);
 
         $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
@@ -36,9 +32,6 @@
                     $('#impressions_slider_fullscreen').on('click', function() {
                         $('#impressions_slider').royalSlider('enterFullscreen');
                     });
-                })
-                .fail(function(jqxhr, settings, exception) {
-                    $("div.log").text("Triggered ajaxError handler.");
                 });
 
         $('#main_header').data('container-height', $(window).height());
