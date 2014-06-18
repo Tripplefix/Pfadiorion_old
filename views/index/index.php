@@ -10,36 +10,31 @@
             '<?php echo URL; ?>tools/royalslider/royalslider.css',
             '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
         ];
-        //Orion.loadScripts(scripts);
-        Orion.loadStyleSheets(styles);
-
-        $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
-                .done(function(script, textStatus) {
-                    $('#impressions_slider').royalSlider({
-                        fullscreen: {
-                            enabled: true,
-                            nativeFS: false
-                        },
-                        controlNavigation: 'bullets',
-                        arrowsNav: true,
-                        keyboardNavEnabled: true,
-                        autoScaleSlider: true,
-                        autoScaleSliderWidth: 1400,
-                        autoScaleSliderHeight: 600,
-                        imageScaleMode: 'fill',
-                        globalCaption: true,
-                        arrowsNavAutoHide: false,
-                        imgWidth: 1400,
-                        imgHeight: 933
-                    });
-
-                    $('#impressions_slider_fullscreen').on('click', function() {
-                        $('#impressions_slider').royalSlider('enterFullscreen');
-                    });
-                })
-                .fail(function(jqxhr, settings, exception) {
-                    $("div.log").text("Triggered ajaxError handler.");
+        Orion.loadStyleSheets(styles, function() {
+            Orion.loadScripts(scripts, function() {
+                $('#impressions_slider').royalSlider({
+                    fullscreen: {
+                        enabled: true,
+                        nativeFS: false
+                    },
+                    controlNavigation: 'bullets',
+                    arrowsNav: true,
+                    keyboardNavEnabled: true,
+                    autoScaleSlider: true,
+                    autoScaleSliderWidth: 1400,
+                    autoScaleSliderHeight: 600,
+                    imageScaleMode: 'fill',
+                    globalCaption: true,
+                    arrowsNavAutoHide: false,
+                    imgWidth: 1400,
+                    imgHeight: 933
                 });
+
+                $('#impressions_slider_fullscreen').on('click', function() {
+                    $('#impressions_slider').royalSlider('enterFullscreen');
+                });
+            });
+        });
 
         $('#main_header').data('container-height', $(window).height());
 

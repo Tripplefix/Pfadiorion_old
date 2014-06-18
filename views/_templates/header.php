@@ -65,6 +65,8 @@
             $(function() {
                 Orion.init({
                     serverUrl: '<?php echo URL; ?>'
+                }, function(){
+                    console.log("loaded");
                 });
                 var scripts = [
                     '<?php echo URL; ?>public/js/jquery.slides.min.js',

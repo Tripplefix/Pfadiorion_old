@@ -1,0 +1,386 @@
+/* 
+    Created on : 03.04.2014, 22:03:50
+    Author     : Rolf
+*/
+
+body{
+    display: none;
+}
+
+#main_header, .parallax-container{
+    min-height: 680px;
+}
+
+#top_title{
+    width: 100%;
+    position: relative;
+    top: 28%;
+}
+
+#top_title h1{
+    font-size: 150px;
+}
+
+#top_title h2{
+    font-size: 34px;
+    margin: 60px 0 10px 0;
+}
+
+#top_title h1, #top_title h2{
+    text-align: center;
+    color: white;
+    font-family: 'Chelsea Market', cursive;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+#big_nav{
+    transition: all .2s;
+}
+
+#big_nav a:link, #big_nav a:visited{
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    color: #FFF;
+}
+
+#big_nav.bignav_hidden{
+    margin-top: -40px;
+    opacity: 0;
+}
+
+#small_nav{
+    position: fixed;
+    background-color: #FFF;
+    margin-top: -60px;
+    transition: .2s all;       
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+    z-index: 900;
+}
+
+#small_nav li.logo, .logo{    
+    vertical-align: middle;
+    padding: 0em 15px 0 15px;
+    line-height: 0;
+}
+
+#small_nav a:link, #small_nav a:visited{
+    display: inline-block;
+    width: 85px;
+    padding: 1em 1em 1em 1em;
+    font-family: 'Denk One', sans-serif;
+}
+
+#small_nav a:hover, #small_nav a:active,
+#small_nav .active a:link, #small_nav .active:visited{
+    color: #CC3D18 !important;
+    text-shadow: none;
+    text-decoration: none;
+}
+
+#small_nav a:link, #small_nav a:visited{
+    color: #000;
+}
+
+#small_scout_lily{
+    border-bottom: none;
+    cursor: pointer;
+}
+
+#main_container{
+    padding-top: 120px;
+    padding-bottom: 90px;
+    background-color: rgba(235, 235, 235, 1);
+    background-image: url('../../public/images/main-bg.jpg');
+    box-shadow: inset 0 25px 25px -30px #000000;
+}
+
+#main_container section{
+    background-color: #FFF;
+    box-shadow: 5px 5px 7px -5px #292929, -5px 0px 10px -7px #292929;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 700px;
+    width: 1200px;
+    margin-bottom: 14%;
+}
+
+#main_container h2{
+    font-family: 'Chelsea Market', cursive;
+    font-size: 55px;
+    text-align: center;
+    margin: 60px 0;
+}
+
+#main_container p{    
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+#orion_location{
+    background-image: url('../../public/images/4i97rLRiE.png');
+    background-repeat: no-repeat;
+    background-size: 26px;
+    width: 450px;
+    margin-top: -20px;
+    margin-left: calc(50% - 420px);
+    cursor: pointer;
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
+}
+#orion_location p{
+    color: #fff;
+    text-align: center;
+    margin-left: -14%;
+    font-size: 28px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+/********************** über uns ***********************/
+#about_us{
+    border-top: 5px solid #FFE000;
+}
+
+#about_us_content{
+    width: 700px;
+    padding: 0 25px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#about_us_image{
+    display: inline-block;
+    width: 450px;
+    margin-top: -41px;
+}
+
+#about_us_image img{
+    width: 700px;
+    margin-left: -250px;
+}
+
+/********************** was ist Pfadi ***********************/
+#whats_scouts{
+    border-top: 5px solid #DD4722;
+}
+
+#whats_scouts div{
+    width: 80%;
+    padding: 0 10%;
+}
+#whats_scouts a{
+    font-size: 100px;
+    text-align: center;
+    display: inherit;
+}
+
+/********************** Eindrücke ***********************/
+#impressions{
+    border-top: 5px solid #3FA750;
+}
+
+#impressions_slider{
+    width: 1000px; 
+    margin: 0 auto;
+}
+.rsMinW,
+.rsMinW .rsOverflow,
+.rsMinW .rsSlide,
+.rsMinW .rsVideoFrameHolder,
+.rsMinW .rsThumbs {
+    background: #FFF !important;
+}
+
+#impressions_slider_fullscreen{
+    width: 200px;
+    padding: 6px 15px; 
+    margin: 20px auto;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #CC3D18;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: none;
+}
+
+#impressions_slider_fullscreen:hover{
+    background-color: #DA512D;
+    border-bottom: 4px solid #CC3D18;
+    padding-bottom: 2px;
+    text-decoration:none;
+}
+
+/********************** organisation ***********************/
+#organigramm{
+    margin: 100px 0;
+    border-top: 5px solid #4C26E0;
+    height: 700px;
+}
+
+#organigramm h2{
+    margin-bottom: 0;
+}
+
+#organigramm svg{
+    width: 900px;
+    height: 700px;
+    margin: 0 150px;
+}
+
+/********************** pfadi beitritt ***********************/
+#join_us { 
+    border-top: 5px solid #FFE000;
+}
+#join_us #join_us_text{
+    width: 80%;
+    padding: 0 100px;
+}
+
+#join_us_button, #contact_us_button{
+    width: 200px;
+    padding: 6px 15px; 
+    margin: 50px 124px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #CC3D18;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: none;
+}
+#join_us_button:hover, #contact_us_button:hover{
+    background-color: #DA512D;
+    border-bottom: 4px solid #CC3D18;
+    padding-bottom: 2px;
+    text-decoration:none;
+}
+
+
+@media screen and (max-width: 1280px) and (min-width: 600px){
+    #main_container section{
+        box-shadow: 0 5px 11px -6px #292929;
+    }
+    #join_us_button, #contact_us_button{
+        margin: 50px 64px;
+    }
+}
+
+@media screen and (max-width: 1280px) and (min-width: 960px){
+    #main_container section{
+        width: 900px;
+    }
+    #main_container p{
+        font-size: 20px;
+    }
+    #main_container h2{
+        font-size: 40px;
+    }
+    #about_us_image img {
+        margin-left: -400px;
+    }
+    #about_us_image {
+        width: 300px;
+    }
+    #about_us_content {
+        width: 550px;
+    }
+    #organigramm svg{
+        width: 750px;
+        height: 550px;
+        margin: 0 60px;
+    }
+    #organigramm section{
+        height: 550px !important;
+    }
+    #impressions_slider{
+        width: 800px; 
+    }
+
+    #impressions_slider_fullscreen{
+        margin: 50px auto;
+    }
+}
+
+@media screen and (max-width: 960px), screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px), screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px){
+    #main_container section{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        margin-bottom: 40px;
+        border-radius: 0;
+    }
+    #about_us_image{
+        display: none;   
+    }
+    #about_us_content{
+        padding: 15px 10%;
+        width: 80%;
+    }
+    #main_container p{
+        font-size: 26px;
+    }
+    #main_container h2{
+        font-size: 50px;
+    }
+
+    #main_header{
+        display: none;
+    }
+    .parallax_parent{
+        display: none;
+    }
+    #whats_scouts a{
+        font-size: 60px;
+        text-align: center;
+        display: inherit;
+    }
+    #organigramm svg{
+        width: 85%;
+        height: 80%;
+        margin: 20px 7.5%;
+    }
+    #join_us #join_us_text{
+        width: 80%;
+        padding: 0 50px;
+    }
+    #impressions_slider_fullscreen{
+        padding: 15px 5%;
+        font-size: 26px !important;
+    }
+    #impressions_slider_fullscreen:hover{
+        padding-bottom: 11px;
+    }
+
+    #join_us_button, #contact_us_button{
+        width: 60%;
+        padding: 15px 5%;
+        margin: 50px 10%;
+        font-size: 26px !important;
+    }
+    #join_us_button:hover, #contact_us_button:hover{
+        padding-bottom: 11px;
+    }
+    #impressions_slider{
+        width: 95%; 
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px){
+
+    #main_container section{
+        height: auto;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5){
+    #main_container *{
+        font-size: 14px;
+    }
+
+}

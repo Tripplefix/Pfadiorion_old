@@ -113,10 +113,14 @@ var Orion = (function() {
         init: function(args, callback) {
             // --------------- set configuration ---------------
             // check if the first argument is an object
-            if (isObj(args)) {
+            //var a = arguments;
+            var a = args;
+            if (isObj(a[ 0 ])) {
+                var cfg = a[ 0 ];
+
                 // loop through arguments and alter the configuration
-                for (var i in args) {
-                    setConfig(config, i, args[i]);
+                for (var i in cfg) {
+                    setConfig(config, i, cfg[i]);
                 }
             }
 

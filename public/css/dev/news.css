@@ -1,0 +1,522 @@
+/* 
+    Created on : 03.04.2014, 22:05:45
+    Author     : Rolf
+*/
+
+#top_image{
+    height: 350px;
+}
+
+#main_header nav a:link, #main_header nav a:visited{
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    color: #000;
+}
+
+#main_container{
+    width: 90%;
+    margin-left: 5%;
+    height: 1000px;
+}
+
+#newsfeed{
+    width: 58%;
+    float: left;
+    margin: 20px 7% 0 5%;
+}
+
+#newsfeed h1{
+    font-size: 300%;
+    font-weight: bold;
+
+    margin: 20px 0 60px;
+}
+
+#newsfeed h2{
+    font-size: 160%;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+
+
+.article{
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.articleDetail{
+    font-style: italic;
+    color: #999999;
+    font-size: 90%;
+    margin: 0 0 20px 0;
+}
+
+.article_container{
+    margin-bottom: 100px;
+    margin-left: 25px;
+}
+
+.more{
+    text-align: right;
+}
+
+.separator{
+    width: 90%;
+}
+
+.main_sidebar {   
+    width: 29%;
+    height: 1000px;
+    float: left;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;    
+
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    z-index: 901;
+
+    display: none;
+    opacity: 0;
+}
+
+/* notice_overlay */
+#notice_overlay{
+    width: 600px;
+    height: auto;
+
+    position: relative;
+    top: 20%;
+    left: 50%;
+    margin-left: -330px;
+
+    padding: 10px 10px 30px 30px;
+
+    background-color: #FFF;
+}
+
+.notice_time{
+    display: inline-block; 
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+#notice_overlay h4{
+    font-size: 22px;
+}
+
+#notice_content_title{
+    margin-top: 20px;
+    display: initial; 
+    width: 100%;
+}
+
+#notice_back_button{
+    width: 200px;
+    padding: 8px 5%;
+    margin: 50px auto;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #CC3D18;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: none;
+    
+    display: none;
+}
+
+#notice_back_button:hover{
+    background-color: #DA512D;
+    border-bottom: 4px solid #CC3D18;
+    padding-bottom: 4px;
+    text-decoration:none;
+}
+
+.modal{
+    width: 600px;
+    height: auto;
+
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -330px;
+
+    padding: 10px 10px 30px 30px;
+
+    background-color: #FFF;
+}
+
+.closeModal{
+    width: 32px;
+    height: 32px;
+    float: right;
+
+    cursor: pointer;
+
+    background-image: url('../images/close.png');
+}
+#top_image{
+    opacity: 0.4;
+    transition: opacity .4s;
+}
+#top_image:hover{
+    opacity: 1;
+}
+#top_image_description{
+    position: relative;
+    float: right;
+    top: 314px;
+    right: 19px;
+    background-color: #181818;
+    color: #FFF;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: default;
+}
+/*-------------- Kalender ------------------*/
+
+#calendar_container{
+    width: 1240px;
+    height: 1100px;
+    margin: 0 auto;
+}
+#calendar_container h1{
+    font-size: 45px;
+}
+#calendar_container h2{
+    font-size: 25px;
+    width: 180px;
+    display: inline-block;
+}
+
+table#event_table{
+    margin: 5px 20px;
+    table-layout:fixed;
+    width: 1200px;
+    transition: opacity .2s;
+}
+table#event_table thead{
+    display: block;
+}
+table#event_table thead td{
+    width: 160px;
+    padding: 5px 6px;
+}
+table#event_table tbody td{
+    width: 160px;
+    max-width: 160px;
+    height: 110px;
+    padding: 5px;
+    white-space: nowrap;
+    border-top: 1px solid #c8c8c8;
+    border-right: 1px solid #c8c8c8;
+}
+table#event_table tbody{
+    display:block;
+    border-left: 1px solid #c8c8c8;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.this_month{
+    background-color: #EBEBEB;
+}
+
+.today{
+    font-weight: bold;
+    border-top: 4px solid black !important;
+    display: block;
+}
+
+.last_month > *, .next_month > *{
+    color: #b4b4b4
+}
+
+.event_detail_link{
+    display: inline-block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.event_detail_link:hover{
+    text-decoration: underline;
+}
+.all_day_event, .timed_event{
+    display: block;
+    color: #000;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.all_day_event{
+    border: 1px solid #D69407;
+    background-color: #FCC360;
+}
+
+.timed_event{
+    font-weight: normal;
+    color: #A00000;
+}
+.timed_event b{
+    color: #A00000;        
+}
+
+.calendar_button{
+    display: inline-block;
+    vertical-align: top;
+    background-color: #F0F0F0;
+    border: 1px solid #CCCBCB;
+    border-radius: 3px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity .2s;
+    margin-top: 10px;
+}
+.calendar_button:hover{
+    opacity: 1;
+}
+.calendar_button:active{
+    box-shadow: inset 0 0 5px -2px #000;
+}
+
+#goto_today{
+    height: 25px;
+    width: 70px;
+    padding-top: 5px;
+    text-align: center;
+    margin-right: 8px;
+    margin-left: 15px;
+}
+
+#goto_prev_month{
+    width: 40px;
+    background-image: url('../../public/images/arrow_left.png');
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+    background-size: 20px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#goto_next_month{
+    width: 40px;
+    background-image: url('../../public/images/arrow_right.png');
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+    background-size: 20px;
+    border-left: none;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+#go_back_to_news{
+    width: 70px;
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    float: right;
+}
+#all_day_event_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+}
+#all_day_event_legend #all_day_event_cont{
+    border: 1px solid #D69407;
+    background-color: #FCC360;
+    display: block;
+    color: #000;
+    cursor: pointer;
+    overflow: hidden;
+}
+#simple_event_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+}
+#simple_event_legend #timed_event_cont{
+    font-weight: normal;
+    color: #A00000;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+}
+#simple_event_legend #timed_event_cont b{
+    color: #A00000;        
+}
+#today_legend{
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+    white-space: nowrap;
+    border: 1px solid #c8c8c8;
+    background-color: #EBEBEB;
+    font-weight: bold;
+    border-top: 4px solid black !important;
+    display: block;
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1150px) {
+    #calendar_container {
+        width: 1028px;
+        height: 900px;
+    }
+    table#event_table thead td{
+        width: 130px;
+    }
+    table#event_table tbody td{
+        width: 130px;
+        max-width: 130px;
+        height: 90px;
+    }    
+    table#event_table {
+        width: 988px;
+    }
+}
+@media screen and (max-width: 1150px) and (min-width: 900px) {
+    #calendar_container {
+        width: 818px;
+        height: 800px;
+    }
+    table#event_table thead td{
+        width: 100px;
+    }
+    table#event_table tbody td{
+        width: 100px;
+        max-width: 100px;
+        height: 75px;
+    }    
+    table#event_table {
+        width: 778px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) and (min-width: 0px) {
+    #calendar_container {
+        width: 708px;
+        height: 800px;
+        padding-top: 100px;
+    }
+    table#event_table thead td{
+        width: 90px;
+    }
+    table#event_table tbody td{
+        width: 90px;
+        max-width: 90px;
+        height: 80px;
+    }    
+    table#event_table {
+        width: 708px;
+        margin: 5px 0px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+    #main_container, #download_container {
+        padding-top: 100px;
+    }
+    #top_image {
+        display: none;
+    }
+    #main_header{
+        display: none;
+    }
+    .parallax_parent{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 760px) and (min-width: 0px) {
+    #calendar_container {
+        width: 568px;
+        height: 800px;
+    }
+    table#event_table thead td{
+        width: 70px;
+    }
+    table#event_table tbody td{
+        width: 70px;
+        max-width: 70px;
+        height: 75px;
+    }    
+    table#event_table {
+        width: 568px;
+        margin: 5px 0px;
+    }
+    .timed_event_name{
+        display: none;
+    }
+    /* mobile sidebar */
+    .main_sidebar {   
+        width: 100%;
+        height: auto;
+    }
+    .main_sidebar section{   
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #newsfeed {
+        width: 90%;
+        margin: 50px auto;
+    }
+    #newsfeed h1 {
+        font-size: 240%;
+        margin: 15px 0 40px;
+    }
+    .article_container {
+        margin-left: 0; 
+    }
+    #newsfeed h2 {
+        font-size: 140%;
+    }
+    .overlay{
+        height: initial;
+        position: absolute;
+    }
+    #notice_overlay {
+        width: 100%;
+        top: 75px;
+        left: 0;
+        margin: 0;
+        height: 100%;
+        padding: 30px 20px;
+        font-size: 18px;
+    }    
+    #notice_overlay h2{
+        font-size: 30px;
+        margin: 10px 0 35px 0;
+    }
+    #notice_overlay h4{
+        font-size: 22px;
+    }
+    .notice_time{
+        display: inline-block; 
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+    .closeModal{
+        display: none;
+    }
+    #notice_back_button{
+        display: block;
+        
+    }
+    
+}
