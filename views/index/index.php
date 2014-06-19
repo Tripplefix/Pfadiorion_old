@@ -10,7 +10,7 @@
             '<?php echo URL; ?>tools/royalslider/royalslider.css',
             '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
         ];
-        Orion.loadStyleSheets(styles, function() {
+        Orion.loadStyles(styles, function() {
             Orion.loadScripts(scripts, function() {
                 $('#impressions_slider').royalSlider({
                     fullscreen: {

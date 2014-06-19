@@ -1,80 +1,78 @@
 
 <script>
 
-    $(function() {
         var styles = [
             '<?php echo URL; ?>tools/royalslider/royalslider.css',
             '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
         ];
-        Orion.loadStyleSheets(styles);
-
-        $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
-                .done(function(script, textStatus) {
-                    $("#full-width-slider").royalSlider({
-                        arrowsNav: true,
-                        loop: false,
-                        keyboardNavEnabled: true,
-                        controlsInside: false,
-                        imageScaleMode: 'fill',
-                        arrowsNavAutoHide: false,
-                        autoScaleSlider: true,
-                        autoScaleSliderWidth: 960,
-                        autoScaleSliderHeight: 350,
-                        controlNavigation: 'bullets',
-                        thumbsFitInViewport: false,
-                        navigateByClick: true,
-                        startSlideId: 0,
-                        autoPlay: false,
-                        transitionType: 'move',
-                        globalCaption: true,
-                        deeplinking: {
-                            enabled: true,
-                            change: false
-                        },
-                        /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                        imgWidth: 1400,
-                        imgHeight: 933
-                    });
-                    $("#full-width-slider").css({opacity: 1});
+        Orion.loadStyles(styles, function() {
+            Orion.loadScripts(['<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js'], function() {
+                $("#full-width-slider").royalSlider({
+                    arrowsNav: true,
+                    loop: false,
+                    keyboardNavEnabled: true,
+                    controlsInside: false,
+                    imageScaleMode: 'fill',
+                    arrowsNavAutoHide: false,
+                    autoScaleSlider: true,
+                    autoScaleSliderWidth: 960,
+                    autoScaleSliderHeight: 350,
+                    controlNavigation: 'bullets',
+                    thumbsFitInViewport: false,
+                    navigateByClick: true,
+                    startSlideId: 0,
+                    autoPlay: false,
+                    transitionType: 'move',
+                    globalCaption: true,
+                    deeplinking: {
+                        enabled: true,
+                        change: false
+                    },
+                    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                    imgWidth: 1400,
+                    imgHeight: 933
                 });
+                $("#full-width-slider").css({opacity: 1});
+            });
+        });
 
-        $.getScript('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false')
-                .done(function(script, textStatus) {
+        Orion.loadScripts(['https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'], function() {
+            /* Google Maps */
+            var sulz = new google.maps.LatLng(47.505964, 8.787713);
+            var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
+            var marker;
+            var map;
 
-                    /* Google Maps */
-                    var sulz = new google.maps.LatLng(47.505964, 8.787713);
-                    var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
-                    var marker;
-                    var map;
+            function initialize() {
+                var mapOptions = {
+                    scrollwheel: true,
+                    zoom: 13,
+                    center: sulz
+                };
 
-                    function initialize() {
-                        var mapOptions = {
-                            scrollwheel: true,
-                            zoom: 13,
-                            center: sulz
-                        };
+                map = new google.maps.Map(document.getElementById('map-canvas'),
+                        mapOptions);
 
-                        map = new google.maps.Map(document.getElementById('map-canvas'),
-                                mapOptions);
-
-                        marker = new google.maps.Marker({
-                            map: map,
-                            draggable: true,
-                            animation: google.maps.Animation.DROP,
-                            position: phSandacker
-                        });
-                        google.maps.event.addListener(marker, 'click', toggleBounce);
-                    }
-
-                    function toggleBounce() {
-                        if (marker.getAnimation() != null) {
-                            marker.setAnimation(null);
-                        } else {
-                            marker.setAnimation(google.maps.Animation.BOUNCE);
-                        }
-                    }
-                    google.maps.event.addDomListener(window, 'load', initialize);
+                marker = new google.maps.Marker({
+                    map: map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    position: phSandacker
                 });
+                google.maps.event.addListener(marker, 'click', toggleBounce);
+            }
+
+            function toggleBounce() {
+                if (marker.getAnimation() != null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+
+    $(function() {
         $('#ph_top').css({
             height: ($(window).height() - 120)
         });

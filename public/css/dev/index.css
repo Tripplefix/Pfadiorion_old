@@ -13,6 +13,7 @@ body{
 
 #top_title{
     width: 100%;
+    min-width: 970px;
     position: relative;
     top: 28%;
 }
@@ -261,16 +262,13 @@ body{
 }
 
 
-@media screen and (max-width: 1280px) and (min-width: 600px){
+@media screen and (max-width: 1280px) and (min-width: 640px){
     #main_container section{
         box-shadow: 0 5px 11px -6px #292929;
     }
     #join_us_button, #contact_us_button{
         margin: 50px 64px;
     }
-}
-
-@media screen and (max-width: 1280px) and (min-width: 960px){
     #main_container section{
         width: 900px;
     }
@@ -306,7 +304,8 @@ body{
     }
 }
 
-@media screen and (max-width: 960px), screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px), screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px){
+/*@media screen and (max-width: 960px), screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px), screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px){*/
+@media screen and (max-width: 640px){
     #main_container section{
         width: 100%;
         height: auto;

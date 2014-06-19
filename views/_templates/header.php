@@ -66,18 +66,23 @@
                 Orion.init({
                     serverUrl: '<?php echo URL; ?>'
                 }, function(){
-                    console.log("loaded");
+                    console.log("Orion loaded");
+                    var scripts = [
+                        '<?php echo URL; ?>public/js/jquery.slides.min.js',
+                        '<?php echo URL; ?>public/js/jquery.scrollTo.min.js',
+                        '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js'
+                    ];
+                    Orion.loadScripts(scripts, function(msg){
+                        console.log(msg + '456');
+                    });
                 });
-                var scripts = [
-                    '<?php echo URL; ?>public/js/jquery.slides.min.js',
-                    '<?php echo URL; ?>public/js/jquery.scrollTo.min.js',
-                    '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js'
-                ];
-                Orion.loadScripts(scripts);
 
                 // only for beta DO NOT INCLUDE IN RELEASE
                 $('body').on('click', '#this_is_the_beta_site', function() {
                     $(this).fadeOut(500);
+                });
+                $('body').on('click', '.disabled_link', function(event) {
+                    event.preventDefault();
                 });
             });
         </script>
@@ -113,13 +118,18 @@
             </div>
         <?php endif; ?>   
         <div id="tablet_nav_container">
+            <?php include("_mobile_nav.html"); ?>
         </div> 
         <div id="this_is_the_beta_site">Du befindest dich auf der Testversion unserer Homepage. Informationen auf dieser Seite sind möglicherweise falsch oder veraltet. Bitte wechle zu unserer richtigen Homepage: <a href="http://pfadiorion.ch">http://pfadiorion.ch</a></div>
 
         <header id="main_header" class="no_select <?php if ($url[0] == "index" || empty($url[0])): ?> parallax<?php endif; ?>" data-container-height="500" data-image="<?php echo URL; ?>public/images/DSCF1444.jpg" data-with="1600" data-height="1200" data-posy="0">
 
-            <nav id="big_nav" <?php if ($url[0] == "index" || empty($url[0])): ?> style="position: fixed"<?php endif; ?>></nav> 
-            <nav id="small_nav"></nav> 
+            <nav id="big_nav" <?php if ($url[0] == "index" || empty($url[0])): ?> style="position: fixed"<?php endif; ?>>
+                <?php include("_big_nav.html"); ?>
+            </nav> 
+            <nav id="small_nav">
+                <?php include("_small_nav.html"); ?>
+            </nav> 
 
             <?php if ($url[0] == "index" || empty($url[0])): ?>
 

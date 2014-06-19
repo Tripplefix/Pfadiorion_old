@@ -33,7 +33,13 @@
     }
 
     #tablet_nav{
-        display: none;
+        height: 0;
+        overflow: hidden;
+        transition: all, .2s;
+    }
+
+    #tablet_nav.hidden{
+        height: 150px;
     }
 
     #tablet_nav li{
@@ -89,6 +95,10 @@
     }
 
     @media (max-width: 550px) and (min-width: 0px) {	
+        #tablet_nav.hidden{
+            height: 300px;
+            margin-top: 0;
+        }
         #tablet_nav li{
             width: 100%;
         }

@@ -430,18 +430,9 @@ table#event_table tbody{
     #main_container, #download_container {
         padding-top: 100px;
     }
-    #top_image {
-        display: none;
-    }
-    #main_header{
-        display: none;
-    }
-    .parallax_parent{
-        display: none;
-    }
 
 }
-@media screen and (max-width: 760px) and (min-width: 0px) {
+@media screen and (max-width: 760px) {
     #calendar_container {
         width: 568px;
         height: 800px;
@@ -467,9 +458,10 @@ table#event_table tbody{
         height: auto;
     }
     .main_sidebar section{   
-        width: 50%;
+        width: 48%;
         display: inline-block;
         vertical-align: top;
+        padding-right: 2%;
     }
 
     #newsfeed {
