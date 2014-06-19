@@ -7,6 +7,7 @@
             '<?php echo URL; ?>tools/royalslider/royalslider.css',
             '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
         ];
+<<<<<<< HEAD
         Orion.loadStyleSheets(styles);
 
         $.getScript('<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js')
@@ -32,7 +33,33 @@
                     $('#impressions_slider_fullscreen').on('click', function() {
                         $('#impressions_slider').royalSlider('enterFullscreen');
                     });
+=======
+        Orion.loadStyles(styles, function() {
+            Orion.loadScripts(scripts, function() {
+                $('#impressions_slider').royalSlider({
+                    fullscreen: {
+                        enabled: true,
+                        nativeFS: false
+                    },
+                    controlNavigation: 'bullets',
+                    arrowsNav: true,
+                    keyboardNavEnabled: true,
+                    autoScaleSlider: true,
+                    autoScaleSliderWidth: 1400,
+                    autoScaleSliderHeight: 600,
+                    imageScaleMode: 'fill',
+                    globalCaption: true,
+                    arrowsNavAutoHide: false,
+                    imgWidth: 1400,
+                    imgHeight: 933
                 });
+
+                $('#impressions_slider_fullscreen').on('click', function() {
+                    $('#impressions_slider').royalSlider('enterFullscreen');
+>>>>>>> origin/master
+                });
+            });
+        });
 
         $('#main_header').data('container-height', $(window).height());
 

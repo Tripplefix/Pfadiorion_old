@@ -1,0 +1,340 @@
+/* 
+    Created on : 03.04.2014, 22:04:53
+    Author     : Rolf
+*/
+
+header, nav, section, article, aside, footer {
+    display:block;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, Verdana, serif;
+    font-size: 100%;
+    vertical-align: baseline;
+    color: #303030;
+}
+
+::selection {
+    background: #CC3D18; /* Safari */
+    color: #FFF;
+}
+::-moz-selection {
+    background: #CC3D18; /* Firefox */
+    color: #FFF;
+}
+
+p{
+    padding: 0 0 10px 0;
+}
+
+.indent{
+    padding-left: 15px;
+}
+
+h2{
+    font-size: 32px;
+    margin: 10px 0 10px 0;
+}
+
+h3{
+    font-size: 22px;
+    padding-bottom: 5px;
+    margin: 35px 0 25px 0;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+a{
+    text-decoration: none;
+    color: #CC3D18;
+}
+
+a:hover, a:active{
+    text-decoration: underline;
+}
+
+
+ul, ol {
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+a, i, button, input[type=submit] {
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.no_select{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#logged_in_panel{
+    position: fixed;
+    top: 0;
+    left: 100px;
+    padding: 10px 10px 5px 10px;
+    height: 30px;
+    background-color: #1e2029;
+    z-index: 901;
+}
+#logged_in_panel form{
+    color: #FFF;
+} 
+
+.grey_button{
+    box-shadow: 5px 5px 12px -5px #292929;
+    border-radius: 11px;
+    border-bottom: 2px solid #969696;
+    border-right: 2px solid #969696;
+    background-color: rgba(235, 235, 235, 1);
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.grey_button:hover{
+    background-color: #EE795A;
+}
+.grey_button:active{
+    background-color: #D1593A;
+}
+
+/* grid layout */
+.g-33{
+    width: 33%;
+    float: left;
+}
+.g-50{
+    width: 50%;
+    float: left;
+}
+.g-66{
+    width: 66%;
+    float: left;
+}
+.g-100{
+    width: 100%;
+    float: left;
+}
+
+#main_header{
+    width: 100%;
+    height: 120px;   
+    z-index: 900;
+}
+
+#main_header nav{    
+    width: 100%;
+}
+
+#main_header nav ul{    
+    display: block;
+    width: 100%;
+    min-width: 700px;
+    text-align: center;
+}
+
+#main_header li:not(.logo) {
+}
+
+#main_header li{    
+    display: inline-block;
+}
+
+#big_nav a:link, #big_nav a:visited{
+    display: inline-block;
+    width: 100px;
+    padding: 3em 1em 1em 1em;
+    font-family: 'Denk One', sans-serif;
+}
+
+#big_nav a:hover, #big_nav a:active,
+#big_nav .active a:link, #big_nav .active:visited{
+    color: #CC3D18;
+    text-shadow: none;
+    text-decoration: none;
+}
+
+#big_nav li.logo, .logo{    
+    vertical-align: middle;
+    padding: 0em 40px 0 40px;
+    line-height: 0;
+}
+
+#main_container{        
+    font-size: 110%;
+}
+
+#footer{
+    width: 100%;
+    height: 300px;
+    clear: both;
+}
+
+#footer p, #footer a, #footer h3, #footer li{
+    color: #FFF;
+    list-style: #FFF;
+    border: none;
+}
+
+#footer h3{
+    margin-bottom: 10px;
+}
+
+#footer_top{
+    width: 100%;
+    height: 260px;
+    background-color: #CC3D18;
+}
+
+#footer_bottom{
+    width: 100%;
+    height: 40px;
+    background-color: #821E04;
+}
+
+.footer_top_element, .footer_bottom_element{
+    float: left;
+    width: 30%;
+}
+
+.footer_top_element{
+    height: 30px;
+    height: 260px;
+}
+
+.left.footer_top_element{
+    margin-left: 5%;
+}
+
+.middle.footer_top_element p{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+}
+
+.middle.footer_top_element #small_scout_lily, .middle.footer_top_element #small_scout_lily path{
+    display: block;
+    fill: #FFF;
+    width: 114px;
+    height: 144px;
+    margin: 21px auto;
+    cursor: default;
+}
+.middle.footer_top_element #small_scout_lily:hover{
+    fill: #FFF !important;
+}
+
+.right.footer_top_element{
+    float: right;
+    width: 18%;
+    margin-right: 5%;
+}
+
+.footer_bottom_element{
+    height: 30px;
+    margin-top: 10px;
+}
+
+.left.footer_bottom_element{
+    margin-left: 5%;
+    text-align: left;
+}
+
+.middle.footer_bottom_element{
+    text-align: center;
+}
+
+.right.footer_bottom_element{
+    margin-right: 5%;
+    text-align: right;
+}
+#footer_mobile{
+    display: none;
+    overflow: hidden;
+    width: 100%;
+}
+#footer_toggle{
+    color: #FFF;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    background-color: #821E04;
+}
+#footer_nav{
+
+}
+#footer_mobile #footer_toggle{
+    height: 70px; 
+}
+#footer_mobile #footer_toggle p{
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    display: inline-block;
+    font-size: 66px;
+    position: relative;
+    top: -10px;  
+    transition: all .5s;
+    cursor: pointer;
+}
+#footer_mobile #footer_toggle p.open{
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#footer_mobile a, #footer_mobile li{
+    height: 70px;
+    list-style: none;
+}
+#footer_nav{
+    display: none;
+}
+#footer_nav a, #footer_nav p{
+    height: 52px;
+    display: inline-block;
+    background-color: #821E04;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    padding-top: 18px;
+}
+#footer_nav a:hover{    
+    background-color: #AA381A;
+}
+#footer_nav p{
+    height: 30px;
+    padding-top: 40px;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 640px) and (min-width: 0px){
+
+    .left.footer_top_element, 
+    .right.footer_top_element,
+    .left.footer_bottom_element, 
+    .right.footer_bottom_element{
+        display: none;
+    }
+
+    .middle.footer_top_element, 
+    .middle.footer_bottom_element{
+        width: 100%;
+    }
+
+    #footer_top, .footer_top_element{
+        height: 230px;
+    }
+
+    #footer_bottom{
+        display: none;
+    }
+    #footer_mobile{
+        display: block;
+    }
+}
