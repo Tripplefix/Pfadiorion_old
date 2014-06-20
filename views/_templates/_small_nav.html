@@ -3,11 +3,9 @@
         var url = Orion.url();
         var fullUrl = document.URL;
         var site = fullUrl.replace(url, '').replace('/', '');
-
-        if (site !== "index" && site !== "index.php" && site !== "index/#main_container" && site !== "index#main_container" && site !== "") {
-            $('#small_nav').hide();
-        }else{
-            $('#small_nav li').first().on("click", function(evt){
+        
+        if($('#main_container').hasClass('index')){
+            $('#small_nav li').first().on('click', function(evt){
                 evt.preventDefault();
                 $('body, html').animate({
                     scrollTop: $('#main_container').offset().top
@@ -17,11 +15,13 @@
                     easing: 'easeInOutQuart'
                 });
             });
+        }else{
+            $('#small_nav').remove();
         }
         
         $('#small_scout_lily').attr('fill', Orion.colors.black);        
 
-        $('#small_scout_lily').on("click", function() {
+        $('#small_nav').on('click', '#small_scout_lily', function() {
             $('body, html').animate({
                 scrollTop: 0
             }, {
@@ -33,17 +33,17 @@
         
         $('#small_nav a').each(function(index){
             switch($(this).text()){
-                case "Orion": 
-                    $(this).attr("href", url + "index/#main_container");
+                case 'Orion': 
+                    $(this).attr('href', url + 'index/#main_container');
                     break;
-                case "News": 
-                    $(this).attr("href", url + "news");
+                case 'News': 
+                    $(this).attr('href', url + 'news');
                     break;
-                case "Pfadiheim": 
-                    $(this).attr("href", url + "pfadiheim");
+                case 'Pfadiheim': 
+                    $(this).attr('href', url + 'pfadiheim');
                     break;
-                case "Kontakt": 
-                    $(this).attr("href", url + "kontakt");
+                case 'Kontakt': 
+                    $(this).attr('href', url + 'kontakt');
                     break;
             }
         });
@@ -92,6 +92,6 @@
     </li><li>
         <a>Pfadiheim</a>
     </li><li>
-        <a class="disabled_link">Kontakt</a>
+        <a>Kontakt</a>
     </li>
 </ul>

@@ -148,6 +148,14 @@ a, i, button, input[type=submit] {
     display: inline-block;
 }
 
+#big_nav, #small_nav, #tablet_nav_container{
+    display: none;
+}
+
+#small_nav{
+    margin-top: -60px;
+}
+
 #big_nav a:link, #big_nav a:visited{
     display: inline-block;
     width: 100px;

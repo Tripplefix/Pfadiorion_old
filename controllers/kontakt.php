@@ -71,7 +71,7 @@ class Kontakt extends Controller {
             if($value->user_email != ""){
                 $result .= '<tr>
                                 <td class="font_bold">E-Mail</td>
-                                <td>' . $value->user_email . '</td>
+                                <td><a href="mailto:' . $value->user_email . '">' . $value->user_email . '</a></td>
                             </tr>';
             }
             if($value->user_contact_street != "" && $value->user_contact_place != ""){

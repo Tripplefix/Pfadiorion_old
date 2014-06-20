@@ -63,18 +63,12 @@
             ga('send', 'pageview');
 
             $(function() {
-                Orion.init({
-                    serverUrl: '<?php echo URL; ?>'
-                }, function(){
-                    console.log("Orion loaded");
-                    var scripts = [
+                Orion.init({ serverUrl: '<?php echo URL; ?>' }, function(){
+                    Orion.loadScripts([
                         '<?php echo URL; ?>public/js/jquery.slides.min.js',
                         '<?php echo URL; ?>public/js/jquery.scrollTo.min.js',
                         '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js'
-                    ];
-                    Orion.loadScripts(scripts, function(msg){
-                        console.log(msg + '456');
-                    });
+                    ]);
                 });
 
                 // only for beta DO NOT INCLUDE IN RELEASE

@@ -4,9 +4,9 @@
         var fullUrl = document.URL;
         var site = fullUrl.replace(url, '').replace('/', '');
 
-        if (site === "index" || site === "index.php" || site === "" || site === "index/#main_container" || site === "index#main_container") {
-            $('#main_scout_lily').attr("style", "fill:#FFF; filter:url(#dropshadow)");
-            $('#big_nav li').first().on("click", function(evt) {
+        if($('#main_container').hasClass('index')){
+            $('#main_scout_lily').attr('style', 'fill:#FFF; filter:url(#dropshadow)');
+            $('#big_nav li').first().on('click', function(evt) {
                 evt.preventDefault();
                 $('body, html').animate({
                     scrollTop: $('#main_container').offset().top
@@ -16,36 +16,36 @@
                     easing: 'easeInOutQuart'
                 });
             });
-            if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+            if ($('html').hasClass('ie8') || navigator.platform.indexOf('iPad') != -1) {
                 $('#big_nav li.logo').html('<image xlink:href="' + url + 'public/images/lily_white.png" src="' +
                         url + 'public/images/lily_white.png" width="75" height="87" onclick="(function() {window.location.href = "' + url + 'kontakt";})();" />');
             }
 
         } else {
-            $('#main_scout_lily').attr("style", "fill:#000; filter:none");
-            if ($('html').hasClass('ie8') || navigator.platform.indexOf("iPad") != -1) {
+            $('#main_scout_lily').attr('style', 'fill:#000; filter:none');
+            if ($('html').hasClass('ie8') || navigator.platform.indexOf('iPad') != -1) {
                 $('#big_nav li.logo').html('<image xlink:href="' + url + 'public/images/lily_black.png" src="' +
                         url + 'public/images/lily_black.png" width="75" height="87" onclick="(function() {window.location.href = "' + url + 'kontakt";})();" />');
             }
         }
 
-        $('#main_scout_lily').on("click", function() {
+        $('#main_scout_lily').on('click', function() {
             window.location.href = url;
         });
 
         $('#big_nav a').each(function(index) {
             switch ($(this).text()) {
-                case "Orion":
-                    $(this).attr("href", url + "index/#main_container");
+                case 'Orion':
+                    $(this).attr('href', url + 'index/#main_container');
                     break;
-                case "News":
-                    $(this).attr("href", url + "news");
+                case 'News':
+                    $(this).attr('href', url + 'news');
                     break;
-                case "Pfadiheim":
-                    $(this).attr("href", url + "pfadiheim");
+                case 'Pfadiheim':
+                    $(this).attr('href', url + 'pfadiheim');
                     break;
-                case "Kontakt":
-                    $(this).attr("href", url + "kontakt");
+                case 'Kontakt':
+                    $(this).attr('href', url + 'kontakt');
                     break;
             }
         });
@@ -54,14 +54,12 @@
 
 <style>
 
-
     #main_scout_lily {
         border-bottom: none;
         cursor: pointer;
         transition: fill .2s;
         fill: #000;
     }
-
 
     #main_scout_lily:hover{
         fill: #CC3D18 !important; //@hover-color;
@@ -75,12 +73,14 @@
         <a>News</a>
     </li><li class="logo">
         <svg id="main_scout_lily" width="75px" height="95px" viewBox="0 0 346 391" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <filter id="dropshadow" height="130%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/> <!-- stdDeviation is how much to blur -->
-                <feOffset dx="0" dy="00" result="offsetblur"/> <!-- how much to offset -->
-                <feMerge> 
-                    <feMergeNode/> <!-- this contains the offset blurred image -->
-                    <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+            <filter id="dropshadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                <feOffset dx="0" dy="0" result="offsetblur"/>
+                <feFlood flood-color="rgba(0,0,0,0.5)"/>
+                <feComposite in2="offsetblur" operator="in"/>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
                 </feMerge>
             </filter>
             <path class="scout_lily" d=" M 144.86 16.96 C 149.63 15.30 154.80 14.97 159.79 14.05 C 158.83 17.37 157.94 20.71 157.04 24.05 C 151.96 24.94 146.89 25.94 141.84 26.98 C 142.82 23.71 142.56 19.65 144.86 16.96 Z" />
@@ -163,6 +163,6 @@
     </li><li>
         <a>Pfadiheim</a>
     </li><li>
-        <a class="disabled_link">Kontakt</a>
+        <a>Kontakt</a>
     </li>
 </ul>

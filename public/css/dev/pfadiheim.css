@@ -9,6 +9,11 @@
     color: #000;
 }
 
+#main_header nav a:hover, #main_header nav a:active{
+    color: #cc3d18;
+}
+
+
 #ph_top{
     min-height: 730px;
 }
@@ -29,8 +34,7 @@
 }
 #google_maps_overlay{
     box-shadow: rgb(0, 0, 0) 0px -10px 23px -12px inset;
-    height: 500px;
-    min-height: 250px;
+    height: 250px;
     overflow: hidden;
     transition: all .2s;
 }
@@ -201,55 +205,6 @@
         height: auto;
     }
 }
-
-/*@media screen and (max-width: 960px), screen and (-webkit-min-device-pixel-ratio: 2.0) and (max-width: 1920px), screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1920px){*/
-/*@media screen and (max-width: 640px){
-
-    #ph_top{
-        height: auto;
-        min-height: 0;
-        margin-top: -40px;
-    }
-    #ph_info_wrapper {
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-    }
-    #ph_location {
-        border-top: 5px solid #FFE000;
-        padding: 25px;
-        margin: 50px auto;
-        width: 280px;
-        display: block;
-    }
-    .ph_container {
-        display: block;
-        vertical-align: top;
-        width: 320px;
-        margin: 50px auto;
-        padding-bottom: 0;
-    }
-    #ph_administration {
-        border-top: 5px solid #4C26E0;
-        padding: 25px;
-        width: auto;
-        height: auto;
-    }
-    #ph_vacancy {
-        border-top: 5px solid #3FA750;
-        padding: 25px;
-        margin-top: 50px;
-        width: auto;
-    }
-    #ph_furnishment {
-        border-top: 5px solid #DD4722;
-        width: 280px;
-        margin: 50px auto;
-        padding: 25px;
-        height: auto;
-    }
-}
-*/
 
 /** ph-slider **/
 

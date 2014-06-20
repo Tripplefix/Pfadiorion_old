@@ -1,6 +1,4 @@
-<!-- <script src="<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js"></script>
-<link href="<?php echo URL; ?>tools/royalslider/royalslider.css" rel="stylesheet">
-<link href="<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet"> -->
+
 <script>
     $(function() {
         var scripts = [
@@ -80,7 +78,7 @@
         });
     }
 </script>
-<div id="main_container">   
+<div id="main_container" class="index">   
     <!-- unsere Abteilung -->
     <section id="about_us">
         <div id="about_us_image">

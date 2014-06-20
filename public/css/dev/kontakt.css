@@ -7,6 +7,11 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     color: #000;
 }
+
+#main_header nav a:hover, #main_header nav a:active{
+    color: #cc3d18;
+}
+
 #contact_group_chooser{
     float: left;
     margin-top: 100px;

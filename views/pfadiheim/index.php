@@ -1,78 +1,117 @@
-
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script>
 
-        var styles = [
-            '<?php echo URL; ?>tools/royalslider/royalslider.css',
-            '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
-        ];
-        Orion.loadStyles(styles, function() {
-            Orion.loadScripts(['<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js'], function() {
-                $("#full-width-slider").royalSlider({
-                    arrowsNav: true,
-                    loop: false,
-                    keyboardNavEnabled: true,
-                    controlsInside: false,
-                    imageScaleMode: 'fill',
-                    arrowsNavAutoHide: false,
-                    autoScaleSlider: true,
-                    autoScaleSliderWidth: 960,
-                    autoScaleSliderHeight: 350,
-                    controlNavigation: 'bullets',
-                    thumbsFitInViewport: false,
-                    navigateByClick: true,
-                    startSlideId: 0,
-                    autoPlay: false,
-                    transitionType: 'move',
-                    globalCaption: true,
-                    deeplinking: {
-                        enabled: true,
-                        change: false
-                    },
-                    /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-                    imgWidth: 1400,
-                    imgHeight: 933
-                });
-                $("#full-width-slider").css({opacity: 1});
+    var styles = [
+        '<?php echo URL; ?>tools/royalslider/royalslider.css',
+        '<?php echo URL; ?>tools/royalslider/skins/minimal-white/rs-minimal-white.css'
+    ];
+    Orion.loadStyles(styles, function() {
+        Orion.loadScripts(['<?php echo URL; ?>tools/royalslider/jquery.royalslider.min.js'], function() {
+            $("#full-width-slider").royalSlider({
+                arrowsNav: true,
+                loop: false,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 960,
+                autoScaleSliderHeight: 350,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: true,
+                startSlideId: 0,
+                autoPlay: false,
+                transitionType: 'move',
+                globalCaption: true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                },
+                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                imgWidth: 1400,
+                imgHeight: 933
             });
+            $("#full-width-slider").css({opacity: 1});
         });
+    });
 
-        Orion.loadScripts(['https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'], function() {
-            /* Google Maps */
-            var sulz = new google.maps.LatLng(47.505964, 8.787713);
-            var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
-            var marker;
-            var map;
+    /* Google Maps */
+    var sulz = new google.maps.LatLng(47.505964, 8.787713);
+    var phSandacker = new google.maps.LatLng(47.538319, 8.787542);
+    var marker;
+    var map;
 
-            function initialize() {
-                var mapOptions = {
-                    scrollwheel: true,
-                    zoom: 13,
-                    center: sulz
-                };
+    function initializeMap() {
+        var mapOptions = {
+            scrollwheel: true,
+            zoom: 13,
+            center: sulz
+        };
 
-                map = new google.maps.Map(document.getElementById('map-canvas'),
-                        mapOptions);
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
 
-                marker = new google.maps.Marker({
-                    map: map,
-                    draggable: true,
-                    animation: google.maps.Animation.DROP,
-                    position: phSandacker
-                });
-                google.maps.event.addListener(marker, 'click', toggleBounce);
-            }
-
-            function toggleBounce() {
-                if (marker.getAnimation() != null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: phSandacker
         });
+        google.maps.event.addListener(marker, 'click', toggleBounce);
+        console.log("map is loaded!");
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() != null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+
+    function preventDefault(e) {
+        e = e || window.event;
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+    }
+
+    function wheel(e) {
+        preventDefault(e);
+        var offset;
+        if (Orion.isMobile()) {
+            offset = $('#map-canvas').offset().top - 75;
+        } else {
+            offset = $('#map-canvas').offset().top;
+        }
+        $('body, html').animate({
+            scrollTop: offset
+        }, {
+            duration: 1000,
+            queue: false,
+            easing: 'easeInOutQuint',
+            complete: enable_scroll
+        });
+    }
+
+    function disable_scroll() {
+        if (window.addEventListener) {
+            window.addEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = wheel;
+    }
+
+    function enable_scroll() {
+        if (window.removeEventListener) {
+            window.removeEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = null;
+    }
 
     $(function() {
+        disable_scroll();
         $('#ph_top').css({
             height: ($(window).height() - 120)
         });
@@ -85,52 +124,14 @@
             $('.scout_lily').attr('fill', Orion.colors.black);
         });
 
-        $('.notice_link').click(function(event) {
-            event.preventDefault();
-            var elem = $(this);
-
-            $.post(elem.attr('href'))
-                    .done(function(data) {
-                        $('body').append(data);
-                        $('.overlay').css('display', 'block');
-                        $('.overlay').animate({
-                            opacity: 1
-                        }, 200);
-                        console.log(data);
-
-                        //add event handlers
-                        $('.closeModal').click(function(event) {
-                            event.preventDefault();
-                            $('.overlay').animate({
-                                opacity: 0
-                            }, 200, function() {
-                                $('.overlay').remove();
-                            });
-                        });
-
-                    });
-        });
-
-        $('#ph_details_button').click(function() {
-            var offset;
-            if ($('html').hasClass('mobile')) {
-                offset = $('#map-canvas').offset().top - 75
-            } else {
-                offset = $('#map-canvas').offset().top
-            }
-            $('body, html').animate({
-                scrollTop: offset
-            }, {
-                duration: 1000,
-                queue: false,
-                easing: 'easeInOutQuint'
-            });
-        });
+        $('#ph_details_button').click(wheel);
 
         $('#show_full_maps_button').click(function() {
+            //todo
+            wheel();
             var overlay = $("#google_maps_overlay");
 
-            if ($('body').hasClass('mobile')) {
+            if (Orion.isMobile()) {
                 if (overlay.hasClass("hidden")) {
                     $(this).text("Karte ausblenden");
                     overlay.removeClass("hidden");
@@ -173,23 +174,15 @@
         });
     });
 
-    $(window).load(function() {
-        /*console.log("page is loaded!");
-         NProgress.done(true);*/
-        $('body').css({display: 'block'});
-        //$('#google_maps_overlay').css({height: $(window).height() - 640});
-        $('#google_maps_overlay').css({height: '250px'});
-    });
-
-    $(window).resize(function() {
-        $('#ph_top').css({
-            height: ($(window).height() - 120)
-        });
-
-        //$('#google_maps_overlay').css({height: $(window).height() - 640});
-        $('#google_maps_overlay').css({height: '250px'});
-        if ($(window).scrollTop() > 900) {
-            $("html, body").scrollTop($('#google_maps_overlay').offset().top);
+    $(window).on({
+        load: function() {
+            $('body').css({display: 'block'});
+            initializeMap();
+        },
+        resize: function() {
+            $('#ph_top').css({
+                height: ($(window).height() - 120)
+            });
         }
     });
 </script>
@@ -253,9 +246,6 @@
     </div>
     <div id="ph_info_wrapper">
         <div id="ph_location" class="ph_container ph_border">
-            <!-- 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d673.3795679582008!2d8.787130910234787!3d47.538240951191824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2s!4v1392144415227" width="600" height="450" frameborder="0" style="border:0;float: left;"></iframe>
-            -->
             <p>
                 <span style="font-weight: bold;">Zu finden ist unser Zuhause unter folgender Adresse: </span><br /><br />
 

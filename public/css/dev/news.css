@@ -13,6 +13,10 @@
     color: #000;
 }
 
+#main_header nav a:hover, #main_header nav a:active{
+    color: #cc3d18;
+}
+
 #main_container{
     width: 90%;
     margin-left: 5%;
