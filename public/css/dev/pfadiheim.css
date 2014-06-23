@@ -13,7 +13,6 @@
     color: #cc3d18;
 }
 
-
 #ph_top{
     min-height: 730px;
 }
@@ -90,6 +89,7 @@
 #ph_details_button{
     margin: 90px auto;
     padding: 6px 15px;
+    height: 24px;
     width: 200px;
     text-align: center;
     color: #FFF;

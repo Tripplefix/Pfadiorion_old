@@ -79,11 +79,12 @@
     }
 
     function wheel(e) {
-        preventDefault(e);
+        //preventDefault(e);
         var offset;
         if (Orion.isMobile()) {
             offset = $('#map-canvas').offset().top - 75;
         } else {
+            //enable_scroll();
             offset = $('#map-canvas').offset().top;
         }
         $('body, html').animate({
@@ -92,7 +93,13 @@
             duration: 1000,
             queue: false,
             easing: 'easeInOutQuint',
-            complete: enable_scroll
+            complete: function() {
+                $('body').css({overflow: 'auto'});
+                if (!Orion.isMobile()) {
+                    $('body').css({marginTop: -($(window).height() + 60)});
+                    window.scrollTo(0, 0);
+                }
+            }
         });
     }
 
@@ -111,10 +118,12 @@
     }
 
     $(function() {
-        disable_scroll();
+        //disable_scroll();
+        $('body').css({overflow: 'hidden'});
         $('#ph_top').css({
             height: ($(window).height() - 120)
         });
+
 
         $('.scout_lily').attr('fill', Orion.colors.black);
 
@@ -128,7 +137,7 @@
 
         $('#show_full_maps_button').click(function() {
             //todo
-            wheel();
+            //wheel();
             var overlay = $("#google_maps_overlay");
 
             if (Orion.isMobile()) {
@@ -183,7 +192,14 @@
             $('#ph_top').css({
                 height: ($(window).height() - 120)
             });
-        }
+        }/*,
+         scroll: function() {
+         var scrollTop = document.body.scrollTop || window.pageYOffset;
+         if (scrollTop === 0) {
+         $('body').css({marginTop: 0});
+         disable_scroll();
+         }
+         }*/
     });
 </script>
 
