@@ -133,7 +133,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: none;
-    
+
     display: none;
 }
 
@@ -473,26 +473,28 @@ table#event_table tbody{
         margin: 50px auto;
     }
     #newsfeed h1 {
-        font-size: 240%;
+        font-size: 200%;
         margin: 15px 0 40px;
     }
     .article_container {
         margin-left: 0; 
     }
     #newsfeed h2 {
-        font-size: 140%;
+        font-size: 130%;
     }
     .overlay{
         height: initial;
         position: absolute;
     }
     #notice_overlay {
-        width: 100%;
-        top: 75px;
+        width: 92%;
+        top: 0;
         left: 0;
+        position: initial;
         margin: 0;
+        margin-top: 75px;
         height: 100%;
-        padding: 30px 20px;
+        padding: 30px 4%;
         font-size: 18px;
     }    
     #notice_overlay h2{
@@ -512,7 +514,7 @@ table#event_table tbody{
     }
     #notice_back_button{
         display: block;
-        
+
     }
-    
+
 }

@@ -1,8 +1,6 @@
 <script>
     $(function() {
         var url = Orion.url();
-        var fullUrl = document.URL;
-        var site = fullUrl.replace(url, '').replace('/', '');
 
         if($('#main_container').hasClass('index')){
             $('#main_scout_lily').attr('style', 'fill:#FFF; filter:url(#dropshadow)');
@@ -51,20 +49,6 @@
         });
     });
 </script>
-
-<style>
-
-    #main_scout_lily {
-        border-bottom: none;
-        cursor: pointer;
-        transition: fill .2s;
-        fill: #000;
-    }
-
-    #main_scout_lily:hover{
-        fill: #CC3D18 !important; //@hover-color;
-    }
-</style>
 
 <ul>
     <li>

@@ -1,8 +1,6 @@
 <script>
     $(function() {
         var url = Orion.url();
-        var fullUrl = document.URL;
-        var site = fullUrl.replace(url, '').replace('/', '');
         
         if($('#main_container').hasClass('index')){
             $('#small_nav li').first().on('click', function(evt){
@@ -31,7 +29,7 @@
             });
         });
         
-        $('#small_nav a').each(function(index){
+        $('#small_nav a').each(function(){
             switch($(this).text()){
                 case 'Orion': 
                     $(this).attr('href', url + 'index/#main_container');
@@ -49,21 +47,6 @@
         });
     });
 </script>
-
-<style>
-
-
-    #small_scout_lily {
-        border-bottom: none;
-        cursor: pointer;
-        transition: fill .2s;
-        fill: #000;
-    }   
-
-    #small_scout_lily:hover{
-        fill: #CC3D18 !important; //@hover-color;
-    }
-</style>
 
 <ul>
     <li>

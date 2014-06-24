@@ -7,7 +7,7 @@ class Index_Model extends Model {
     public function __construct() {
         parent::__construct();
     }
-
+    
     /**
      * Gets an array that contains all the users in the database
      * The array's keys are the user ids. Each array element is an object,

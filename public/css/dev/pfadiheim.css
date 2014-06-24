@@ -13,6 +13,10 @@
     color: #cc3d18;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 #ph_top{
     min-height: 730px;
 }

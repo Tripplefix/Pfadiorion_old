@@ -1,8 +1,7 @@
 var Orion = (function() {
-    var i = 0;
+    var mobile;
     var config = {
-        //serverUrl: 'http://pfadiorion.ch/'
-        serverUrl: '<not set>'
+        serverUrl: 'http://pfadiorion.ch/'
     };
 
     function setConfig(o, p, v) {
@@ -26,85 +25,75 @@ var Orion = (function() {
         // tests if a parameter is an object (and not an array)
         return (typeof o === 'object' && typeof o.splice !== 'function');
     }
+    
+    function hasClass(o, className){
+        if (o.classList)
+            return o.classList.contains(className);
+        else
+            return new RegExp('(^| )' + className + '( |$)', 'gi').test(o.className);
+    }
+    
+    function addClass(o, className){
+        if (o.classList)
+            o.classList.add(className);
+        else
+            o.className += ' ' + className;
+    }
+    
+    function removeClass(o, className){
+        if (o.classList)
+            o.classList.remove(className);
+        else
+            o.className = o.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
 
     function setNavigation() {
-        var _window = $(window),
-                winHeight = _window.height(),
-                winWidth = _window.width(),
-                winOffset = _window.scrollTop(),
-                url = config.serverUrl;
+        var winHeight = window.innerHeight,
+            scrollTop = document.body.scrollTop || window.pageYOffset,        
+            bigNav = document.getElementById('big_nav'),
+            smallNav = document.getElementById('small_nav'),
+            tabletNav = document.getElementById('tablet_nav_container');
 
-        function msg(txt) {
-            console.log(txt);
-        }
-
-        var bigNav = $('#big_nav'),
-                smallNav = $('#small_nav'),
-                tabletNav = $('#tablet_nav_container');
-
-
-        $('body').on('click', '#tablet_nav_container', function() {
-            if ($('#tablet_nav').is(":visible")) {
-                $('#tablet_nav').slideUp(200);
-            } else {
-                $('#tablet_nav').slideDown(200);
+        tabletNav.addEventListener('click', function(){
+            if(hasClass(document.getElementById('tablet_nav'), 'hidden')){
+                removeClass(document.getElementById('tablet_nav'), 'hidden');
+            }else{
+                addClass(document.getElementById('tablet_nav'), 'hidden');
             }
         });
-
-        _window.on('load', setNavigation());
-
-        _window.on('scroll', function() {
-            winOffset = _window.scrollTop();
-
-            $('#small_scout_lily').on('click', function() {
-                $('body, html').animate({
-                    scrollTop: 0
-                }, {
-                    duration: 1500,
-                    queue: false,
-                    easing: 'easeInOutQuart'
-                });
-            });
-            if (winWidth >= 1000) {
+        
+        window.addEventListener('load', setNav);
+        window.addEventListener('resize', setNav);
+        window.addEventListener('scroll', function(){
+            scrollTop = document.body.scrollTop || window.pageYOffset;
+            
+            if (!mobile) {
                 //small navigation
-                if (winOffset > winHeight - 10) {
-                    smallNav.css({
-                        marginTop: 0
-                    });
-                } else if (winOffset <= winHeight - 60) {
-                    smallNav.css({
-                        marginTop: -60
-                    });
+                if (scrollTop > winHeight - 20) {
+                    smallNav.style.marginTop = '0';
+                } else if (scrollTop <= winHeight - 50) {
+                    smallNav.style.marginTop = '-60px';
                 }
 
                 //big navigation
-                if (winOffset <= 80) {
-                    bigNav.removeClass('bignav_hidden');
+                if (scrollTop <= 80) {
+                    removeClass(bigNav, 'bignav_hidden');
                 } else {
-                    bigNav.addClass('bignav_hidden');
+                    addClass(bigNav, 'bignav_hidden');
                 }
             }
-        });
+        });        
 
-        _window.on('resize', function() {
-            winHeight = _window.height();
-            winWidth = _window.width();
-            setNavigation();
-        });
-
-        function setNavigation() {
-            if ((window.devicePixelRatio === 1 && winWidth < 944)
-                    || (window.devicePixelRatio === 1.5 && winWidth < 1500)
-                    || (window.devicePixelRatio >= 2 && winWidth < 2000)) {
-                smallNav.children().remove();
-                bigNav.children().remove();
-                tabletNav.load(url + 'views/_templates/_mobile_nav.html');
-                $('body').addClass('mobile');
-            } else {
-                smallNav.load(url + 'views/_templates/_small_nav.html');
-                bigNav.load(url + 'views/_templates/_big_nav.html');
-                tabletNav.children().remove();
-                $('body').removeClass('mobile');
+        function setNav() {
+            winHeight = window.innerHeight;
+            if(mobile || window.innerWidth <= 640) {                
+                smallNav.style.display = 'none';
+                bigNav.style.display = 'none';
+                tabletNav.style.display = 'block';
+            } else {                
+                smallNav.style.display = 'block';
+                bigNav.style.display = 'block';
+                tabletNav.style.display = 'none';
             }
         }
     }
@@ -113,42 +102,34 @@ var Orion = (function() {
         init: function(args, callback) {
             // --------------- set configuration ---------------
             // check if the first argument is an object
-            //var a = arguments;
-            var a = args;
-            if (isObj(a[ 0 ])) {
-                var cfg = a[ 0 ];
-
+            if (isObj(args)) {
                 // loop through arguments and alter the configuration
-                for (var i in cfg) {
-                    setConfig(config, i, cfg[i]);
+                for (var i in args) {
+                    setConfig(config, i, args[i]);
                 }
             }
 
             // --------------- check if site is loaded on a mobile(touchscreen) device ---------------
-            /*if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-             $('html').addClass('mobile');
-             }*/
-
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                mobile = true;
+            } else {
+                mobile = false;
+            }
+            
             // --------------- set event handlers ---------------
-            $('body').on('click', '.disabled_link', function(event) {
-                event.preventDefault();
-            });
+            //currently no events 
+            
 
+            // --------------- set navigation ---------------
             setNavigation();
             
+            // --------------- run callback ---------------
             if(callback !== 'undefined' && typeof callback === 'function'){
                 callback();
             }
         },
         isMobile: function() {
-            if (this.mobile === undefined) {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    this.mobile = true;
-                } else {
-                    this.mobile = false;
-                }
-            }
-            return this.mobile;
+            return mobile;
         },
         colors: {
             red: '#CC3D18',
@@ -159,51 +140,62 @@ var Orion = (function() {
         url: function() {
             return config.serverUrl;
         },
-        loadScripts: function loadScript(scripts, callback) {
-            //this function will work cross-browser for loading scripts asynchronously
-            var script, done, t;
-            done = false;
-            script = document.createElement('script');
-            //s.type = 'text/javascript';
-            script.src = scripts[i];
-            script.onload = script.onreadystatechange = function() {
-                if (!done && (!this.readyState || this.readyState === 'complete'))
-                {
-                    done = true;
-                    if(callback !== 'undefined' && typeof callback === 'function'){
-                        callback();
-                    }
-                    
-                    i++;
-                    if (i < scripts.length) {
-                        loadScript(scripts);
-                    }
-                }            
-            };
-            t = document.getElementsByTagName('script')[0];
-            t.parentNode.insertBefore(script, t);
+        loadScripts: function (scripts, callback) {
+            var scriptCount = scripts.length;
+            var loadedCount = 0;
+            
+            scripts.forEach(function(src){                
+                var script, done, t;
+                done = false;
+                script = document.createElement('script');
+                //s.type = 'text/javascript';
+                script.src = src;
+                //if(async === 'true') script.async = 'async';
+                script.onload = script.onreadystatechange = function() {
+                    if (!done && (!this.readyState || this.readyState === 'complete'))
+                    {
+                        done = true;
+                        loadedCount++;
+                        
+                        //callback ausführen, nachdem alle scripts geladen wurden
+                        if(loadedCount === scriptCount){
+                            if(callback !== 'undefined' && typeof callback === 'function'){
+                                callback('scripts loaded');
+                            }
+                        }
+                    }            
+                };
+                t = document.getElementsByTagName('script')[0];
+                t.parentNode.insertBefore(script, t);
+            });
         },
-        loadStyleSheets: function loadStyle(sheets, callback) {
-            var script, done, t;
-            done = false;
-            script = document.createElement('link');
-            script.rel = 'stylesheet';
-            script.href = sheets[i];
-            script.onload = script.onreadystatechange = function() {
-                if (!done && (!this.readyState || this.readyState === 'complete'))
-                {
-                    done = true;
-                    if(callback !== 'undefined' && typeof callback === 'function'){
-                        callback();
+        loadStyles: function (styles, callback) {
+            var styleCount = styles.length;
+            var loadedCount = 0;
+            
+            styles.forEach(function(src){       
+                var style, done, t;
+                done = false;
+                style = document.createElement('link');
+                style.rel = 'stylesheet';
+                style.href = src;
+                style.onload = style.onreadystatechange = function() {
+                    if (!done && (!this.readyState || this.readyState === 'complete'))
+                    {
+                        done = true;
+                        loadedCount++;
+                        
+                        //callback ausführen, nachdem alle styles geladen wurden
+                        if(loadedCount === styleCount){
+                            if(callback !== 'undefined' && typeof callback === 'function'){
+                                callback('styles loaded');
+                            }
+                        }
                     }
-                    i++;
-                    if (i < sheets.length) {
-                        loadStyle(sheets);
-                    }
-                }
-            };
-            t = document.getElementsByTagName('link')[0];
-            t.parentNode.insertBefore(script, t);            
+                };
+                t = document.getElementsByTagName('link')[0];
+                t.parentNode.insertBefore(style, t);     
+            });
         }
     };
 })();

@@ -148,12 +148,25 @@ a, i, button, input[type=submit] {
     display: inline-block;
 }
 
+/***************** NAVIGATION *****************/
+
 #big_nav, #small_nav, #tablet_nav_container{
     display: none;
 }
 
 #small_nav{
     margin-top: -60px;
+}
+
+#small_scout_lily {
+    border-bottom: none;
+    cursor: pointer;
+    transition: fill .2s;
+    fill: #000;
+}   
+
+#small_scout_lily:hover{
+    fill: #CC3D18 !important;
 }
 
 #big_nav a:link, #big_nav a:visited{
@@ -175,6 +188,93 @@ a, i, button, input[type=submit] {
     padding: 0em 40px 0 40px;
     line-height: 0;
 }
+
+#main_scout_lily {
+    border-bottom: none;
+    cursor: pointer;
+    transition: fill .2s;
+    fill: #000;
+}
+
+#main_scout_lily:hover{
+    fill: #CC3D18 !important;
+}
+
+
+
+#tablet_nav_container{
+    position: fixed;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(243, 243, 243);
+    z-index: 950;
+}
+
+#tablet_nav{
+    height: 0;
+    overflow: hidden;
+    transition: all, .2s;
+}
+
+#tablet_nav.hidden{
+    height: 150px;
+}
+
+#tablet_nav li{
+    display: inline-block;
+    list-style: none;
+    width: 50%;
+}
+
+#tablet_nav a{
+    color: #000;
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    height: 56px;
+    padding-top: 18px;
+    font-size: 28px;
+    font-weight: bold;
+    border-bottom: 1px solid #E4E4E4;
+    text-align: center;
+}		
+#tablet_nav a:hover{
+    background-color: rgb(230, 230, 230);
+}		
+#tablet_nav a:active{
+    background-color: rgb(220, 220, 220);
+}
+
+#tablet_nav a:hover{
+    color: #CC3D18;
+}
+
+#tablet_nav_toggle{
+    height: 75px;
+    width: 100%;
+}
+
+#tablet_nav_toggle svg{
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+#small_scout_lily {
+    border-bottom: none;
+    cursor: pointer;
+    transition: fill .2s;
+    fill: #000;
+}   
+
+#small_scout_lily:hover{
+    fill: #CC3D18 !important;
+}
+
+
+
 
 #main_container{        
     font-size: 110%;
@@ -323,6 +423,14 @@ a, i, button, input[type=submit] {
 
 @media screen and (max-width: 640px) and (min-width: 0px){
 
+    #tablet_nav.hidden{
+        height: 300px;
+        margin-top: 0;
+    }
+    #tablet_nav li{
+        width: 100%;
+    }
+    
     .left.footer_top_element, 
     .right.footer_top_element,
     .left.footer_bottom_element, 

@@ -37,5 +37,11 @@ class Controller {
             $modelName = $name . '_Model';
             $this->model = new $modelName();
         }
+        
+        //load BLL
+        require 'models/bll.php';
+
+        $bllName = 'Business_Logic';
+        $this->bll = new $bllName();
     }
 }

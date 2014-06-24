@@ -321,10 +321,10 @@ body{
         width: 80%;
     }
     #main_container p{
-        font-size: 26px;
+        font-size: 18px;
     }
     #main_container h2{
-        font-size: 50px;
+        font-size: 40px;
     }
 
     #main_header{
@@ -378,8 +378,8 @@ body{
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.5){
-    #main_container *{
+    /*#main_container *{
         font-size: 14px;
-    }
+    }*/
 
 }
