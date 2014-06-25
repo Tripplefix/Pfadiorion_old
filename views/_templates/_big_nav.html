@@ -3,7 +3,8 @@
         var url = Orion.url();
 
         if($('#main_container').hasClass('index')){
-            $('#main_scout_lily').attr('style', 'fill:#FFF; filter:url(#dropshadow)');
+            //$('#main_scout_lily').attr('style', 'fill:#FFF; filter:url(#dropshadow);');
+            $('#main_scout_lily').attr('style', 'fill:#FFF;');
             $('#big_nav li').first().on('click', function(evt) {
                 evt.preventDefault();
                 $('body, html').animate({
@@ -13,7 +14,7 @@
                     queue: false,
                     easing: 'easeInOutQuart'
                 });
-            });
+            }); 
             if ($('html').hasClass('ie8') || navigator.platform.indexOf('iPad') != -1) {
                 $('#big_nav li.logo').html('<image xlink:href="' + url + 'public/images/lily_white.png" src="' +
                         url + 'public/images/lily_white.png" width="75" height="87" onclick="(function() {window.location.href = "' + url + 'kontakt";})();" />');
