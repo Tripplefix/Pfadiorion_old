@@ -12,45 +12,15 @@ class Users_Model extends Model {
     }
 
     public function getAllUser() {
-        $sth = $this->db->prepare("SELECT * FROM users ORDER BY user_name");
+        $sth = $this->db->prepare("SELECT * FROM users u LEFT JOIN user_groups ug ON u.user_access_level = ug.access_level ORDER BY user_name");
         $sth->execute(array(':user_id' => $_SESSION['user_id']));
-        //return $sth->fetchAll();
-
-
-        $fetched_item = $sth->fetchAll();
-
-        foreach ($fetched_item as $key => $value) {
-            $hold = (array) $fetched_item[$key];
-            $tmp_user_type = $this->db->prepare("SELECT description
-                                           FROM user_groups
-                                           WHERE access_level = :access_level;");
-            $tmp_user_type->execute(array(':access_level' => $hold['user_access_level']));
-
-            $hold["user_type"] = $tmp_user_type->fetchAll()[0]->description;
-            $fetched_item[$key] = (object) $hold;
-        }
-
-        return $fetched_item;
+        return $sth->fetchAll();
     }
 
     public function getUser($user_id) {
-        $sth = $this->db->prepare("SELECT * FROM users WHERE user_id == :user_id");
+        $sth = $this->db->prepare("SELECT * FROM users u LEFT JOIN user_groups ug ON u.user_access_level = ug.access_level WHERE user_id == :user_id");
         $sth->execute(array(':user_id' => $user_id));
-
-        $fetched_item = $sth->fetchAll();
-
-        foreach ($fetched_item as $key => $value) {
-            $hold = (array) $fetched_item[$key];
-            $tmp_user_type = $this->db->prepare("SELECT description
-                                           FROM user_groups
-                                           WHERE access_level = :access_level;");
-            $tmp_user_type->execute(array(':access_level' => $hold['user_access_level']));
-
-            $hold["user_type"] = $tmp_user_type->fetchAll()[0]->description;
-            $fetched_item[$key] = (object) $hold;
-        }
-
-        return $fetched_item;
+        return $sth->fetchAll();
     }
 
     public function getUserTypes() {

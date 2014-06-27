@@ -2,53 +2,49 @@
 <script>
     $(function() {
 
-        $('.delete_button').on("click", function(event) {
+        $('.delete_button').on('click', function(event) {
             event.preventDefault();
             var elem = $(this);
-            if (confirm("Den Benutzer '" + elem.parent().parent().find('.user_name').text() + "' wirklich löschen?")) {
+            if (confirm('Den Benutzer "' + elem.parent().parent().find('.user_name').text() + '" wirklich löschen?')) {
                 $.post(elem.attr('href'))
                         .done(function(data) {
-                            if (data === "done") {
-                                $.notify("User wurde erfolgreich gelöscht!", "success");
+                            if (data === 'done') {
+                                $.notify('User wurde erfolgreich gelöscht!', 'success');
                                 elem.parent().parent().hide(500);
                             } else {
-                                $.notify(data, "error");
+                                $.notify(data, 'error');
                             }
                         });
             }
         });
-        $('.edit_button').on("click", editUser);
+        $('.edit_button').on('click', editUser);
 
-        function editUser(data) {
-            console.log("edit");
+        function editUser(event) {
             event.preventDefault();
             var elem = $(this).parent().parent();
 
             elem.children().each(function(i) {
-                if ($(this).hasClass("edittext")) {
+                if ($(this).hasClass('edittext')) {
                     $(this).addClass('editing');
                     $(this).html('<input type="text" name="' + $(this).attr('class').split(' ')[1] + '" value="' + $(this).text() + '" />');
 
-                } else if ($(this).hasClass("editdropdown")) {
+                } else if ($(this).hasClass('editdropdown')) {
                     var obj = $(this);
                     obj.addClass('editing');
-                    $.post("<?php echo URL; ?>admin/users/getUserTypes", {selected: $(this).text()})
+                    $.post('<?php echo URL; ?>admin/users/getUserTypes', {selected: $(this).text()})
                             .done(function(data) {
                                 obj.html(data);
-                            }).aft;
-                } else {
-
-                }
+                            });
+                } 
             });
 
             elem.on('change', 'input, select', function() {
-                console.log("test");
                 $(this).addClass('valueChanged');
             });
 
             $(this).text('Save');
-            $(this).off("click");
-            $(this).on("click", saveChanges);
+            $(this).off('click');
+            $(this).on('click', saveChanges);
         }
 
         function saveChanges(event) {
@@ -63,34 +59,29 @@
                 street: elem.find('.user_contact_street input').val(),
                 place: elem.find('.user_contact_place input').val(),
                 phone: elem.find('.user_contact_phone input').val(),
-                type: elem.find('.user_type :selected').val(),
+                type: elem.find('.description :selected').val(),
                 leadertraining: elem.find('.user_leadertraining input').val(),
                 leader_since: elem.find('.user_leader_since input').val(),
                 responsibility: elem.find('.user_responsibility input').val()
             };
 
-            console.log(user_data);
-
             if (elem.find('.valueChanged').length > 0) {
-                console.log('valueChanged');
                 $.post($(this).attr('href'), user_data).done(function(data) {
-                    console.log(data);
-                    if (data === "done") {
-                        $.notify("Gespeichert", "success");
+                    if (data === 'done') {
+                        $.notify('Gespeichert', 'success');
                     } else {
-                        $.notify(data, "error");
+                        $.notify(data, 'error');
                     }
                 });
             } else {
-                $.notify("Es wurden keine Daten geändert", "info");
-                console.log('just nothin\'');
+                $.notify('Es wurden keine Daten geändert', 'info');
             }
 
             elem.children().each(function(i) {
-                if ($(this).hasClass("edittext") && $(this).hasClass("editing")) {
+                if ($(this).hasClass('edittext') && $(this).hasClass('editing')) {
                     $(this).removeClass('editing');
                     $(this).html($(this).children().first().val());
-                } else if ($(this).hasClass("editdropdown") && $(this).hasClass("editing")) {
+                } else if ($(this).hasClass('editdropdown') && $(this).hasClass('editing')) {
                     $(this).removeClass('editing');
                     $(this).html($(this).find(':selected').text());
                 } else {
@@ -99,8 +90,8 @@
             });
 
             $(this).text('Edit');
-            $(this).off("click");
-            $(this).on("click", editUser);
+            $(this).off('click');
+            $(this).on('click', editUser);
         }
     });
 </script>
@@ -170,7 +161,7 @@
                             <td class="edittext user_contact_street">' . $value->user_contact_street . '</td>
                             <td class="edittext user_contact_place">' . $value->user_contact_place . '</td>
                             <td class="edittext user_contact_phone">' . $value->user_contact_phone . '</td>
-                            <td class="editdropdown user_type">' . $value->user_type . '</td>
+                            <td class="editdropdown description">' . $value->description . '</td>
                             <td class="edittext user_leadertraining">' . $value->user_leadertraining . '</td>
                             <td class="edittext user_leader_since">' . $value->user_leader_since . '</td>
                             <td class="edittext user_responsibility">' . $value->user_responsibility . '</td>';
