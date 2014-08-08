@@ -160,7 +160,7 @@
             $('#ph_top').css({
                 height: ($(window).height() - 120)
             });
-            if(!Orion.isMobile()) scrollToDetails();
+            if(!Orion.isMobile() && window.scrollY >= 600) scrollToDetails();
         }
     });
 </script>
@@ -170,43 +170,49 @@
     <div id="ph_top">
         <div id="full-width-slider" class="royalSlider heroSlider rsMinW" style="opacity: 0; max-width: 1400px;margin: 60px auto 24px;">
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8292.jpg" alt="by Kaa">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8292.jpg" alt="&copy; Pfadi Orion">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Unser Heim von vorne, in seiner ganzen Pracht</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8294.jpg" alt="by Kaa">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8294.jpg" alt="&copy; Pfadi Orion">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Hinter dem Heim befindet sich eine Sitzmöglichkeit, geeignet für lange Bastelarbeiten</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8295.jpg" alt="by Kaa">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8298.JPG" alt="&copy; Pfadi Orion">
+                <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
+                    <h4><span style="color: red">Neu!</span> Direkt daneben steht ein ehemaliger Zirkuswagen, umgebaut für Pfadizwecke</h4>
+                </div>
+            </div>
+            <div class="rsContent">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8295.jpg" alt="&copy; Pfadi Orion">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Direkt neben dem Heim ist eine kleine Spielwiese, in gebrauchtem Zustand</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8296.JPG" alt="by Kaa">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8296.jpg" alt="&copy; Pfadi Orion">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Eine von zwei gepflegten Feuerstellen für gemütliche Grillnachmittage</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8297.jpg" alt="by Kaa" data-rsw="1400" data-rsh="681">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8297.jpg" alt="&copy; Pfadi Orion" data-rsw="1400" data-rsh="681">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Nigelnagelneue WC-Anlagen, für geschäftliche Angelegenheiten</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8302.jpg" alt="by Kaa" data-rsw="1400" data-rsh="691">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8302.jpg" alt="&copy; Pfadi Orion" data-rsw="1400" data-rsh="691">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Eine moderne Küche macht das Kochen für viele Personen einfacher</h4>
                 </div>
             </div>
             <div class="rsContent">
-                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8303.jpg" alt="by Kaa">
+                <img class="rsImg" src="<?php echo URL; ?>views/pfadiheim/images/IMG_8303.jpg" alt="&copy; Pfadi Orion">
                 <div class="infoBlock rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="top" data-speed="200">
                     <h4>Der grosszügige Aufenthaltsraum wird von einem Schwedenofen beheizt</h4>
                 </div>
@@ -270,7 +276,8 @@
                 <li>Einen heimeligen Schwedenofen</li>
                 <li>Pizzaofen draussen</li>
                 <li>eine Spielwiese</li>
-                <li>eine Feuerstelle auf unserem Gelände</li>
+                <li><span style="color: red">Neu!</span> beheizter Bauwagen, kann auf Anfrage dazugemietet werden</li>
+                <li>zwei Feuerstellen auf unserem Gelände</li>
             </ul><br />
             <p>Es kann ausserdem noch ein zusätzlicher Arbeitsraum dazugemietet werden (Rücksprache mit der Heimverwaltung).</p>
         </div>

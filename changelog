@@ -1,0 +1,9 @@
+##########################
+###   Changelog    ###
+##########################
+
+v3.0.1
+
+- Updated Pfadiheim gallery with new, prettier photos
+- fixed auto-scroll Bug on window resize
+- changed header-image of news-page
