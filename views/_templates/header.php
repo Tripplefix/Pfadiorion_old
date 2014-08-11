@@ -33,7 +33,7 @@
         <!-- parallax plugin -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="<?php echo URL; ?>public/js/Orion.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.min.js"></script>
+        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
         <!--[if lt IE 9]>
             <script>
                document.createElement('header');

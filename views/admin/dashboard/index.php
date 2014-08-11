@@ -41,6 +41,8 @@
 
     <section id="news_stream">
         <h2>Leiter-News</h2>
+        <h3 style="font-style: italic">in Arbeit</h3>
+        
     </section><aside id="news_sidebar">
         <h3><a href="http://pfadiorion.kadermanager.de/" target="blank" style="font-size:18px;text-decoration:none;">Anstehende Events</a></h3>
 
@@ -59,9 +61,9 @@
         <!-- /KADERMANAGER.DE EVENT-LISTE -->
         
         <h3>Fotos</h3>
-        <p>ToDo</p>
+        <p style="font-style: italic">in Arbeit</p>
 
         <h3>Dokumente</h3>
-        <p>ToDo</p>
+        <p style="font-style: italic">in Arbeit</p>
     </aside>
 </div>

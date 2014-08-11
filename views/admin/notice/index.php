@@ -190,7 +190,7 @@
     <h1 id="create_notice" style="cursor: pointer;">Erstelle einen neuen Anschlag</h1>
 
 
-    <div id="notice_preview">
+    <div id="notice_preview" style="display:none">
         <a id="close_preview" href="close_notice"></a>
         <h2 id="notice_preview_title">Wochentag, Datum</h2>
         <div class="notice_preview_time">
