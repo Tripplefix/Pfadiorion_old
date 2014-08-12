@@ -69,37 +69,11 @@
                         '<?php echo URL; ?>public/js/jquery.easing.1.3.min.js'
                     ]);
                 });
-
-                // only for beta DO NOT INCLUDE IN RELEASE
-                $('body').on('click', '#this_is_the_beta_site', function() {
-                    $(this).fadeOut(500);
-                });
                 $('body').on('click', '.disabled_link', function(event) {
                     event.preventDefault();
                 });
             });
         </script>
-        <style>    
-            /* only for beta DO NOT INCLUDE IN RELEASE */
-            #this_is_the_beta_site{
-                /*remove*/
-                display: none;
-
-                height: 30px;
-                width: 100%;
-                background-color: #ff0000;
-                color: #FFF;
-                position: fixed;
-                font-size: 90%;
-                font-weight: bold;
-                padding: 10px 20px;
-                z-index: 1000;
-                cursor: pointer;
-            }
-            #this_is_the_beta_site a{
-                color: #FFF;
-            }
-        </style>
     </head>
     <body>
         <?php if (Session::get('user_logged_in') == true): ?>
