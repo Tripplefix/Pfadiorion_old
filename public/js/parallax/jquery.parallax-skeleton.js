@@ -30,6 +30,7 @@
         //create parent element for the parallax-container
         parallaxParent = $(_doc.createElement("div"));
         parallaxParent.addClass("parallax-parent");
+        parallaxParent.css({position: 'fixed'});
         _body.prepend(parallaxParent);
 
         _parallax.each(function(index, obj) {            
@@ -65,9 +66,11 @@
                 visibility: 'visible',
                 height: containerHeight,
                 'transform': 'translate3d(0px, ' + elemOffset + 'px, 0px)',
-                '-webkit-transform': 'translate3d(0px, ' + elemOffset + 'px, 0px)'
+                '-webkit-transform': 'translate3d(0px, ' + elemOffset + 'px, 0px)',
+                overflow: 'hidden',
+                position: 'fixed'
             });
-
+            
             //create a image-container for each parallax-container
             var parallaxImage = $(_doc.createElement("div"));
             parallaxImage.addClass("parallax-image");
@@ -75,8 +78,10 @@
                 backgroundImage: "url('" + elemImage + "')",
                 width: elemWith,
                 height: elemHeight,
-                'transform': 'translate3d(' + _imgTransX[index] + 'px, ' + (-(elemOffset) * settings.parallax - _imgPosY) + 'px, 0px)',
-                '-webkit-transform': 'translate3d(' + _imgTransX[index] + 'px, ' + (-(elemOffset) * settings.parallax - _imgPosY) + 'px, 0px)'
+                'transform': 'translate3d(' + _imgTransX[index] + 'px, ' + (-(elemOffset) * settings.parallax + _imgTransY[index]) + 'px, 0px)',
+                '-webkit-transform': 'translate3d(' + _imgTransX[index] + 'px, ' + (-(elemOffset) * settings.parallax + _imgTransY[index]) + 'px, 0px)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '100%'
             });
 
             //append those container tho its parents
@@ -100,7 +105,6 @@
                 
                 if (_winWith >= elemWith) {
                     _imgTransX[index] = 0;
-                    //_imgTransY[index] = (_winWith - elemWith);
                     elemWith = elemWith + (_winWith - elemWith);
                     elemHeight = elemHeight * (_winWith / elemWith);
                 } else {

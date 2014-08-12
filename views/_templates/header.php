@@ -24,7 +24,6 @@
         }
         ?>
         <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/main.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/js/parallax/parallax-skeleton.min.css" />
 
         <!-- webfonts -->
         <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
@@ -33,7 +32,7 @@
         <!-- parallax plugin -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="<?php echo URL; ?>public/js/Orion.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.js"></script>
+        <script src="<?php echo URL; ?>public/js/parallax/jquery.parallax-skeleton.min.js"></script>
         <!--[if lt IE 9]>
             <script>
                document.createElement('header');

@@ -120,8 +120,8 @@
     }
 </script>
 
-<div id="top_image" class="parallax" data-image="<?php echo URL; ?>public/images/sarasani.jpg" data-with="1600" data-height="1200" data-container-height="350" data-posy="340">
-    <div id="top_image_description">PfiLa Wolfsstufe 2014</div>
+<div id="top_image" class="parallax" data-image="<?php echo URL; ?>public/images/sarasani.jpg" data-with="1600" data-height="1067" data-container-height="350" data-posy="400">
+    <div id="top_image_description">Abteilungs SoLa 2014</div>
 </div>
 <div id="main_container">
     <div id="newsfeed">
