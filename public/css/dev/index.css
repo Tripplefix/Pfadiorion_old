@@ -330,6 +330,9 @@ body{
     #main_header{
         display: none;
     }
+    .parallax-container{
+        display: none;
+    }
     .parallax_parent{
         display: none;
     }
