@@ -21,6 +21,12 @@ class News extends Controller {
         $this->view->render('news/kalender');
     }
     
+    function galerie($id = 0){
+        $this->view->isGallery = $id != 0;
+                
+        $this->view->render('news/galerie');
+    }
+    
     function downloads(){
         $this->view->recent_downloads = $this->model->getRecentDownloads(); 
         $this->view->archived_downloads = $this->model->getArchivedDownloads(); 

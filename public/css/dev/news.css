@@ -27,6 +27,7 @@
     width: 58%;
     float: left;
     margin: 20px 7% 0 5%;
+    overflow: hidden;
 }
 
 #newsfeed h1{
