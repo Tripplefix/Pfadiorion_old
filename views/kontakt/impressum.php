@@ -10,6 +10,8 @@
     <p>Im Sandacker</p>
     <p>8544 Sulz-Rickenbach</p>
     <p>&nbsp;</p>
+    <p>Verantwortlich für den Webauftritt: <a href="http://pfadiorion.ch/kontakt">Rolf Isler v/o Baloo, Truppleiter Meute Von Planta</a></p>
+    <p>&nbsp;</p>
     <p>&nbsp;</p>
     <h2>Haftungsausschluss</h2>
     <p>Der Autor übernimmt keinerlei Gewähr hinsichtlich der  inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und  Vollständigkeit der Informationen.</p>
