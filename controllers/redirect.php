@@ -20,11 +20,15 @@ class Redirect extends Controller {
             "http://www.scout.ch/de/pfadialltag/stufenarbeit/pios",
             "http://www.scout.ch/de/pfadialltag/stufenarbeit/rover",
             "http://www.eps-asds.ch",
-            "http://www.pfadi.ch", "http://www.silverscout.ch",
+            "http://www.pfadi.ch", 
+            "http://www.silverscouts.pbs.ch",
             "http://www.jugendundsport.ch/internet/js/de/home/lager_trekking/uebersicht.html",
             "http://www.technix-online.ch/Inhalt.html",
             "http://www.hajk.ch",
-            "http://pfadiorion.ch/public/download/Anmeldeformular%20Pfadi%20Orion.pdf"
+            "http://pfadiorion.ch/public/download/Anmeldeformular%20Pfadi%20Orion.pdf",
+            "http://map.geo.admin.ch/index.html?lang=de&geolocation=true&bgLayer=ch.swisstopo.pixelkarte-farbe&zoom=10&topic=ech&Y=701558.00&X=266166.00",
+            "http://www.pfadizueri.ch",
+            "http://www.scout.ch/de/verband"
         ];
         
         if(isset($links[$id])){            
