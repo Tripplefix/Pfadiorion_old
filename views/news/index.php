@@ -141,7 +141,8 @@
     </div>
     <aside class="main_sidebar">
         <section id="onlineanschlag" class="sidebarelement">
-            <h3>N&auml;chste Pfadi&uuml;bung</h3>
+            <h3>N&auml;chste Pfadi&uuml;bung
+                <span id="notice_info" title="Welchen Anschlag muss ich beachten?" style='display: none'></span></h3>
             <ul> 
                 <?php
 //load notices      
@@ -214,5 +215,21 @@
         </div><br />
         <h4 id="notice_content_title">Details</h4><p id="notice_content"></p>
         <div id="notice_back_button">Zurück</div>
+    </div>
+</div>
+
+
+<div class="overlay" style='display: none' >
+    <div class="notice_help_overlay">
+        <h2>Die verschiedenen Gruppen</h2>
+        <p><b>Volk Pimpernuss</b><br />Gemischte Gruppe in Wiesendangen, im Alter zwischen 5 und ca. 11 Jahren</p>
+        <p><b>Meute Von Planta</b><br />Jungs-Gruppe in Sulz-Rickenbach, im Alter zwischen 5 und ca. 11 Jahren</p>
+        <p><b>Trupp Girsberg</b><br />Jungs-Gruppe in Sulz-Rickenbach, im Alter zwischen 11 und 15 Jahren</p>
+        <p><b>Trupp Aquila</b><br />Mädchen-Gruppe in Sulz-Rickenbach, im Alter zwischen 11 und 15 Jahren</p>
+
+        <h2>Spezielle Anschläge</h2>
+        <p><b>Wolfstufe</b><br />Wenn das Volk Pimpernuss und die Meute Von Planta zusammen eine Übung machen</p>
+        <p><b>Pfadistufe</b><br />Wenn der Trupp Girsberg und der Trupp Aquila zusammen eine Übung machen</p>
+        <p><b>Abteilung Orion</b><br />Wenn die ganze Abteilung eine gemeinsame Übung machen</p>
     </div>
 </div>

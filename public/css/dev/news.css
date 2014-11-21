@@ -106,6 +106,29 @@
     background-color: #FFF;
 }
 
+#notice_info{
+    background: url('../images/Icon-round-Question_mark.png') no-repeat;
+    background-size: 100%;
+    width: 15px;
+    height: 18px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#notice_help_overlay{
+    width: 600px;
+    height: auto;
+
+    position: relative;
+    top: 20%;
+    left: 50%;
+    margin-left: -330px;
+
+    padding: 10px 10px 30px 30px;
+
+    background-color: #FFF;
+}
+
 .notice_time{
     display: inline-block; 
     width: 50%;
